@@ -138,7 +138,7 @@ const play = () => {
 		state.alienPositions = state.alienPositions.map(position => position + movement)
 		drawAliens()
 		checkGameState(interval)
-	}, 50)
+	}, 400)
 	//set up ship controls
 	window.addEventListener("keydown", controllShip)
 }
