@@ -91,7 +91,7 @@ const fire = () => {
 			return
 		}
 		state.cells[laserposition].classList.add("laser")
-	}, 100)
+	}, 50)
 }
 
 const drawAliens = () => {
