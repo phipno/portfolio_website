@@ -19,9 +19,11 @@ body {
 }
 
 .grid {
-	align-self: center;
-	width: 30vw;
-	height: 30vw;
+	margin: auto;
+	margin-top: 1%;
+	place-items: center;
+	width: 80vh;
+	height: 80vh;
 	border: white solid 2px;
 	display: grid;
 	grid-template-columns: repeat(15, 1fr);
