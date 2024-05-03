@@ -7,6 +7,17 @@
   
 body {
 	background-color: rgb(169, 87, 169);
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.app {
+	width: 100%;
+	height: 80%;
+	position: relative;
 }
 
 .scoreboard {
@@ -18,18 +29,34 @@ body {
 	margin: 20px;
 }
 
+@media (orientation: portrait) {
 .grid {
-	margin: auto;
-	margin-top: 1%;
-	place-items: center;
-	width: 80vh;
-	height: 80vh;
+		width: 95vmin;
+		height: 95vmin;
+		max-width: 95vh;
+		max-height: 95vh;
+	}
+}
+@media (orientation: landscape) {
+	.grid {
+		width: 80vmin;
+		height: 80vmin;
+		max-width: 80vh;
+		max-height: 80vh;
+	}
+}
+
+.grid {
 	border: white solid 2px;
 	display: grid;
 	grid-template-columns: repeat(15, 1fr);
 	grid-auto-rows: 1fr;
+	position: absolute;
+	top: 1%;
+	left: 50%;
+	transform: translate(-50%, -1%);
 }
-  
+
 .grid > div {
 	width: 100%;
 	height: 100%;
@@ -54,10 +81,11 @@ body {
 
 .message {
 	position: absolute;
-	top: 200px;
-	left: 200px;
 	width: 200px;
 	height: 100px;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -40%);
 	background-color: white;
 	opacity: 85%;
 }

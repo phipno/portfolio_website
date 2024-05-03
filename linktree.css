@@ -1,0 +1,35 @@
+@media (orientation: portrait) {
+  .linktree {
+    width: 95vw;
+  }
+}
+
+@media (orientation: landscape) {
+  .linktree {
+    width: 80vh;
+  }
+}
+
+.linktree{
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.link {
+  flex-grow: 1;
+  height: 5vh;
+  width: 5vh
+}
+
+.linktree .link img {
+  height: 100%;
+  width: 100%;
+  filter: invert(100%);
+}
+
+.linktree .link:last-child img {
+  filter: invert(0%);
+}
