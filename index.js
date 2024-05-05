@@ -167,28 +167,16 @@ const drawMessage = (message) => {
 }
 
 const drawScoreboard = () => {
-	// const heading = document.createElement("h1")
-	// heading.innerText = 'Space Invaders'
-	// const paragraph1 = document.createElement("p")
-	// paragraph1.innerText = 'Press SPACE to shoot.'
-	// const paragraph2 = document.createElement("p")
-	// paragraph2.innerText = 'Press ← and → to move'
-	const scoreboard = document.createElement('div')	
-	scoreboard.classList.add('scoreboard')
 	const scoreElement = document.createElement('span')
 	scoreElement.innerText = state.score
-	// const heading3 = document.createElement('h3')
-	// heading3.innerText = 'Score: '
-	// heading3.append(scoreElement)
-	// scoreboard.append(heading, paragraph1, paragraph2, heading3)
-	// scoreboard.append(heading, paragraph1, paragraph2, heading3)
-  
+	const score = document.getElementById('score');
+	
+	score.append(scoreElement)
 	state.scoreElement = scoreElement
-	state.element.append(scoreboard)
 }
   
 //query the page for the place to insert game
-const appElement = document.querySelector(".app")
+const appElement = document.querySelector(".game")
 
 //do all things needed to draw the game
 setupGame(appElement)
