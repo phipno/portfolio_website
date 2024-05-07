@@ -1,0 +1,53 @@
+@media (orientation: portrait) {
+  .game {
+    width: 100%;
+  }
+
+  .grid {
+    width: 85vw;
+    height: 85vw;
+    margin: 2% 7.5vw 0%;
+  }
+
+  .controlls {
+    margin: 0 7.5vw 0 7.5vw;
+    width: 85vw;
+  }
+
+  .linktree-container {
+    width: 100%;
+  }
+}
+
+@media (orientation: landscape) {
+  .game {
+    border-right: 10px solid white;
+    width: 50vh;
+    height: 100vh;
+    align-self: flex-start;
+    position: sticky;
+    top: 1px;
+    bottom: 0;
+  }
+  
+  .grid {
+    width: 50vh;
+    height: 50vh;
+  }
+  
+  .app {
+    display: flex;
+    overflow: visible;
+  }
+
+  .linktree-container {
+    width: 50vh;
+  }
+
+  .something {
+    flex-grow: 1;
+    overflow: auto;
+  }
+
+
+}

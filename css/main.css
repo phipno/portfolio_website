@@ -1,0 +1,16 @@
+* {
+	box-sizing: border-box;
+	font-family: 'Press Start 2P', cursive;
+}
+  
+body {
+	padding: 0;
+	margin: 0;
+	background-color: rgb(169, 87, 169);
+}
+
+.app {
+	height: 100vh;
+	width: 100%;
+}
+

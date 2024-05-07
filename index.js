@@ -1,3 +1,4 @@
+
 const state = {
 	numCells: (600/40) * (600/40),
 	cells: [],
