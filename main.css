@@ -1,21 +1,21 @@
 * {
-	margin: 0;
-	padding: 0;
-	/* box-sizing: border-box; */
+	box-sizing: border-box;
 	font-family: 'Press Start 2P', cursive;
 }
   
 body {
+	padding: 0;
+	margin: 0;
 	background-color: rgb(169, 87, 169);
-	height: 100vh;
 }
 
 .app {
+	height: 100vh;
 	width: 100%;
 }
 
 .information {
-	margin: 20px;
+	font-size: 1rem;
 	color: white;
 }
 
@@ -28,34 +28,78 @@ body {
 	margin: 20px;
 }
 
+.controlls {
+	display: flex;
+	justify-content: center;
+	margin: 0%;
+}
+
 @media (orientation: portrait) {
-	.grid, .game {
-		width: 95vw;
-		height: 95vw;
+	.game {
+		width: 100%;
+	}
+
+	.grid {
+		width: 85vw;
+		height: 85vw;
+		margin: 2% 7.5vw 0%;
+	}
+	
+	.controlls {
+		margin: 0 7.5vw 0 7.5vw;
+		width: 85vw;
+	}
+
+	.linktree-container {
+		width: 100%;
+	}
+
+	.controlls button {
+		width: 100%;
 	}
 }
 
 @media (orientation: landscape) {
 	.app {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: 50vh 60vw;
+		align-items: start;
 		gap: 8px;
 	}
+	
+	.linktree-container {
+		width: 50vh;
+	}
+	
+	.controlls {
+		width: 50vh;
+	}
+	
+	.something {
+	}
 
-	.grid, .game {
-		width: 80vh;
-		height: 80vh;
+	.game {
+		border-right: 10px solid white;
+		height: 100vh;
+		width: 50vh;
+		overflow: hidden;
+		position: sticky;
+		align-items: start;
+		top: 0;
+	}
+	
+	.grid {
+		width: 50vh;
+		height: 50vh;
 	}
 }
 
+
 .grid {
-	border: white solid 2px;
+	border: white solid 10px;
 	display: grid;
 	grid-template-columns: repeat(15, 1fr);
 	grid-auto-rows: 1fr;
-	position: absolute;
-	left: 50%;
-	transform: translate(-50%, 0%);
 }
 
 .grid > div {
@@ -82,11 +126,10 @@ body {
 
 .message {
 	position: absolute;
+	/* top: 0; */
+
 	width: 200px;
 	height: 100px;
-	top: 40%;
-	left: 50%;
-	transform: translate(-50%, -40%);
 	background-color: white;
 	opacity: 85%;
 }

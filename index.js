@@ -35,7 +35,7 @@ const drawGrid = () => {
 		state.cells.push(cell)
 	}
 	//append the cells to the element	
-	state.element.append(grid)
+	state.element.insertBefore(grid, state.element.children[0])
 }
 
 const drawSpaceShip = () => {
@@ -56,42 +56,46 @@ const controllShip = (event) => {
 
 const moveShip = (direction) => {
 	//remove image from current pos
-	state.cells[state.shipPosition].classList.remove("spaceship")
-	//figure out delta
-	if (direction === "left" && state.shipPosition % 15 !== 0) {
-		state.shipPosition--
-	} else if (direction === "right" && state.shipPosition % 15 !== 14) {
-		state.shipPosition++
+	if (!state.gameover) {
+		state.cells[state.shipPosition].classList.remove("spaceship")
+		//figure out delta
+		if (direction === "left" && state.shipPosition % 15 !== 0) {
+			state.shipPosition--
+		} else if (direction === "right" && state.shipPosition % 15 !== 14) {
+			state.shipPosition++
+		}
+		//add image to new pos
+		state.cells[state.shipPosition].classList.add("spaceship")
 	}
-	//add image to new pos
-	state.cells[state.shipPosition].classList.add("spaceship")
 }
 
 const fire = () => {
 	//use an interval
-	let interval;
-	let laserposition = state.shipPosition
-	interval = setInterval(() => {
-		state.cells[laserposition].classList.remove("laser")
-		laserposition-=15
-		if (laserposition < 0) {
-			clearInterval(interval)
-			return
-		}
-		if (state.alienPositions.includes(laserposition)) {
-			clearInterval(interval)
-			state.alienPositions.splice(state.alienPositions.indexOf(laserposition), 1)
-			state.cells[laserposition].classList.remove("alien", "laser")
-			state.cells[laserposition].classList.add("explosion")
-			state.score++
-			state.scoreElement.innerText = state.score
-			setTimeout(() => {
-				state.cells[laserposition].classList.remove("explosion")
-			}, 200)
-			return
-		}
-		state.cells[laserposition].classList.add("laser")
-	}, 50)
+	if (!state.gameover) {
+		let interval;
+		let laserposition = state.shipPosition
+		interval = setInterval(() => {
+			state.cells[laserposition].classList.remove("laser")
+			laserposition-=15
+			if (laserposition < 0) {
+				clearInterval(interval)
+				return
+			}
+			if (state.alienPositions.includes(laserposition)) {
+				clearInterval(interval)
+				state.alienPositions.splice(state.alienPositions.indexOf(laserposition), 1)
+				state.cells[laserposition].classList.remove("alien", "laser")
+				state.cells[laserposition].classList.add("explosion")
+				state.score++
+				state.scoreElement.innerText = state.score
+				setTimeout(() => {
+					state.cells[laserposition].classList.remove("explosion")
+				}, 200)
+				return
+			}
+			state.cells[laserposition].classList.add("laser")
+		}, 50)
+	}
 }
 
 const drawAliens = () => {
@@ -171,7 +175,7 @@ const drawScoreboard = () => {
 	scoreElement.innerText = state.score
 	const score = document.getElementById('score');
 	
-	score.append(scoreElement)
+	// score.append(scoreElement)
 	state.scoreElement = scoreElement
 }
   

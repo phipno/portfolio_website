@@ -1,42 +1,31 @@
-@media (orientation: portrait) {
-  .linktree {
-    width: 95vw;
-  }
-}
-
-@media (orientation: landscape) {
-  .linktree {
-    width: 80vh;
-  }
-}
-
 .linktree-container {
-  width: 100%;
-  height: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: white;
+  height: 8%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
 }
 
 .linktree{
   display: flex;
   flex-direction: row;
-  margin-bottom: 10px;
-  align-items: end;
+  justify-content:  space-evenly;
+  align-items: center;
+  margin-top: 3%;
 }
 
 .link {
   flex-grow: 1;
   height: 5vh;
-  width: 5vh
+  width: 5vh;
 }
 
 .linktree .link img {
   height: 100%;
   width: 100%;
-  filter: invert(100%);
 }
 
 .linktree .link:last-child img {
-  filter: invert(0%);
+  filter: invert(100%);
 }
