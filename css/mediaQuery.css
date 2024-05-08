@@ -21,7 +21,8 @@
   .content-switcher {
     position: absolute;
     bottom: 8%;
-    height: 5vh;
+    height: auto;
+    width: 100%;
     z-index: 10;
   }
 }
@@ -53,12 +54,13 @@
 
   .something {
     flex-grow: 1;
-    overflow: auto;
   }
+
   .content-switcher {
     position: absolute;
     top: 0;
-    height: 5vh;
+    height: auto;
+    width: calc(100vw - 50vh);
     z-index: 10;
   }
 }

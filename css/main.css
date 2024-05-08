@@ -9,24 +9,37 @@ body {
 	background-color: rgb(169, 87, 169);
 }
 
+button {
+	background-color: white;
+	border: dotted black;
+}
+
 .app {
 	height: 100vh;
 	width: 100%;
 }
 
 .content-section {
-
+	display: flex;
+	
+	width: 100%;
+	height: 100%;
 }
 
 .content {
-	width: auto;
 	height: auto;
+	margin: auto;
 }
+
 
 .content-switcher {
-	position: absolute;
 	background-color: white;
-	width:100%;
 }
 
+.content-switcher button {
+	min-height: 5vh;
+}
 
+.content-switcher button:hover {
+	background-color: grey;
+}

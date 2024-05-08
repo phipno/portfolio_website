@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="./css/linktree.css">
     <link rel="stylesheet" href="./css/spaceInvader.css">
     <link rel="stylesheet" href="./css/mediaQuery.css">
-    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="./css/welcome.css">
+    <script src="spaceInvader.js" defer></script>
+    <script src="content.js" defer></script>
   </head>
   <body>
     <div class="app">
@@ -54,10 +56,11 @@
       </div>
       <div class="content-section">
         <div class="content-switcher">
-          <button>Coding</button>
-          <button>Creative</button>
-          <button>My Journey</button>
-          <button>Resumee</button>
+          <button onclick="changeContent('welcome')">Welcome</button>
+          <button onclick="changeContent('coding')">Coding</button>
+          <button onclick="changeContent('creative')">Creative</button>
+          <button onclick="changeContent('journey')">My Journey</button>
+          <button onclick="changeContent('resumee')">Resumee</button>
         </div>
         <div class="content">
           <h1>
