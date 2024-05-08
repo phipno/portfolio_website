@@ -14,3 +14,19 @@ body {
 	width: 100%;
 }
 
+.content-section {
+
+}
+
+.content {
+	width: auto;
+	height: auto;
+}
+
+.content-switcher {
+	position: absolute;
+	background-color: white;
+	width:100%;
+}
+
+

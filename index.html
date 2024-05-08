@@ -15,9 +15,11 @@
     <div class="app">
       <div class="game">
         <div class="controlls">
-          <button class="move" onclick="moveShip('left')"><img src="./images/arrow_left.png"></button>
-          <button class="fire" onclick="fire()"><img src="./images/explosion.png"></button>
-          <button class="move" onclick="moveShip('right')"><img src="./images/arrow_right.png"></button>
+          <!-- <button class="move" onclick="moveShip('left')"><img src="./images/arrow_left.png"></button> -->
+          <button class="move" onclick="moveShip('left')"><-</button>
+          <button class="fire" onclick="fire()"><img class="fire-img" src="./images/explosion.png"></button>
+          <!-- <button class="move" onclick="moveShip('right')"><img src="./images/arrow_right.png"></button> -->
+          <button class="move" onclick="moveShip('right')">-></button>
         </div>
         <!-- <div class="information">
           <h1>Welcome Welcome</h1>
@@ -50,8 +52,21 @@
           </div>
         </div>
       </div>
-      <div class="something">
-       
+      <div class="content-section">
+        <div class="content-switcher">
+          <button>Coding</button>
+          <button>Creative</button>
+          <button>My Journey</button>
+          <button>Resumee</button>
+        </div>
+        <div class="content">
+          <h1>
+            Welcome Welcome
+          </h1>
+          <p>
+            i like doing things, sometimes to many at the same time and also sometimes nothing at all
+          </p>
+        </div>
       </div>
     </div>
   </body>

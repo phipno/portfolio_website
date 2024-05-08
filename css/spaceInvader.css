@@ -48,16 +48,28 @@
 .controlls {
   display: flex;
   justify-content: center;
+  align-items: center;
+  background-color: white;
 }
 
 .controlls button {
-  width: 100%;
-  height: 40px;
+  margin: 0 1% 2%;
+
   background-color: white;
-  border: black 3px;
+  border: dotted black;
 }
 
-.controlls button img {
-  width: 100%;
-  height: auto;
+.move {
+  width: 20%;
+  height: 6vh;
+}
+
+.fire {
+  width: 20%;
+  height: 7vh;
+}
+
+.fire-img {
+  transform: translate(0%, -10%);
+  height: 120%;
 }
