@@ -10,6 +10,7 @@ const state = {
 		48, 49, 50, 51, 52, 53, 54, 55, 56 
 	],
 	gameover: false,
+	gameStarted: false,
 	score: 0
 }
 
@@ -57,7 +58,7 @@ const controllShip = (event) => {
 
 const moveShip = (direction) => {
 	//remove image from current pos
-	if (!state.gameover) {
+	if (state.gameStarted) {
 		state.cells[state.shipPosition].classList.remove("spaceship")
 		//figure out delta
 		if (direction === "left" && state.shipPosition % 15 !== 0) {
@@ -72,7 +73,7 @@ const moveShip = (direction) => {
 
 const fire = () => {
 	//use an interval
-	if (!state.gameover) {
+	if (state.gameStarted) {
 		let interval;
 		let laserposition = state.shipPosition
 		interval = setInterval(() => {
@@ -121,9 +122,13 @@ const atEdge = (side) => {
 
 const play = () => {
 	//start movement of aliens
+	if (state.gameStarted)
+		return;
+
 	let interval
 	let direction = "right"
 	let movement
+	state.gameStarted = true
 	interval = setInterval(() => {
 		if (direction === "right") {
 			if (atEdge("right")) {
@@ -151,11 +156,13 @@ const play = () => {
 const checkGameState = (interval) => {
 	if (state.alienPositions.length === 0) {
 		state.gameover = true
+		state.gameStarted = false
 		clearInterval(interval)
 		drawMessage("HUMAN WIN!")
 	} else if (state.alienPositions.some(position => position >= state.shipPosition)) {
 		clearInterval(interval)
 		state.gameover = true
+		state.gameStarted = false
 		state.cells[state.shipPosition].classList.remove("spaceship")
 		state.cells[state.shipPosition].classList.add("explosion")
 		drawMessage("GAME OVER!")
@@ -185,6 +192,3 @@ const appElement = document.querySelector(".game")
 
 //do all things needed to draw the game
 setupGame(appElement)
-
-//play the game - start to move, move aliens
-play()

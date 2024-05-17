@@ -50,18 +50,23 @@
   justify-content: center;
   align-items: center;
   background-color: white;
+  height: 10vh;
 }
 
-.controlls button {
-  margin: 0 1% 2%;
+
+.move:first-of-type {
+  margin-left:auto;
+  margin-left: 18%;
 }
 
 .move {
   width: 20%;
   height: 6vh;
+  margin: 0 1% 2%;
 }
 
 .fire {
+  margin: 0 1% 2%;
   width: 20%;
   height: 7vh;
 }
@@ -69,4 +74,27 @@
 .fire-img {
   transform: translate(0%, -10%);
   height: 120%;
+}
+
+.coin-split{
+  border: solid 10px black;
+  width: 5%;
+  height: 7vh;
+  margin: 0 2% 2%;
+  margin-left: auto;
+}
+
+.coin-hand {
+  position: absolute;
+  bottom: 10vh;
+  transform: translate(0, 88%);
+}
+
+.coin-hand:hover {
+  transform: translate(0, 80%);
+}
+
+.fill-game {
+  overflow: hidden;
+  height: 30vh;
 }

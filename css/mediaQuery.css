@@ -36,6 +36,9 @@
     position: sticky;
     top: 1px;
     bottom: 0;
+    display: flex;
+    flex-direction: column;
+    
   }
   
   .grid {
