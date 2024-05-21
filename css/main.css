@@ -1,3 +1,17 @@
+@font-face {
+	font-family: 'DS-Digital';
+	src: url('/fonts/DS-Digital/DS-DIGI.TTF') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'DS-Digital';
+	src: url('/fonts/DS-Digital/DS-DIGIB.TTF') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
 * {
 	box-sizing: border-box;
 	font-family: 'Press Start 2P', cursive;
@@ -30,15 +44,3 @@ button {
 	margin: auto;
 }
 
-
-.content-switcher {
-	background-color: white;
-}
-
-.content-switcher button {
-	min-height: 5vh;
-}
-
-.content-switcher button:hover {
-	background-color: grey;
-}

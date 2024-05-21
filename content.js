@@ -1,6 +1,17 @@
 const changeContent = (string) => {
   const appElement = document.querySelector(".content")
   appElement.innerHTML = "";
+
+  const switcherElement = document.querySelector(".content-switcher")
+  const contentButton = document.querySelectorAll(".content-button")
+  if (switcherElement) {
+    switcherElement.classList.add("content-switcher-small")
+    contentButton.forEach(element => {
+      element.classList.remove("content-button")
+      element.classList.add("content-button-small")
+    });
+  }
+    
   if (string == "welcome") {
     appElement.innerHTML = "\
     <h1 class='welcome'>Welcome Welcome</h1>\
@@ -16,32 +27,3 @@ const changeContent = (string) => {
 
   }
 }
-
-let gMouseDownX = 0;
-let gMouseDownY = 0;
-let gMouseDownOffsetX = 0;
-let gMouseDownOffsetY = 0;
-
-function addListeners() {
-  document.getElementById('coin-hand').addEventListener('mousedown', mouseDown, false);
-  window.addEventListener('mouseup', mouseUp, false);
-}
-
-function mouseUp() {
-  console.log("hello")
-  window.removeEventListener('mousemove', divMove, true);
-}
-
-function mouseDown(e) {
-  console.log("ayyy")
-  gMouseDownX = e.clientX;
-  gMouseDownY = e.clientY;
-  window.addEventListener('mousemove', divMove, true)
-}
-
-function divMove(e) {
-  var div = document.getElementById('coin-hand')
-  div.style.transform = "translate(0,-" + gMouseDownY + "px)";
-}
-
-addListeners();

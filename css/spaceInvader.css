@@ -54,27 +54,10 @@
 }
 
 
-.move:first-of-type {
+/* .move:first-of-type {
   margin-left:auto;
   margin-left: 18%;
-}
-
-.move {
-  width: 20%;
-  height: 6vh;
-  margin: 0 1% 2%;
-}
-
-.fire {
-  margin: 0 1% 2%;
-  width: 20%;
-  height: 7vh;
-}
-
-.fire-img {
-  transform: translate(0%, -10%);
-  height: 120%;
-}
+} */
 
 .coin-split{
   border: solid 10px black;
@@ -87,14 +70,84 @@
 .coin-hand {
   position: absolute;
   bottom: 10vh;
-  transform: translate(0, 88%);
+  transform: translate(-25%, 80%);
 }
 
-.coin-hand:hover {
-  transform: translate(0, 80%);
+.fill-game:hover > .coin-hand{
+  transform: translate(-25%, 60%);
 }
 
 .fill-game {
+  display:flex;
+  background-color: black;
   overflow: hidden;
   height: 30vh;
+  justify-content: center;
+
+}
+
+.fill-game p {
+  margin-top: auto;
+  font-family: 'DS-Digital', sans-serif;
+  font-weight: 1000;
+  font-size: 6rem;
+  color: #0FFF50;
+}
+
+.blink_me {
+  animation: blink 3s step-start 0s infinite;
+}
+
+@keyframes blink {
+  30% {
+    opacity: 0.0;
+  }
+}
+
+.controlls button {
+  display: inline-block;
+  /* padding: 10px 20px; */
+  /* font-size: 24px; */
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: px;
+  box-shadow: 5px 5px 0px #000;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.move {
+  background-color: #ff5252;
+  width: 20%;
+  height: 6vh;
+  margin: 0 1% 2%;
+}
+
+.fire {
+  margin: 0 1% 2%;
+  width: 20%;
+  height: 7vh;
+  background-color: whitesmoke;
+}
+
+.fire-img {
+  transform: translate(0%, -10%);
+  height: 120%;
+}
+
+
+.controlls button:hover {
+  background-color: #fff;
+  color: #ff5252;
+  border: 2px solid #ff5252;
+  box-shadow: 5px 5px 0px #ff5252;
+}
+
+.controlls button:active {
+  background-color: #fcf414;
+  box-shadow: none;
+  transform: translateY(4px);
 }

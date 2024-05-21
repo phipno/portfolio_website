@@ -62,8 +62,31 @@
   .content-switcher {
     position: absolute;
     top: 0;
-    height: auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-flow: column dense;
+    height: 100%;
     width: calc(100vw - 50vh);
     z-index: 10;
+  }
+  .content-button {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+  }
+  .content-button:hover, .content-button-small:hover {
+    background-color: grey;
+  }
+
+  .content-switcher-small {
+    height: 10vh;
+  }
+
+  .content-button-small {
+    height: 100%;
+    margin: 0;
+    padding: 0;
   }
 }

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/linktree.css">
     <link rel="stylesheet" href="./css/spaceInvader.css">
     <link rel="stylesheet" href="./css/mediaQuery.css">
-    <link rel="stylesheet" href="./css/welcome.css">
+    <link rel="stylesheet" href="./css/content.css">
     <script src="spaceInvader.js" defer></script>
     <script src="content.js" defer></script>
   </head>
@@ -22,11 +22,12 @@
           <button class="fire" onclick="fire()"><img class="fire-img" src="./images/explosion.png"></button>
           <!-- <button class="move" onclick="moveShip('right')"><img src="./images/arrow_right.png"></button> -->
           <button class="move" onclick="moveShip('right')">-></button>
-          <button class="coin-split" onclick="play()"></button>
+          <!-- <button class="coin-split" onclick="play()"></button> -->
         </div>
-        <div class="fill-game">
-          <img src="images/hand.png" class="coin-hand" id="coin-hand" ondragstart="return false;"> 
-        </div>
+        <button class="fill-game" onclick="play()">
+          <p class="blink_me">PLAY</p>
+          <img src="images/hand.png" class="coin-hand" id="coin-hand"> 
+        </button>
         <!-- <div class="information">
           <h1>Welcome Welcome</h1>
           <p>Press SPACE to shoot.</p>
@@ -60,11 +61,11 @@
       </div>
       <div class="content-section">
         <div class="content-switcher">
-          <button onclick="changeContent('welcome')">Welcome</button>
-          <button onclick="changeContent('coding')">Coding</button>
-          <button onclick="changeContent('creative')">Creative</button>
-          <button onclick="changeContent('journey')">My Journey</button>
-          <button onclick="changeContent('resumee')">Resumee</button>
+          <button class="content-button" onclick="changeContent('welcome')">Welcome</button>
+          <button class="content-button" onclick="changeContent('coding')">Coding</button>
+          <button class="content-button" onclick="changeContent('creative')">Creative</button>
+          <button class="content-button" onclick="changeContent('journey')">My Journey</button>
+          <button class="content-button" onclick="changeContent('resumee')">Resumee</button>
         </div>
         <div class="content">
           <h1>

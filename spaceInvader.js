@@ -124,7 +124,8 @@ const play = () => {
 	//start movement of aliens
 	if (state.gameStarted)
 		return;
-
+	// if (state.gameover)
+	// 	setupGame()
 	let interval
 	let direction = "right"
 	let movement
@@ -192,3 +193,4 @@ const appElement = document.querySelector(".game")
 
 //do all things needed to draw the game
 setupGame(appElement)
+
