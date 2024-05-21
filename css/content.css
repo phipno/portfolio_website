@@ -3,3 +3,47 @@
 }
 
 
+#code-button {
+  background-image: url(../images/coding-frame.png);
+  background-position: center;
+  background-size: cover;
+}
+
+#code-button:hover {
+  background-image: url(../images/coding.gif);
+  background-position: center;
+}
+
+
+#creative-button:hover {
+  background-image: url(../images/creative.gif);
+  background-position: center;
+}
+
+#creative-button {
+  background-image: url(../images/creative-frame.png);
+  background-position: center;
+  background-size: cover;
+}
+
+#journey-button {
+  background-image: url(../images/journey-frame.png);
+  background-position: center;
+  background-size: cover;
+}
+
+#journey-button:hover {
+  background-image: url("../images/journey.gif");
+  background-position: center;
+}
+
+#resume-button {
+  background-image: url(../images/resume-frame.png);
+  background-position: center;
+  background-size: cover;
+}
+
+#resume-button:hover {
+  background-image: url(../images/resume.gif);
+  background-position: center;
+}
