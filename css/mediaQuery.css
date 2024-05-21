@@ -64,20 +64,22 @@
     top: 0;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-flow: column dense;
     height: 100%;
     width: calc(100vw - 50vh);
     z-index: 10;
   }
+
   .content-button {
     height: 100%;
-    margin: 0;
-    padding: 0;
     writing-mode: vertical-rl;
     text-orientation: upright;
-  }
-  .content-button:hover, .content-button-small:hover {
-    background-color: grey;
+    /* background-color: rgb(93, 255, 117); */
+    background-color: rgba(126, 249, 144, 0.915);
+    background-blend-mode: exclusion;
+    display: flex;
+    color: white;
+    font-family: DS-DigitalS;
+    /* font-size: calc(1vw + 5vh); */
   }
 
   .content-switcher-small {

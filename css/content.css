@@ -7,6 +7,8 @@
   background-image: url(../images/coding-frame.png);
   background-position: center;
   background-size: cover;
+  align-items: end;
+  flex-direction: row;
 }
 
 #code-button:hover {
@@ -17,12 +19,10 @@
 
 #creative-button:hover {
   background-image: url(../images/creative.gif);
-  background-position: center;
 }
 
 #creative-button {
   background-image: url(../images/creative-frame.png);
-  background-position: center;
   background-size: cover;
 }
 
@@ -30,6 +30,8 @@
   background-image: url(../images/journey-frame.png);
   background-position: center;
   background-size: cover;
+  align-items: end;
+  flex-direction: row;
 }
 
 #journey-button:hover {
