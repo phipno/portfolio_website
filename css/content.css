@@ -4,20 +4,20 @@
 
 .content-button .content-button-text {
   color: white;
-  font-family: Heyam;
+  font-family: O4B_30;
   font-size: calc(1vw + 5vh);
   font-weight: bolder;
   transform: scaleX(150%);
   margin: 0;
   padding: 0;
-  text-shadow: 5px 5px #558ABB;
+  text-shadow: 5px 5px #ff5252;
   /* text-shadow: 10px 10px black; */
 }
 
 .content-button-small .content-button-text {
-  font-family: Heyam;
+  font-family: O4B_30;
   color: white;
-  text-shadow: 5px 5px #558ABB;
+  text-shadow: 5px 5px #ff5252;
   font-size: 1.7rem;
   margin: auto;
   font-weight: bolder;
@@ -32,14 +32,14 @@
 }
 
 #code-button.content-button {
-  background-image: url(../images/coding-frame-ezgif.com-instagif.png);
+  background: url(../images/coding-frame-ezgif.com-instagif.png);
   background-position: center;
   background-size: cover;
   align-items: start;
   flex-direction: column;
   /* background-color: rgba(178, 254, 203, 0.915);
   background-blend-mode: exclusion; */
-  background-color: #CC66CCCC;
+  background-color: #f4dcf4e5;
   background-blend-mode: multiply;
 }
 
@@ -57,7 +57,7 @@
   align-items: start;
   /* background-color: rgba(178, 254, 203, 0.915);
   background-blend-mode: exclusion; */
-  background-color: #CC66CCCC;
+  background-color: #f4dcf4e5;
   background-blend-mode: multiply;
 }
 
@@ -79,7 +79,7 @@
 #creative-button.content-button {
   background: url(../images/creative-frame-ezgif.com-instagif.png);
   background-size: cover;
-  background-color: #CC66CCCC;
+  background-color: #f1decfa9;
   background-blend-mode: multiply;
   display: flex;
   flex-direction: column;
@@ -95,7 +95,7 @@
 #creative-button.content-button-small {
   background: url(../images/creative-frame-ezgif.com-instagif.png);
   background-size: cover;
-  background-color: #CC66CCCC;
+  background-color: #f1decfa9;
   background-blend-mode: multiply;
 }
 
@@ -104,7 +104,7 @@
   background-position: center;
   background-size: cover;
   align-items: center;
-  background-color: #CC66CCCC;
+  background-color: #bbaaaab2;
   background-blend-mode: multiply;
 }
 
@@ -119,7 +119,7 @@
   background-image: url(../images/journey-frame-ezgif.com-instagif\(1\).png);
   background-position: center;
   background-size: cover;
-  background-color: #CC66CCCC;
+  background-color: #bbaaaab2;
   background-blend-mode: multiply;
 }
 
@@ -134,7 +134,7 @@
   background-image: url(../images/resume-frame-ezgif.com-instagif.png);
   background-position: center;
   background-size: cover;
-  background-color: #cc66ccCC;
+  background-color: grey;
   background-blend-mode: multiply;
   justify-content: center;
   display: flex;
@@ -167,5 +167,5 @@
   background-image: url(../images/resume-ezgif.com-animated-gif-maker.gif);
   background-position: center;
   background-color: white;
-    background-blend-mode: exclusion;
+  background-blend-mode: exclusion;
 }

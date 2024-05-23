@@ -19,6 +19,13 @@
 	font-style: normal;
 }
 
+@font-face {
+	font-family: 'O4B_30';
+	src: url('/fonts/04b_30/04B_30__.TTF') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 * {
 	box-sizing: border-box;
 	font-family: 'Press Start 2P', cursive;
@@ -27,7 +34,7 @@
 body {
 	padding: 0;
 	margin: 0;
-	background-color: #CC66CC;
+	background-color: black;
 }
 
 button {
