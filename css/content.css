@@ -3,8 +3,22 @@
 }
 
 .content-button-text {
+  color: white;
+  font-family: Heyam;
+  font-size: calc(1vw + 5vh);
+  font-weight: bolder;
+  transform: scaleX(150%);
   margin: 0;
   padding: 0;
+
+}
+
+#code-btn-text {
+  margin-top: 7vh;
+}
+
+#creative-btn-text {
+  margin-bottom: 1vh;
 }
 
 #code-button {
@@ -17,14 +31,6 @@
   background-blend-mode: exclusion; */
   background-color: #CC66CCCC;
   background-blend-mode: multiply;
-}
-
-#code-btn-text {
-  margin-top: 7vh;
-}
-
-#creative-btn-text {
-  margin-bottom: 1vh;
 }
 
 #code-button:hover {
@@ -67,6 +73,9 @@
   background-size: cover;
   background-color: #cc66ccCC;
   background-blend-mode: multiply;
+  justify-content: center;
+  display: flex;
+  align-items: start;
   justify-content: center;
 
 }

@@ -75,8 +75,6 @@
     text-orientation: upright;
     /* background-color: rgb(93, 255, 117); */
     display: flex;
-    color: white;
-    font-size: calc(1vw + 5vh);
     padding: 0px 0.5vw 0px 0.5vw;
     border:white 0.5vw solid;
   }

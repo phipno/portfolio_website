@@ -12,6 +12,13 @@
 	font-style: normal;
 }
 
+@font-face {
+	font-family: 'Heyam';
+	src: url('/fonts/Heyam/Heyam.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 * {
 	box-sizing: border-box;
 	font-family: 'Press Start 2P', cursive;
