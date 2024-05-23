@@ -74,12 +74,11 @@
     writing-mode: vertical-rl;
     text-orientation: upright;
     /* background-color: rgb(93, 255, 117); */
-    background-color: rgba(126, 249, 144, 0.915);
-    background-blend-mode: exclusion;
     display: flex;
     color: white;
-    font-family: DS-DigitalS;
-    /* font-size: calc(1vw + 5vh); */
+    font-size: calc(1vw + 5vh);
+    padding: 0px 0.5vw 0px 0.5vw;
+    border:white 0.5vw solid;
   }
 
   .content-switcher-small {

@@ -2,50 +2,76 @@
   color: white;
 }
 
+.content-button-text {
+  margin: 0;
+  padding: 0;
+}
 
 #code-button {
-  background-image: url(../images/coding-frame.png);
+  background-image: url(../images/coding-frame-ezgif.com-instagif.png);
   background-position: center;
   background-size: cover;
-  align-items: end;
-  flex-direction: row;
+  align-items: start;
+  flex-direction: column;
+  /* background-color: rgba(178, 254, 203, 0.915);
+  background-blend-mode: exclusion; */
+  background-color: #CC66CCCC;
+  background-blend-mode: multiply;
+}
+
+#code-btn-text {
+  margin-top: 7vh;
+}
+
+#creative-btn-text {
+  margin-bottom: 1vh;
 }
 
 #code-button:hover {
-  background-image: url(../images/coding.gif);
+  background-image: url(../images/coding-ezgif.com-instagif.gif);
   background-position: center;
 }
 
 
 #creative-button:hover {
-  background-image: url(../images/creative.gif);
+  background-image: url(../images/creative-ezgif.com-instagif\(1\).gif);
 }
 
 #creative-button {
-  background-image: url(../images/creative-frame.png);
+  background: url(../images/creative-frame-ezgif.com-instagif.png);
   background-size: cover;
+  background-color: #CC66CCCC;
+  background-blend-mode: multiply;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
 }
 
 #journey-button {
-  background-image: url(../images/journey-frame.png);
+  background-image: url(../images/journey-frame-ezgif.com-instagif\(1\).png);
   background-position: center;
   background-size: cover;
-  align-items: end;
-  flex-direction: row;
+  align-items: center;
+  background-color: #CC66CCCC;
+  background-blend-mode: multiply;
 }
 
 #journey-button:hover {
-  background-image: url("../images/journey.gif");
+  background-image: url("../images/journey-ezgif.com-instagif.gif");
   background-position: center;
 }
 
 #resume-button {
-  background-image: url(../images/resume-frame.png);
+  background-image: url(../images/resume-frame-ezgif.com-instagif.png);
   background-position: center;
   background-size: cover;
+  background-color: #cc66ccCC;
+  background-blend-mode: multiply;
+  justify-content: center;
+
 }
 
 #resume-button:hover {
-  background-image: url(../images/resume.gif);
+  background-image: url(../images/resume-ezgif.com-animated-gif-maker.gif);
   background-position: center;
 }
