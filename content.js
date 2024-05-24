@@ -42,14 +42,12 @@ const changeContent = (string) => {
 
 
 function initModal() {
-  console.log("hi")
   const modal = document.getElementById('project-modal');
   const modalImg = document.getElementById('modal-img');
   const modalTitle = document.getElementById('modal-title');
   const modalDescription = document.getElementById('modal-description');
   const closeButton = document.querySelector('.close-button');
   const projectCards = document.querySelectorAll('.project-card');
-  console.log(projectCards)
   projectCards.forEach(card => {
     card.addEventListener('click', function () {
       modal.style.display = 'flex';
@@ -66,4 +64,8 @@ function initModal() {
       modal.style.display = 'none';
     }
   });
+}
+
+function openPdf(path_to_pdf) {
+  window.open(path_to_pdf, '_blank')
 }

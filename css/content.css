@@ -15,11 +15,10 @@
   padding: 0;
 }
 
-#projects {
+.item-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding: 20px;
 }
 
 .project-card {

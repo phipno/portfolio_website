@@ -36,24 +36,3 @@ body {
 	margin: 0;
 	background-color: black;
 }
-
-button {
-	background-color: white;
-}
-
-.app {
-	width: 100%;
-}
-
-.content-section {
-	display: flex;
-	flex-direction: column;
-	width: auto;
-	height: auto;
-}
-
-.content {
-	height: auto;
-	margin: auto;
-}
-
