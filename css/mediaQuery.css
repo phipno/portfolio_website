@@ -103,5 +103,15 @@
     padding: 0px 0.5vw 0px 0.5vw;
     border: white 0.5vw solid;
   }
+  @media (max-width: calc(700px + 50vh)) {
+    .content-button-text {
+      white-space: nowrap;
+      overflow: hidden;
+      max-width: 3ch;
 
+      text-overflow: ellipsis;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
 }
