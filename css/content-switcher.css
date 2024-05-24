@@ -1,22 +1,22 @@
-.content-button .content-button-text {
+.content-button-text {
   color: white;
   font-family: O4B_30;
+  text-shadow: -1px -1px 0 #ff5252, 1px -1px 0 #ff5252, -1px 1px 0 #ff5252, 1px 1px 0 #ff5252, 5px 5px #ff5252;
+}
+
+.content-button .content-button-text {
   font-size: calc(1vw + 5vh);
   font-weight: bolder;
   transform: scaleX(150%);
   margin: 0;
   padding: 0;
-  text-shadow: -1px -1px 0 #ff5252, 1px -1px 0 #ff5252, -1px 1px 0 #ff5252, 1px 1px 0 #ff5252, 5px 5px #ff5252;
   /* text-shadow: 10px 10px black; */
 }
 
 .content-button-small .content-button-text {
-  font-family: O4B_30;
-  color: white;
-  text-shadow: 5px 5px #ff5252;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   margin: auto;
-  font-weight: bolder;
+  font-weight: normal;
 }
 
 #code-btn-text.content-button {

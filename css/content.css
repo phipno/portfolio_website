@@ -26,7 +26,8 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   max-width: 300px;
-  margin: 20px;
+  max-height: 500px;
+  margin: auto;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
 }
