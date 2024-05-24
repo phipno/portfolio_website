@@ -1,171 +1,74 @@
-.welcome {
+.welcome { 
   color: white;
+  margin: auto;
+  font-size: 1rem;
+  margin-left: 1vw;
 }
 
-.content-button .content-button-text {
+.content-container {
   color: white;
-  font-family: O4B_30;
-  font-size: calc(1vw + 5vh);
-  font-weight: bolder;
-  transform: scaleX(150%);
+  height: 90vh;
+  width: auto;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
   margin: 0;
   padding: 0;
-  text-shadow: 5px 5px #ff5252;
-  /* text-shadow: 10px 10px black; */
 }
 
-.content-button-small .content-button-text {
-  font-family: O4B_30;
+#projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.project-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  max-width: 400px;
+  max-height: 300px;
+  margin: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.project-card img {
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  border-radius: 5px 5px 0 0;
+}
+
+.project-card h3 {
+  margin: 0;
+  padding: 15px;
+  background: #333;
   color: white;
-  text-shadow: 5px 5px #ff5252;
-  font-size: 1.7rem;
-  margin: auto;
-  font-weight: bolder;
+  border-radius: 0 0 5px 5px;
 }
 
-#code-btn-text.content-button {
-  margin-top: 7vh;
+.project-card p {
+  padding: 15px;
+  color: #666;
 }
 
-#creative-btn-text.content-button {
-  margin-bottom: 1vh;
+.project-card a {
+  display: block;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  background: #333;
+  margin: 0 15px 15px;
+  border-radius: 5px;
+  transition: background 0.3s;
 }
 
-#code-button.content-button {
-  background: url(../images/coding-frame-ezgif.com-instagif.png);
-  background-position: center;
-  background-size: cover;
-  align-items: start;
-  flex-direction: column;
-  /* background-color: rgba(178, 254, 203, 0.915);
-  background-blend-mode: exclusion; */
-  background-color: #f4dcf4e5;
-  background-blend-mode: multiply;
-}
-
-#code-button:hover.content-button {
-  background-image: url(../images/coding-ezgif.com-instagif.gif);
-  background-position: center;
-  background-color: white;
-  background-blend-mode: exclusion;
-}
-
-#code-button.content-button-small {
-  background-image: url(../images/coding-frame-ezgif.com-instagif.png);
-  background-position: center;
-  background-size: cover;
-  align-items: start;
-  /* background-color: rgba(178, 254, 203, 0.915);
-  background-blend-mode: exclusion; */
-  background-color: #f4dcf4e5;
-  background-blend-mode: multiply;
-}
-
-#code-button:hover.content-button-small {
-  background-image: url(../images/coding-ezgif.com-instagif.gif);
-  background-position: center;
-  background-color: white;
-  background-blend-mode: exclusion;
-}
-
-
-
-#creative-button:hover.content-button {
-  background-image: url(../images/creative-ezgif.com-instagif\(1\).gif);
-  background-color: white;
-  background-blend-mode: exclusion;
-}
-
-#creative-button.content-button {
-  background: url(../images/creative-frame-ezgif.com-instagif.png);
-  background-size: cover;
-  background-color: #f1decfa9;
-  background-blend-mode: multiply;
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-}
-
-#creative-button:hover.content-button-small {
-  background-image: url(../images/creative-ezgif.com-instagif\(1\).gif);
-  background-color: white;
-    background-blend-mode: exclusion ;
-}
-
-#creative-button.content-button-small {
-  background: url(../images/creative-frame-ezgif.com-instagif.png);
-  background-size: cover;
-  background-color: #f1decfa9;
-  background-blend-mode: multiply;
-}
-
-#journey-button.content-button {
-  background-image: url(../images/journey-frame-ezgif.com-instagif\(1\).png);
-  background-position: center;
-  background-size: cover;
-  align-items: center;
-  background-color: #bbaaaab2;
-  background-blend-mode: multiply;
-}
-
-#journey-button:hover.content-button {
-  background-image: url("../images/journey-ezgif.com-instagif.gif");
-  background-position: center;
-  background-color: white;
-    background-blend-mode: exclusion;
-}
-
-#journey-button.content-button-small {
-  background-image: url(../images/journey-frame-ezgif.com-instagif\(1\).png);
-  background-position: center;
-  background-size: cover;
-  background-color: #bbaaaab2;
-  background-blend-mode: multiply;
-}
-
-#journey-button:hover.content-button-small {
-  background-image: url("../images/journey-ezgif.com-instagif.gif");
-  background-position: center;
-  background-color: white;
-  background-blend-mode: exclusion;
-}
-
-#resume-button.content-button {
-  background-image: url(../images/resume-frame-ezgif.com-instagif.png);
-  background-position: center;
-  background-size: cover;
-  background-color: grey;
-  background-blend-mode: multiply;
-  justify-content: center;
-  display: flex;
-  align-items: start;
-  justify-content: center;
-
-}
-
-#resume-button:hover.content-button {
-  background-image: url(../images/resume-ezgif.com-animated-gif-maker.gif);
-  background-position: center;
-  background-color: white;
-    background-blend-mode: exclusion;
-}
-
-#resume-button.content-button-small {
-  background-image: url(../images/resume-frame-ezgif.com-instagif.png);
-  background-position: center;
-  background-size: cover;
-  background-color: #cc66ccCC;
-  background-blend-mode: multiply;
-  justify-content: center;
-  display: flex;
-  align-items: start;
-  justify-content: center;
-
-}
-
-#resume-button:hover.content-button-small {
-  background-image: url(../images/resume-ezgif.com-animated-gif-maker.gif);
-  background-position: center;
-  background-color: white;
-  background-blend-mode: exclusion;
+.project-card a:hover {
+  background: #555;
 }

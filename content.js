@@ -1,3 +1,19 @@
+function appendHtmlFromFile(appElement, filePath) {
+  fetch(filePath)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.text();
+    })
+    .then(htmlContent => {
+      appElement.innerHTML = htmlContent;
+    })
+    .catch(error => {
+       console.error('There was a problem with the fetch operation:', error);
+    });
+}
+
 const changeContent = (string) => {
   const appElement = document.querySelector(".content")
   appElement.innerHTML = "";
@@ -11,19 +27,14 @@ const changeContent = (string) => {
       element.classList.add("content-button-small")
     });
   }
-    
-  if (string == "welcome") {
-    appElement.innerHTML = "\
-    <h1 class='welcome'>Welcome Welcome</h1>\
-    <p>i like doing things, sometimes to many at the same time and also sometimes nothing at all</p>\
-    "
-  } else if (string == "coding") {
-
+  
+  if (string == "coding") {
+    console.log("hi")
+    appendHtmlFromFile(appElement, "coding.html")
   } else if (string == "creative") {
-
+    appendHtmlFromFile(appElement, "creative.html")
   } else if (string == "journey") {
-
+    appendHtmlFromFile(appElement, "journey.html")
   } else if (string == "resumee") {
-
   }
 }
