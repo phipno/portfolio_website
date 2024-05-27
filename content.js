@@ -43,17 +43,21 @@ const changeContent = (string) => {
 
 function initModal() {
   const modal = document.getElementById('project-modal');
-  const modalImg = document.getElementById('modal-img');
   const modalTitle = document.getElementById('modal-title');
   const modalDescription = document.getElementById('modal-description');
+  const modalCostumContent = document.getElementById('modal-costum-content');
   const closeButton = document.querySelector('.close-button');
   const projectCards = document.querySelectorAll('.project-card');
   projectCards.forEach(card => {
     card.addEventListener('click', function () {
       modal.style.display = 'flex';
-      modalImg.src = "images/alien.png"
       modalTitle.textContent = this.dataset.title;
       modalDescription.textContent = this.dataset.description;
+      if (this.querySelector('.costum-content')) {
+        const costumContent = this.querySelector('.costum-content');
+        costumContent.style.display = 'flex';
+        modalCostumContent.appendChild(costumContent);
+      }
     });
   });
   closeButton.addEventListener('click', function () {
