@@ -54,23 +54,24 @@ function initModal() {
       modalTitle.textContent = this.dataset.title;
       modalDescription.textContent = this.dataset.description;
       if (this.querySelector('.costum-content')) {
-        const costumContent = this.querySelector('.costum-content');
+        const costumContent = this.querySelector('.costum-content').cloneNode(true);
         console.log(costumContent)
         costumContent.style.display = 'flex';
         modalContent.appendChild(costumContent);
       }
     });
   });
-  closeButton.addEventListener('click', fuquerySelectornction () {
-    const removeContent = modalContent.('.costum-content');
+  closeButton.addEventListener('click', function () {
+    const removeContent = modalContent.querySelector('.costum-content');
     if (removeContent)
       modalContent.removeChild(removeContent);
-    // console.log(modal.querySelector('.costum-content').innerHTML)
     modal.style.display = 'none';
   });
   window.addEventListener('click', function (event) {
     if (event.target == modal) {
-      // modal.removeChild(modal.querySelector('.costum-content'));
+      const removeContent = modalContent.querySelector('.costum-content');
+      if (removeContent)
+        modalContent.removeChild(removeContent);
       modal.style.display = 'none';
     }
   });
