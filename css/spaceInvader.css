@@ -1,3 +1,14 @@
+/* -------------------------8<---------------------------------------------- */
+/*                                                                       .|  */
+/* spaceInvader.css                          /     (__)          |/          */
+/*                                                 (oo)------/'   ,__,    ,  */
+/* By: phipno <phipno@gmail.com>                |  (__)     ||    (oo)_____/ */
+/*                                                    ||---/||    (__)    || */
+/* Created: 2024/05/29 12:55 by phipno       |/                 ,    ||--w|| */
+/*                                         ,,       !              |'        */
+/*                                              ,           ,|             | */
+/* -----[ mooooooo ]-------------------------------------------------------- */
+
 .grid {
   border: white solid 10px;
   display: grid;
@@ -83,7 +94,7 @@
   overflow: hidden;
   height: 30vh;
   justify-content: center;
-
+  
 }
 
 .fill-game p {
@@ -151,3 +162,5 @@
   box-shadow: none;
   transform: translateY(4px);
 }
+
+/* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */

@@ -1,3 +1,14 @@
+/* -------------------------8<---------------------------------------------- */
+/*                                                                       .|  */
+/* content-switcher.css                      /     (__)          |/          */
+/*                                                 (oo)------/'   ,__,    ,  */
+/* By: phipno <phipno@gmail.com>                |  (__)     ||    (oo)_____/ */
+/*                                                    ||---/||    (__)    || */
+/* Created: 2024/05/29 12:54 by phipno       |/                 ,    ||--w|| */
+/*                                         ,,       !              |'        */
+/*                                              ,           ,|             | */
+/* -----[ mooooooo ]-------------------------------------------------------- */
+
 .content-button-text {
   color: white;
   font-family: O4B_30;
@@ -136,7 +147,7 @@
   display: flex;
   align-items: start;
   justify-content: center;
-
+  
 }
 
 #resume-button:hover.content-button {
@@ -156,7 +167,7 @@
   display: flex;
   align-items: start;
   justify-content: center;
-
+  
 }
 
 #resume-button:hover.content-button-small {
@@ -166,3 +177,4 @@
   background-blend-mode: exclusion;
 }
 
+/* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */

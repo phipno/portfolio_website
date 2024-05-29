@@ -1,3 +1,14 @@
+/* -------------------------8<---------------------------------------------- */
+/*                                                                       .|  */
+/* main.css                                  /     (__)          |/          */
+/*                                                 (oo)------/'   ,__,    ,  */
+/* By: phipno <phipno@gmail.com>                |  (__)     ||    (oo)_____/ */
+/*                                                    ||---/||    (__)    || */
+/* Created: 2024/05/29 12:55 by phipno       |/                 ,    ||--w|| */
+/*                                         ,,       !              |'        */
+/*                                              ,           ,|             | */
+/* -----[ mooooooo ]-------------------------------------------------------- */
+
 @font-face {
 	font-family: 'DS-Digital';
 	src: url('/fonts/DS-Digital/DS-DIGI.TTF') format('truetype');
@@ -30,9 +41,11 @@
 	box-sizing: border-box;
 	font-family: 'Press Start 2P', cursive;
 }
-  
+
 body {
 	padding: 0;
 	margin: 0;
 	background-color: black;
 }
+
+/* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */

@@ -1,3 +1,13 @@
+/* -------------------------8<---------------------------------------------- */
+/*                                                                       .|  */
+/* spaceInvader.js                           /     (__)          |/          */
+/*                                                 (oo)------/'   ,__,    ,  */
+/* By: phipno <phipno@gmail.com>                |  (__)     ||    (oo)_____/ */
+/*                                                    ||---/||    (__)    || */
+/* Created: 2024/05/29 12:56 by phipno       |/                 ,    ||--w|| */
+/*                                         ,,       !              |'        */
+/*                                              ,           ,|             | */
+/* -----[ mooooooo ]-------------------------------------------------------- */
 
 const state = {
 	numCells: (600/40) * (600/40),
@@ -125,7 +135,7 @@ const play = () => {
 	if (state.gameStarted)
 		return;
 	// if (state.gameover)
-	// 	setupGame()
+		// 	setupGame()
 	let interval
 	let direction = "right"
 	let movement
@@ -187,10 +197,11 @@ const drawScoreboard = () => {
 	// score.append(scoreElement)
 	state.scoreElement = scoreElement
 }
-  
+
 //query the page for the place to insert game
 const appElement = document.querySelector(".game")
 
 //do all things needed to draw the game
 setupGame(appElement)
 
+/* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */

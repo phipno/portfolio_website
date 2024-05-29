@@ -1,6 +1,17 @@
-function appendHtmlFromFile(appElement, filePath, callback) {
+/* -------------------------8<---------------------------------------------- */
+/*                                                                       .|  */
+/* content.js                                /     (__)          |/          */
+/*                                                 (oo)------/'   ,__,    ,  */
+/* By: phipno <phipno@gmail.com>                |  (__)     ||    (oo)_____/ */
+/*                                                    ||---/||    (__)    || */
+/* Created: 2024/05/29 12:56 by phipno       |/                 ,    ||--w|| */
+/*                                         ,,       !              |'        */
+/*                                              ,           ,|             | */
+/* -----[ mooooooo ]-------------------------------------------------------- */
+
+function appendHtmlFromFile(appElement, filePath, callback, fitText) {
   fetch(filePath)
-    .then(response => {
+  .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -8,6 +19,7 @@ function appendHtmlFromFile(appElement, filePath, callback) {
     })
     .then(htmlContent => {
       appElement.innerHTML = htmlContent;
+      if (fitText) fitText();
       if (callback) callback();
     })
     .catch(error => {
@@ -29,9 +41,8 @@ const changeContent = (string) => {
       element.classList.add("content-button-small")
     });
   }
-  
   if (string == "coding") {
-    appendHtmlFromFile(appElement, "coding.html", initModal)
+    appendHtmlFromFile(appElement, "coding.html", initModal, fitText)
   } else if (string == "creative") {
     appendHtmlFromFile(appElement, "creative.html", initModal)
   } else if (string == "journey") {
@@ -80,3 +91,21 @@ function initModal() {
 function openPdf(path_to_pdf) {
   window.open(path_to_pdf, '_blank')
 }
+
+function fitText() {
+  const headers = document.querySelectorAll('.project-card h3')
+  
+  headers.forEach(header => {
+    let fontSize = parseFloat(window.getComputedStyle(header).getPropertyValue('font-size'));
+    while (header.scrollHeight > header.clientHeight || header.scrollWidth > header.clientWidth) {
+      fontSize--;
+      header.style.fontSize = fontSize + 'px';
+      if (fontSize < 1) break; // Prevent infinite loop in case of very long text
+    }
+  });
+}
+
+window.addEventListener('load', fitText);
+window.addEventListener('resize', fitText);
+
+/* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */

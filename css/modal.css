@@ -1,3 +1,14 @@
+/* -------------------------8<---------------------------------------------- */
+/*                                                                       .|  */
+/* modal.css                                 /     (__)          |/          */
+/*                                                 (oo)------/'   ,__,    ,  */
+/* By: phipno <phipno@gmail.com>                |  (__)     ||    (oo)_____/ */
+/*                                                    ||---/||    (__)    || */
+/* Created: 2024/05/29 12:53 by phipno       |/                 ,    ||--w|| */
+/*                                         ,,       !              |'        */
+/*                                              ,           ,|             | */
+/* -----[ mooooooo ]-------------------------------------------------------- */
+
 .modal {
   display: none;
   position: fixed;
@@ -18,7 +29,6 @@
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
-  max-width: 500px;
   border-radius: 5px;
   position: relative;
 }
@@ -39,3 +49,14 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.costum-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.costum-content img{
+  width: 100%;
+}
+
+/* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */

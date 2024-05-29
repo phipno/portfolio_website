@@ -1,19 +1,30 @@
+/* -------------------------8<---------------------------------------------- */
+/*                                                                       .|  */
+/* mediaQuery.css                            /     (__)          |/          */
+/*                                                 (oo)------/'   ,__,    ,  */
+/* By: phipno <phipno@gmail.com>                |  (__)     ||    (oo)_____/ */
+/*                                                    ||---/||    (__)    || */
+/* Created: 2024/05/29 12:55 by phipno       |/                 ,    ||--w|| */
+/*                                         ,,       !              |'        */
+/*                                              ,           ,|             | */
+/* -----[ mooooooo ]-------------------------------------------------------- */
+
 @media (orientation: portrait) {
   .game {
     width: 100%;
   }
-
+  
   .grid {
     width: 85vw;
     height: 85vw;
     margin: 2% 7.5vw 0%;
   }
-
+  
   .controlls {
     margin: 0 7.5vw 0 7.5vw;
     width: 85vw;
   }
-
+  
   .linktree-container {
     width: 100%;
   }
@@ -109,10 +120,12 @@
       white-space: nowrap;
       overflow: hidden;
       max-width: 3ch;
-
+      
       text-overflow: ellipsis;
       display: inline-block;
       vertical-align: middle;
     }
   }
 }
+
+/* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */
