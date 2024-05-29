@@ -94,13 +94,15 @@ function openPdf(path_to_pdf) {
 
 function fitText() {
   const headers = document.querySelectorAll('.project-card h3')
+  const minFontSize = 10;
+  const maxFontSize = 100;
   
   headers.forEach(header => {
-    let fontSize = parseFloat(window.getComputedStyle(header).getPropertyValue('font-size'));
-    while (header.scrollHeight > header.clientHeight || header.scrollWidth > header.clientWidth) {
+    header.style.fontSize = maxFontSize + 'px';
+    let fontSize = maxFontSize;
+    while ((header.scrollHeight > header.clientHeight || header.scrollWidth > header.clientWidth) && fontSize > minFontSize) {
       fontSize--;
-      header.style.fontSize = fontSize + 'px';
-      if (fontSize < 1) break; // Prevent infinite loop in case of very long text
+      header.style.fontSize = fontSize + 'px'; // Prevent infinite loop in case of very long text
     }
   });
 }

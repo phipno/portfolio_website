@@ -51,7 +51,7 @@
 }
 
 .costum-content {
-  display: flex;
+  display: none;
   flex-direction: column;
 }
 
