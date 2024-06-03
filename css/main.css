@@ -37,9 +37,16 @@
 	font-style: normal;
 }
 
+@font-face {
+	font-family: 'NewGothic';
+	src: url('/fonts/New_Gothic/NewsGothicStd-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
 * {
 	box-sizing: border-box;
-	font-family: 'Press Start 2P', cursive;
+	/* font-family: 'Press Start 2P', cursive; */
 }
 
 body {
