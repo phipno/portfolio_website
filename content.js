@@ -9,7 +9,7 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
-function appendHtmlFromFile(appElement, filePath, callback, fitText) {
+function appendHtmlFromFile(appElement, filePath, callback, callback2) {
   fetch(filePath)
   .then(response => {
       if (!response.ok) {
@@ -19,14 +19,13 @@ function appendHtmlFromFile(appElement, filePath, callback, fitText) {
     })
     .then(htmlContent => {
       appElement.innerHTML = htmlContent;
-      if (fitText) fitText();
       if (callback) callback();
+      if (callback2) callback2();
     })
     .catch(error => {
        console.error('There was a problem with the fetch operation:', error);
     });
 }
-
 
 const changeContent = (string) => {
   const appElement = document.querySelector(".content")
@@ -46,7 +45,7 @@ const changeContent = (string) => {
   } else if (string == "creative") {
     appendHtmlFromFile(appElement, "creative.html", initModal)
   } else if (string == "journey") {
-    appendHtmlFromFile(appElement, "journey.html", initModal)
+    appendHtmlFromFile(appElement, "journey.html", initModal, initCosmos)
   } else if (string == "resumee") {
   }
 }
