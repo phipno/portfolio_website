@@ -18,8 +18,8 @@ function initCosmos() {
   ctx.shadowBlur = 10;
   ctx.shadowColor = "grey";
   // Start animation
-  handleWheelEvent();
   calcScrollDistance()
+  handleWheelEvent();
   animate(ctx, cnv.offsetHeight, cnv.offsetWidth);
 }
 
@@ -57,8 +57,7 @@ function calcScrollDistance () {
 function handleWheelEvent() {
   const crawl = document.getElementById('sw-crawl');
   // Initialize the animation
-  const totalScrollDistance = getComputedStyle(document.documentElement)
-    .getPropertyValue('--total-scroll-distance')|| '-100vh';
+  const totalScrollDistance = '-' + document.documentElement.style.getPropertyValue('--total-scroll-distance');
   const animation = crawl.animate(
     [{ top: '100%' }, { top: totalScrollDistance }],
   { duration: 100, fill: 'forwards' }
@@ -73,6 +72,7 @@ function handleWheelEvent() {
     let newTime = animation.currentTime + delta * 1; // Adjust the factor as needed
   // Ensure newTime stays within the duration limits
     newTime = Math.max(0, Math.min(animation.effect.getTiming().duration, newTime));
+    console.log(newTime)
     animation.currentTime = newTime;
   });
 }

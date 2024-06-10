@@ -65,27 +65,14 @@
 }
 
 
-/* .move:first-of-type {
-  margin-left:auto;
-  margin-left: 18%;
-} */
-
-.coin-split{
-  border: solid 10px black;
-  width: 5%;
-  height: 7vh;
-  margin: 0 2% 2%;
-  margin-left: auto;
-}
-
 .coin-hand {
   position: absolute;
   bottom: 10vh;
-  transform: translate(-25%, 80%);
+  transform: translate(-25%, 93%);
 }
 
 .fill-game:hover > .coin-hand{
-  transform: translate(-25%, 60%);
+  transform: translate(-25%, 55%);
 }
 
 .fill-game {
@@ -103,6 +90,7 @@
   font-weight: 1000;
   font-size: 6rem;
   color: #0FFF50;
+  z-index: 1;
 }
 
 .blink_me {
