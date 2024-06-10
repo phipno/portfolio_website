@@ -12,18 +12,15 @@
 function initCosmos() {
   const cnv = document.getElementById("cnv");
   const ctx = cnv.getContext("2d");
-  const W = window.innerWidth;
-  const H = window.innerHeight;
-
   // Set Canvas and Background Color
-  cnv.width = W;
-  cnv.height = H;
+  console.log(cnv.offsetHeight)
   ctx.fillStyle = "#112";
   ctx.shadowBlur = 10;
   ctx.shadowColor = "grey";
   // Start animation
+  handleWheelEvent();
   calcScrollDistance()
-  animate(ctx, W, H);
+  animate(ctx, cnv.offsetHeight, cnv.offsetWidth);
 }
 
 function animate(ctx, W, H) {
@@ -51,23 +48,32 @@ function calcScrollDistance () {
   const crawlElement = document.getElementById('sw-crawl');
   const crawlHeight = crawlElement.scrollHeight;
   const viewportHeight = window.innerHeight;
-  const totalScrollDistance = (crawlHeight + viewportHeight) / viewportHeight * 100 - 190;
+  const totalScrollDistance = (crawlHeight + viewportHeight) / viewportHeight * 100;
   
   // Set CSS variable
   document.documentElement.style.setProperty('--total-scroll-distance', (totalScrollDistance) + 'vh');
-  crawlElement.addEventListener('animationend', function () {
-    console.log("eyooo")
-  });
 }
 
-let animationProgress = 0;
-
-window.addEventListener('wheel', function (event) {
-  animationProgress += event.deltaY
-
-  console.log("animationProgress " + animationProgress)
-  var crawlElement = document.getElementById('sw-crawl');
-  crawlElement.style.animationDuration = (animationProgress) + 's';
-});
-
+function handleWheelEvent() {
+  const crawl = document.getElementById('sw-crawl');
+  // Initialize the animation
+  const totalScrollDistance = getComputedStyle(document.documentElement)
+    .getPropertyValue('--total-scroll-distance')|| '-100vh';
+  const animation = crawl.animate(
+    [{ top: '100%' }, { top: totalScrollDistance }],
+  { duration: 100, fill: 'forwards' }
+  );
+  // Pause the animation initially
+  animation.pause();
+  // Update animation progress based on scroll
+  document.addEventListener('wheel', function (event) {
+    // event.preventDefault();
+  // Adjust the playbackRate according to the scroll delta
+    const delta = Math.sign(event.deltaY);
+    let newTime = animation.currentTime + delta * 1; // Adjust the factor as needed
+  // Ensure newTime stays within the duration limits
+    newTime = Math.max(0, Math.min(animation.effect.getTiming().duration, newTime));
+    animation.currentTime = newTime;
+  });
+}
 /* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */

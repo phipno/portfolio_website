@@ -9,9 +9,16 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
+:root {
+  --animation-length: 120s;
+}
+
 #cnv {
   z-index: -1;
-  position: fixed;
+  position: absolute;
+  top: 10vh;
+  width: calc(100vw - 50vh);
+  height: 80vh;
 }
 
 .journey {
@@ -46,10 +53,11 @@
   /* opacity: 0; */
   transform-origin: 50% 100%;
   transform: perspective(75vh) rotateX(37deg);
-  animation: crawl linear forwards;
-  /* overflow: hidden; */
+  /* animation-play-state: paused; */
+  overflow: hidden;
   width: calc(100vw - 50vh);
   background-color: #000000D0;
+
   /* text-shadow: rgba(0, 0, 0, 0.763)  0 40px; */
   color: rgb(252, 223, 43);
 }
@@ -71,11 +79,38 @@
 
 @keyframes crawl {
   0% {
-    top: 100%;
+    top: 90%;
   }
 
   100% {
     top: calc(-1 * var(--total-scroll-distance));
+  }
+}
+
+.animate {
+  animation: crawl 100s linear;
+}
+
+.blinking-box {
+  width: 30%;
+  height: 100%;
+  color: white;
+  justify-content: center;
+  font-size: xx-large;
+  font-weight: bold;
+  position: absolute;
+  animation: blink 2s linear 4;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
   }
 }
 

@@ -41,8 +41,6 @@
 @media (orientation: landscape) {
   .app {
     display: flex;
-    height: 100vh;
-    overflow: auto;
     position: relative;
   }
   
