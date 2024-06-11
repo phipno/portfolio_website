@@ -92,13 +92,14 @@
 }
 
 .blinking-box {
-  width: 30%;
-  height: 100%;
-  color: white;
-  justify-content: center;
+  opacity: 0;
+  color: #4bd5ee;
   font-size: xx-large;
   font-weight: bold;
-  position: absolute;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  position: relative;
   animation: blink 2s linear 4;
 }
 

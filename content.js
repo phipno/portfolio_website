@@ -106,6 +106,13 @@ function fitText() {
   });
 }
 
+function closeopenForm() {
+  if (document.getElementById("contactForm").style.display == "block")
+    document.getElementById("contactForm").style.display = "none";
+  else 
+    document.getElementById("contactForm").style.display = "block";
+}
+
 window.addEventListener('load', fitText);
 window.addEventListener('resize', fitText);
 

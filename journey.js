@@ -12,21 +12,25 @@
 function initCosmos() {
   const cnv = document.getElementById("cnv");
   const ctx = cnv.getContext("2d");
+
+  const W = window.innerWidth;
+  const H = window.innerHeight;
+
+  cnv.width = W;
+  cnv.height = H;
   // Set Canvas and Background Color
-  console.log(cnv.offsetHeight)
   ctx.fillStyle = "#112";
   ctx.shadowBlur = 10;
   ctx.shadowColor = "grey";
   // Start animation
   calcScrollDistance()
   handleWheelEvent();
-  animate(ctx, cnv.offsetHeight, cnv.offsetWidth);
+  drawStars(ctx, W, H);
 }
 
-function animate(ctx, W, H) {
+function drawStars(ctx, W, H) {
   // Random position and size of stars
   for (let i = 0; i < 4000; i++) {
-
     let x = W * Math.random();
     let y = H * Math.random();
     let r = 2.5 * Math.random();
@@ -56,6 +60,7 @@ function calcScrollDistance () {
 
 function handleWheelEvent() {
   const crawl = document.getElementById('sw-crawl');
+
   // Initialize the animation
   const totalScrollDistance = '-' + document.documentElement.style.getPropertyValue('--total-scroll-distance');
   const animation = crawl.animate(
@@ -72,7 +77,6 @@ function handleWheelEvent() {
     let newTime = animation.currentTime + delta * 1; // Adjust the factor as needed
   // Ensure newTime stays within the duration limits
     newTime = Math.max(0, Math.min(animation.effect.getTiming().duration, newTime));
-    console.log(newTime)
     animation.currentTime = newTime;
   });
 }

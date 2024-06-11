@@ -15,7 +15,7 @@
   margin-left: 1vw;
   font-family: O4B_30;
   width: calc(100vw - 50vh);
-    text-shadow: -3px -3px 0 #000000, 3px -3px 0 #000000, -3px 3px 0 #000000, 3px 3px 0 #000000;
+  text-shadow: -3px -3px 0 #000000, 3px -3px 0 #000000, -3px 3px 0 #000000, 3px 3px 0 #000000;
 }
 
 .welcome h1 {
@@ -28,8 +28,6 @@
 
 .content-container {
   color: white;
-  height: auto;
-  width: auto;
   font-family: Arial, sans-serif;
   font-size: 1rem;
   margin: 0;
