@@ -47,6 +47,8 @@ const changeContent = (string) => {
   } else if (string == "journey") {
     appendHtmlFromFile(appElement, "journey.html", initModal, initCosmos)
   } else if (string == "resumee") {
+  } else if (string == "welcome") {
+    appendHtmlFromFile(appElement, "welcome.html")
   }
 }
 
