@@ -30,6 +30,7 @@
 .journey h1 {
   color: #4bd5ee;
   font-size: 2.5rem;
+  background-color: #000000;
 }
 
 .journey h2 {
@@ -37,6 +38,7 @@
   font-size: 2rem;
   text-decoration: underline;
   text-align: left;
+  background-color: #000000;
 }
 
 .journey p {
@@ -44,6 +46,7 @@
   /* width: 640px; */
   margin: auto;
   text-align: justify;
+  background-color: #000000D0 ;
 }
 
 #sw-crawl {
@@ -52,11 +55,10 @@
   bottom: 0;
   /* opacity: 0; */
   transform-origin: 50% 100%;
-  transform: perspective(75vh) rotateX(37deg);
+  transform: perspective(75vh) rotateX(30deg);
   /* animation-play-state: paused; */
   overflow: hidden;
   width: calc(100vw - 50vh);
-  background-color: #000000D0;
 
   /* text-shadow: rgba(0, 0, 0, 0.763)  0 40px; */
   color: rgb(252, 223, 43);

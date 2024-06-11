@@ -27,10 +27,7 @@ function appendHtmlFromFile(appElement, filePath, callback, callback2) {
     });
 }
 
-const changeContent = (string) => {
-  const appElement = document.querySelector(".content")
-  appElement.innerHTML = "";
-
+function changeToSmallContentButton() {
   const switcherElement = document.querySelector(".content-switcher")
   const contentButton = document.querySelectorAll(".content-button")
   if (switcherElement) {
@@ -40,16 +37,33 @@ const changeContent = (string) => {
       element.classList.add("content-button-small")
     });
   }
+}
+
+function changeToBigContentButton() {
+  const switcherElement = document.querySelector(".content-switcher")
+  const contentButton = document.querySelectorAll(".content-button-small")
+  if (switcherElement) {
+    switcherElement.classList.remove("content-switcher-small")
+    contentButton.forEach(element => {
+      element.classList.remove("content-button-small")
+      element.classList.add("content-button")
+    });
+  }
+}
+
+
+const changeContent = (string) => {
+  const appElement = document.querySelector(".content")
+  appElement.innerHTML = "";
+
+  changeToSmallContentButton();
   if (string == "coding") {
     appendHtmlFromFile(appElement, "coding.html", initModal, fitText)
   } else if (string == "creative") {
     appendHtmlFromFile(appElement, "creative.html", initModal)
   } else if (string == "journey") {
     appendHtmlFromFile(appElement, "journey.html", initModal, initCosmos)
-  } else if (string == "resumee") {
-  } else if (string == "welcome") {
-    appendHtmlFromFile(appElement, "welcome.html")
-  }
+  } else if (string == "resumee") { }
 }
 
 
@@ -109,10 +123,14 @@ function fitText() {
 }
 
 function closeopenForm() {
-  if (document.getElementById("contactForm").style.display == "block")
+  if (document.getElementById("contactForm").style.display == "block") {
     document.getElementById("contactForm").style.display = "none";
-  else 
+    if (!document.querySelector(".content-container"))
+      changeToBigContentButton()
+  } else {
     document.getElementById("contactForm").style.display = "block";
+  changeToSmallContentButton()
+  }
 }
 
 window.addEventListener('load', fitText);

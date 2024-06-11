@@ -92,13 +92,14 @@
             </div>
           </div>
           <div class="contact">
-            <button class="pop-up" onclick="closeopenForm()">PoP</button>
+            <button class="pop-up" onclick="closeopenForm()">^  </button>
             <div class="contact-popup" id="contactForm">
               <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="8c4cb598-9298-4a3e-9373-c611497ef63e" />
                 <input type="hidden" name="subject" value="Contact from Web3Forms" />
                 <input type="hidden" name="from_name" value="phipno.me" />
                 <div class="form-group-container">
+                  <h1><span class="bigger">Reach out to me...</span><br>and let's make something happen!</h1>
                   <div class="form-group">
                     <label for="name" class="form-label">Name</label>
                     <input id="name" name="name" class="form-input" placeholder="Your name" type="text" />
@@ -111,8 +112,8 @@
                     <label for="message" class="form-label">Message</label>
                     <textarea class="form-textarea" id="message" name="message" placeholder="Your message"></textarea>
                   </div>
+                  <button class="form-submit" type="submit">Send Message</button> 
                 </div>
-                <button class="form-submit" type="submit">Send Message</button> 
               </form>
             </div>
             <div class="contact-text">
