@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./css/journey.css">
     <link rel="stylesheet" href="./css/contact.css">
     <script src="spaceInvader.js" defer></script>
+    <script src="contact.js" defer></script>
     <script src="journey.js" defer></script>
     <script src="content.js" defer></script>
   </head>
@@ -92,12 +93,14 @@
             </div>
           </div>
           <div class="contact">
-            <button class="pop-up" onclick="closeopenForm()">^  </button>
+            <button class="pop-up" onclick="closeopenForm()">^</button>
             <div class="contact-popup" id="contactForm">
-              <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+              <!-- <form class="contact-form" action="https://api.web3forms.com/submit" method="POST"> -->
+              <form class="contact-form" method="POST" id="form">
                 <input type="hidden" name="access_key" value="8c4cb598-9298-4a3e-9373-c611497ef63e" />
                 <input type="hidden" name="subject" value="Contact from Web3Forms" />
                 <input type="hidden" name="from_name" value="phipno.me" />
+                <input type="checkbox" name="botcheck" id="" style="display: none;">
                 <div class="form-group-container">
                   <h1><span class="bigger">Reach out to me...</span><br>and let's make something happen!</h1>
                   <div class="form-group">
@@ -115,6 +118,10 @@
                   <button class="form-submit" type="submit">Send Message</button> 
                 </div>
               </form>
+              <div class="img-and-result">
+                <img class="contact-img" src="images/flame-education-1.png" >
+                <div id="result"></div>
+              </div>
             </div>
             <div class="contact-text">
               <h1>Contact Me</h1>

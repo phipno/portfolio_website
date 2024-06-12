@@ -122,17 +122,6 @@ function fitText() {
   });
 }
 
-function closeopenForm() {
-  if (document.getElementById("contactForm").style.display == "block") {
-    document.getElementById("contactForm").style.display = "none";
-    if (!document.querySelector(".content-container"))
-      changeToBigContentButton()
-  } else {
-    document.getElementById("contactForm").style.display = "block";
-  changeToSmallContentButton()
-  }
-}
-
 window.addEventListener('load', fitText);
 window.addEventListener('resize', fitText);
 
