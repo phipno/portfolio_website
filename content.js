@@ -9,6 +9,10 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
+function detectMobileDevice() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
 function appendHtmlFromFile(appElement, filePath, callback, callback2) {
   fetch(filePath)
   .then(response => {
@@ -52,7 +56,7 @@ function changeToBigContentButton() {
 }
 
 
-const changeContent = (string) => {
+changeContent = function(string) {
   const appElement = document.querySelector(".content")
   appElement.innerHTML = "";
 
@@ -63,7 +67,11 @@ const changeContent = (string) => {
     appendHtmlFromFile(appElement, "creative.html", initModal)
   } else if (string == "journey") {
     appendHtmlFromFile(appElement, "journey.html", initModal, initCosmos)
-  } else if (string == "resumee") { }
+  } else if (string == "games") { 
+    const gameElement = document.querySelector(".game")
+    appendHtmlFromFile(gameElement, "spaceInvader.html", setupGame(gameElement))	
+  }
+
 }
 
 
@@ -103,7 +111,7 @@ function initModal() {
   });
 }
 
-function openPdf(path_to_pdf) {
+openPdf = function(path_to_pdf) {
   window.open(path_to_pdf, '_blank')
 }
 
@@ -121,6 +129,7 @@ function fitText() {
     }
   });
 }
+
 
 window.addEventListener('load', fitText);
 window.addEventListener('resize', fitText);

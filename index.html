@@ -22,29 +22,13 @@
   <body>
     <div class="app">
       <div class="game">
-        <div class="controlls">
-          <!-- <button class="move" onclick="moveShip('left')"><img src="./images/arrow_left.png"></button> -->
-          <button class="move" onclick="moveShip('left')"><-</button>
-          <button class="fire" onclick="fire()"><img class="fire-img" src="./images/explosion.png"></button>
-          <!-- <button class="move" onclick="moveShip('right')"><img src="./images/arrow_right.png"></button> -->
-          <button class="move" onclick="moveShip('right')">-></button>
-          <!-- <button class="coin-split" onclick="play()"></button> -->
-        </div>
-        <button class="fill-game" onclick="play()">
-          <p class="blink_me">PLAY</p>
-          <img src="images/hand.png" class="coin-hand" id="coin-hand"> 
-        </button>
-        <!-- <div class="information">
-          <h1>Welcome Welcome</h1>
-          <p>Press SPACE to shoot.</p>
-          <p>Press ← and → to move</p>
-          <h3 id="score">Score: </h3>
-        </div> -->
-        
       </div>
       <div class="content-section">
         
         <div class="content-switcher">
+          <button class="content-button mobile-content-button" id="game-button" onclick="changeContent('games')">
+            <p class="content-button-text" id="game-btn-text">Games</p>
+          </button>
           <button class="content-button" id="code-button" onclick="changeContent('coding')">
             <p class="content-button-text" id="code-btn-text">Coding</p>
           </button>
@@ -53,6 +37,9 @@
           </button>
           <button class="content-button" id="journey-button" onclick="changeContent('journey')">
             <p class="content-button-text" id="journey-btn-text">Journey</p>
+          </button>
+          <button class="content-button mobile-content-button" id="contact-button" onclick="closeopenForm()">
+            <p class="content-button-text" id="contact-btn-text">Contact</p>
           </button>
           <button class="content-button" id="resume-button" onclick="openPdf('images/resume.pdf')">
             <p class="content-button-text" id="resume-btn-text">Resume</p>

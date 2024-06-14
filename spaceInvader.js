@@ -9,6 +9,9 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
+import { appendHtmlFromFile } from "./content.js"
+import { detectMobileDevice } from "./content.js"
+
 const state = {
 	numCells: (600/40) * (600/40),
 	cells: [],
@@ -34,6 +37,7 @@ const setupGame = (element) => {
 	drawAliens()
 	//instructions and score
 	drawScoreboard()
+	console.log("hi")
 }
 
 const drawGrid = () => {
@@ -202,6 +206,9 @@ const drawScoreboard = () => {
 const appElement = document.querySelector(".game")
 
 //do all things needed to draw the game
-setupGame(appElement)
+if (!detectMobileDevice()) {
+	appendHtmlFromFile(document.querySelector(".game"), "spaceInvader.html")	
+	setupGame(appElement)
+}
 
 /* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */
