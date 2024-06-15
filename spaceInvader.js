@@ -9,9 +9,6 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
-import { appendHtmlFromFile } from "./content.js"
-import { detectMobileDevice } from "./content.js"
-
 const state = {
 	numCells: (600/40) * (600/40),
 	cells: [],
@@ -27,7 +24,7 @@ const state = {
 	score: 0
 }
 
-const setupGame = (element) => {
+export const setupGame = (element) => {
 	state.element = element
 	//draw the grid
 	drawGrid()
@@ -37,7 +34,6 @@ const setupGame = (element) => {
 	drawAliens()
 	//instructions and score
 	drawScoreboard()
-	console.log("hi")
 }
 
 const drawGrid = () => {
@@ -85,6 +81,8 @@ const moveShip = (direction) => {
 	}
 }
 
+window.moveShip = moveShip;
+
 const fire = () => {
 	//use an interval
 	if (state.gameStarted) {
@@ -113,6 +111,8 @@ const fire = () => {
 		}, 50)
 	}
 }
+
+window.fire = fire;
 
 const drawAliens = () => {
 	state.cells.forEach((cell, index) => {
@@ -168,6 +168,8 @@ const play = () => {
 	window.addEventListener("keydown", controllShip)
 }
 
+window.play= play;
+
 const checkGameState = (interval) => {
 	if (state.alienPositions.length === 0) {
 		state.gameover = true
@@ -206,9 +208,11 @@ const drawScoreboard = () => {
 const appElement = document.querySelector(".game")
 
 //do all things needed to draw the game
-if (!detectMobileDevice()) {
-	appendHtmlFromFile(document.querySelector(".game"), "spaceInvader.html")	
-	setupGame(appElement)
+
+import { detectMobileDevice } from './module.js' 
+
+if (!detectMobileDevice()) {	
+	setupGame(appElement)	
 }
 
 /* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */

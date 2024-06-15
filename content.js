@@ -9,28 +9,6 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
-function detectMobileDevice() {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
-
-function appendHtmlFromFile(appElement, filePath, callback, callback2) {
-  fetch(filePath)
-  .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.text();
-    })
-    .then(htmlContent => {
-      appElement.innerHTML = htmlContent;
-      if (callback) callback();
-      if (callback2) callback2();
-    })
-    .catch(error => {
-       console.error('There was a problem with the fetch operation:', error);
-    });
-}
-
 function changeToSmallContentButton() {
   const switcherElement = document.querySelector(".content-switcher")
   const contentButton = document.querySelectorAll(".content-button")
@@ -55,8 +33,27 @@ function changeToBigContentButton() {
   }
 }
 
+function appendHtmlFromFile(appElement, filePath, callback, callback2) {
+  fetch(filePath)
+  .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.text();
+    })
+    .then(htmlContent => {
+      appElement.innerHTML += htmlContent;
+      if (callback) callback();
+      if (callback2) callback2();
+    })
+    .catch(error => {
+       console.error('There was a problem with the fetch operation:', error);
+    });
+}
 
-changeContent = function(string) {
+import { setupGame } from './spaceInvader.js'
+
+function changeContent(string) {
   const appElement = document.querySelector(".content")
   appElement.innerHTML = "";
 
@@ -69,11 +66,12 @@ changeContent = function(string) {
     appendHtmlFromFile(appElement, "journey.html", initModal, initCosmos)
   } else if (string == "games") { 
     const gameElement = document.querySelector(".game")
-    appendHtmlFromFile(gameElement, "spaceInvader.html", setupGame(gameElement))	
+    setupGame(gameElement)
+    gameElement.style.display = 'flex'
   }
-
 }
 
+window.changeContent = changeContent;
 
 function initModal() {
   const modal = document.getElementById('project-modal');
@@ -129,7 +127,6 @@ function fitText() {
     }
   });
 }
-
 
 window.addEventListener('load', fitText);
 window.addEventListener('resize', fitText);

@@ -14,14 +14,25 @@
     <link rel="stylesheet" href="./css/modal.css">
     <link rel="stylesheet" href="./css/journey.css">
     <link rel="stylesheet" href="./css/contact.css">
-    <script src="spaceInvader.js" defer></script>
+    <script type="module" src="spaceInvader.js" defer></script>
     <script src="contact.js" defer></script>
     <script src="journey.js" defer></script>
-    <script src="content.js" defer></script>
+    <script type="module" src="content.js" defer></script>
+    <script type="module" src="module.js" defer></script>
+
   </head>
   <body>
     <div class="app">
       <div class="game">
+        <div class="controlls">
+          <button class="move" onclick="moveShip('left')"><-</button>
+              <button class="fire" onclick="fire()"><img class="fire-img" src="./images/explosion.png"></button>
+              <button class="move" onclick="moveShip('right')">-></button>
+        </div>
+        <button class="fill-game" onclick="play()">
+          <p class="blink_me">PLAY</p>
+          <img src="images/hand.png" class="coin-hand" id="coin-hand">
+        </button>
       </div>
       <div class="content-section">
         
