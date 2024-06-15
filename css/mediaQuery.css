@@ -24,14 +24,19 @@
     width: 100vw;
   }
 
+
+  .mobile-content-switcher {
+    display: none;
+  }
+
   .content-switcher-small {
-    
+    display: none;
   }
 
   .content-switcher {
     display: flex;
     flex-direction: column;
-    position: relative;
+    position: absolute;
     width: 100vw;
     height: 90vh;
     z-index: 10;
@@ -39,6 +44,10 @@
 
   .content-button {
     height: calc(100% / 6);
+  }
+
+  .content-section {
+    height: 90vh;
   }
 
   .game {

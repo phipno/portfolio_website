@@ -9,6 +9,26 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
+.mobile-content-switcher {
+  height: 5vh;
+  width: 100vw;
+  position: absolute;
+  bottom: 10vh;
+}
+
+.popup-button {
+  width: 100%;
+  text-align: center;
+  border: none;
+}
+
+#popup-btn-text {
+  color: black;
+  font-size: 1rem;
+  font-family: 'Press Start 2P', cursive;
+  text-shadow: none;
+}
+
 .content-button-text {
   color: white;
   font-family: O4B_30;

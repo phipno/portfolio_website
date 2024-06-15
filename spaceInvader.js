@@ -24,8 +24,11 @@ const state = {
 	score: 0
 }
 
+let copyState = state;
+
 export const setupGame = (element) => {
-	state.element = element
+	let copyState = state;
+	copyState.element = element
 	//draw the grid
 	drawGrid()
 	//draw spaceship
@@ -41,17 +44,17 @@ const drawGrid = () => {
 	const grid = document.createElement("div")
 	grid.classList.add("grid")
 	//create a lot of cells - 15 x 15
-	for (let i = 0; i < state.numCells; i++) {
+	for (let i = 0; i < copyState.numCells; i++) {
 		const cell = document.createElement("div")
 		grid.append(cell)
-		state.cells.push(cell)
+		copyState.cells.push(cell)
 	}
 	//append the cells to the element	
-	state.element.insertBefore(grid, state.element.children[0])
+	copyState.element.insertBefore(grid, copyState.element.children[0])
 }
 
 const drawSpaceShip = () => {
-	state.cells[state.shipPosition].classList.add("spaceship")
+	copyState.cells[copyState.shipPosition].classList.add("spaceship")
 	//find bottom row, middle cell, add bg immage
 }
 
@@ -68,16 +71,16 @@ const controllShip = (event) => {
 
 const moveShip = (direction) => {
 	//remove image from current pos
-	if (state.gameStarted) {
-		state.cells[state.shipPosition].classList.remove("spaceship")
+	if (copyState.gameStarted) {
+		copyState.cells[copyState.shipPosition].classList.remove("spaceship")
 		//figure out delta
-		if (direction === "left" && state.shipPosition % 15 !== 0) {
-			state.shipPosition--
-		} else if (direction === "right" && state.shipPosition % 15 !== 14) {
-			state.shipPosition++
+		if (direction === "left" && copyState.shipPosition % 15 !== 0) {
+			copyState.shipPosition--
+		} else if (direction === "right" && copyState.shipPosition % 15 !== 14) {
+			copyState.shipPosition++
 		}
 		//add image to new pos
-		state.cells[state.shipPosition].classList.add("spaceship")
+		copyState.cells[copyState.shipPosition].classList.add("spaceship")
 	}
 }
 
@@ -85,29 +88,29 @@ window.moveShip = moveShip;
 
 const fire = () => {
 	//use an interval
-	if (state.gameStarted) {
+	if (copyState.gameStarted) {
 		let interval;
-		let laserposition = state.shipPosition
+		let laserposition = copyState.shipPosition
 		interval = setInterval(() => {
-			state.cells[laserposition].classList.remove("laser")
+			copyState.cells[laserposition].classList.remove("laser")
 			laserposition-=15
 			if (laserposition < 0) {
 				clearInterval(interval)
 				return
 			}
-			if (state.alienPositions.includes(laserposition)) {
+			if (copyState.alienPositions.includes(laserposition)) {
 				clearInterval(interval)
-				state.alienPositions.splice(state.alienPositions.indexOf(laserposition), 1)
-				state.cells[laserposition].classList.remove("alien", "laser")
-				state.cells[laserposition].classList.add("explosion")
-				state.score++
-				state.scoreElement.innerText = state.score
+				copyState.alienPositions.splice(copyState.alienPositions.indexOf(laserposition), 1)
+				copyState.cells[laserposition].classList.remove("alien", "laser")
+				copyState.cells[laserposition].classList.add("explosion")
+				copyState.score++
+				copyState.scoreElement.innerText = copyState.score
 				setTimeout(() => {
-					state.cells[laserposition].classList.remove("explosion")
+					copyState.cells[laserposition].classList.remove("explosion")
 				}, 200)
 				return
 			}
-			state.cells[laserposition].classList.add("laser")
+			copyState.cells[laserposition].classList.add("laser")
 		}, 50)
 	}
 }
@@ -115,11 +118,11 @@ const fire = () => {
 window.fire = fire;
 
 const drawAliens = () => {
-	state.cells.forEach((cell, index) => {
+	copyState.cells.forEach((cell, index) => {
 		if (cell.classList.contains("alien")) {
 			cell.classList.remove("alien")
 		}
-		if (state.alienPositions.includes(index)) {
+		if (copyState.alienPositions.includes(index)) {
 			cell.classList.add("alien")
 		}
 	})
@@ -128,22 +131,22 @@ const drawAliens = () => {
 
 const atEdge = (side) => {
 	if (side === "left") {
-		return state.alienPositions.some(position => position % 15 === 0)
+		return copyState.alienPositions.some(position => position % 15 === 0)
 	} else if (side === "right") {
-		return state.alienPositions.some(position => position % 15 === 14)
+		return copyState.alienPositions.some(position => position % 15 === 14)
 	}
 }
 
 const play = () => {
 	//start movement of aliens
-	if (state.gameStarted)
+	if (copyState.gameStarted)
 		return;
-	// if (state.gameover)
-		// 	setupGame()
+	// if (copyState.gameover)
+	// 		setupGame()
 	let interval
 	let direction = "right"
 	let movement
-	state.gameStarted = true
+	copyState.gameStarted = true
 	interval = setInterval(() => {
 		if (direction === "right") {
 			if (atEdge("right")) {
@@ -160,7 +163,7 @@ const play = () => {
 				movement = -1
 			} 
 		}
-		state.alienPositions = state.alienPositions.map(position => position + movement)
+		copyState.alienPositions = copyState.alienPositions.map(position => position + movement)
 		drawAliens()
 		checkGameState(interval)
 	}, 400)
@@ -171,17 +174,17 @@ const play = () => {
 window.play= play;
 
 const checkGameState = (interval) => {
-	if (state.alienPositions.length === 0) {
-		state.gameover = true
-		state.gameStarted = false
+	if (copyState.alienPositions.length === 0) {
+		copyState.gameover = true
+		copyState.gameStarted = false
 		clearInterval(interval)
 		drawMessage("HUMAN WIN!")
-	} else if (state.alienPositions.some(position => position >= state.shipPosition)) {
+	} else if (copyState.alienPositions.some(position => position >= copyState.shipPosition)) {
 		clearInterval(interval)
-		state.gameover = true
-		state.gameStarted = false
-		state.cells[state.shipPosition].classList.remove("spaceship")
-		state.cells[state.shipPosition].classList.add("explosion")
+		copyState.gameover = true
+		copyState.gameStarted = false
+		copyState.cells[copyState.shipPosition].classList.remove("spaceship")
+		copyState.cells[copyState.shipPosition].classList.add("explosion")
 		drawMessage("GAME OVER!")
 	}
 }
@@ -192,16 +195,16 @@ const drawMessage = (message) => {
 	const h1 = document.createElement("h1")
 	h1.innerText = message
 	messageElement.append(h1)
-	state.element.append(messageElement)
+	copyState.element.append(messageElement)
 }
 
 const drawScoreboard = () => {
 	const scoreElement = document.createElement('span')
-	scoreElement.innerText = state.score
+	scoreElement.innerText = copyState.score
 	const score = document.getElementById('score');
 	
 	// score.append(scoreElement)
-	state.scoreElement = scoreElement
+	copyState.scoreElement = scoreElement
 }
 
 //query the page for the place to insert game

@@ -33,6 +33,25 @@ function changeToBigContentButton() {
   }
 }
 
+function switchToBigContent() {
+  const gameElement = document.querySelector(".game")
+  if (gameElement)
+    gameElement.style.display = 'none';
+  const switcherElement = document.querySelector(".content-switcher")
+  switcherElement.style.display = 'flex'
+  const mobileElement = document.querySelector(".mobile-content-switcher")
+  mobileElement.style.display = 'none';
+}
+
+window.switchToBigContent = switchToBigContent;
+
+function switchToMobilContent() {
+  const switcherElement = document.querySelector(".content-switcher")
+  switcherElement.style.display = 'none'
+  const mobileElement = document.querySelector(".mobile-content-switcher")
+  mobileElement.style.display = 'flex';
+}
+
 function appendHtmlFromFile(appElement, filePath, callback, callback2) {
   fetch(filePath)
   .then(response => {
@@ -52,12 +71,20 @@ function appendHtmlFromFile(appElement, filePath, callback, callback2) {
 }
 
 import { setupGame } from './spaceInvader.js'
+import { detectMobileDevice } from './module.js';
 
 function changeContent(string) {
   const appElement = document.querySelector(".content")
   appElement.innerHTML = "";
+  const gameElement = document.querySelector(".game")
+  gameElement.style.display = 'none';
 
-  changeToSmallContentButton();
+  if (detectMobileDevice) {
+    switchToMobilContent();
+  } else {
+    changeToSmallContentButton();
+  }
+
   if (string == "coding") {
     appendHtmlFromFile(appElement, "coding.html", initModal, fitText)
   } else if (string == "creative") {
@@ -65,7 +92,9 @@ function changeContent(string) {
   } else if (string == "journey") {
     appendHtmlFromFile(appElement, "journey.html", initModal, initCosmos)
   } else if (string == "games") { 
-    const gameElement = document.querySelector(".game")
+    const gridElement = document.querySelector(".grid")
+    if (gridElement)
+      gridElement.remove();
     setupGame(gameElement)
     gameElement.style.display = 'flex'
   }
