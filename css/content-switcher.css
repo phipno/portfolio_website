@@ -14,6 +14,7 @@
   width: 100vw;
   position: absolute;
   bottom: 10vh;
+  display: none;
 }
 
 .popup-button {

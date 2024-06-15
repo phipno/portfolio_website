@@ -75,11 +75,12 @@ import { detectMobileDevice } from './module.js';
 
 function changeContent(string) {
   const appElement = document.querySelector(".content")
-  appElement.innerHTML = "";
   const gameElement = document.querySelector(".game")
-  gameElement.style.display = 'none';
+  
+  appElement.innerHTML = "";
 
-  if (detectMobileDevice) {
+  if (detectMobileDevice()) {
+    gameElement.style.display = 'none';
     switchToMobilContent();
   } else {
     changeToSmallContentButton();
