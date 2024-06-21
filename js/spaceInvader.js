@@ -69,7 +69,7 @@ const controllShip = (event) => {
 	}
 }
 
-const moveShip = (direction) => {
+export const moveShip = (direction) => {
 	//remove image from current pos
 	if (copyState.gameStarted) {
 		copyState.cells[copyState.shipPosition].classList.remove("spaceship")
@@ -84,9 +84,7 @@ const moveShip = (direction) => {
 	}
 }
 
-window.moveShip = moveShip;
-
-const fire = () => {
+export const fire = () => {
 	//use an interval
 	if (copyState.gameStarted) {
 		let interval;
@@ -115,8 +113,6 @@ const fire = () => {
 	}
 }
 
-window.fire = fire;
-
 const drawAliens = () => {
 	copyState.cells.forEach((cell, index) => {
 		if (cell.classList.contains("alien")) {
@@ -137,7 +133,7 @@ const atEdge = (side) => {
 	}
 }
 
-const play = () => {
+export const play = () => {
 	//start movement of aliens
 	if (copyState.gameStarted)
 		return;
@@ -170,8 +166,6 @@ const play = () => {
 	//set up ship controls
 	window.addEventListener("keydown", controllShip)
 }
-
-window.play= play;
 
 const checkGameState = (interval) => {
 	if (copyState.alienPositions.length === 0) {
@@ -207,15 +201,5 @@ const drawScoreboard = () => {
 	copyState.scoreElement = scoreElement
 }
 
-//query the page for the place to insert game
-const appElement = document.querySelector(".game")
-
-//do all things needed to draw the game
-
-import { detectMobileDevice } from './module.js' 
-
-if (!detectMobileDevice()) {	
-	setupGame(appElement)	
-}
 
 /* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */

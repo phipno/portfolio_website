@@ -9,7 +9,7 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
-function initCosmos() {
+export function initCosmos() {
   const cnv = document.getElementById("cnv");
   const ctx = cnv.getContext("2d");
 

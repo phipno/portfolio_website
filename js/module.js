@@ -9,8 +9,29 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
-export function detectMobileDevice() {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+console.log("ASDASDASD")
+
+import { moveShip, fire, play, setupGame } from './spaceInvader.js'
+import { changeContent, fitText, detectMobileDevice, switchToBigContent, switchToMobilContent } from './content.js';
+import { closeopenForm } from './contact.js';
+
+window.changeContent = changeContent;
+window.switchToBigContent = switchToBigContent;
+window.switchToMobilContent = switchToMobilContent;
+window.addEventListener('load', fitText);
+window.addEventListener('resize', fitText);
+
+window.closeopenForm = closeopenForm;
+
+window.play = play;
+window.fire = fire;
+window.moveShip = moveShip;
+
+if (!detectMobileDevice()) {
+  const appElement = document.querySelector(".game")
+  setupGame(appElement)
 }
+
+console.log("Moudle Script Loaded")
 
 /* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */

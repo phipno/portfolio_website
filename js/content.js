@@ -9,7 +9,7 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
-function changeToSmallContentButton() {
+export function changeToSmallContentButton() {
   const switcherElement = document.querySelector(".content-switcher")
   const contentButton = document.querySelectorAll(".content-button")
   if (switcherElement) {
@@ -21,7 +21,7 @@ function changeToSmallContentButton() {
   }
 }
 
-function changeToBigContentButton() {
+export function changeToBigContentButton() {
   const switcherElement = document.querySelector(".content-switcher")
   const contentButton = document.querySelectorAll(".content-button-small")
   if (switcherElement) {
@@ -33,7 +33,7 @@ function changeToBigContentButton() {
   }
 }
 
-function switchToBigContent() {
+export function switchToBigContent() {
   const gameElement = document.querySelector(".game")
   if (gameElement)
     gameElement.style.display = 'none';
@@ -43,9 +43,7 @@ function switchToBigContent() {
   mobileElement.style.display = 'none';
 }
 
-window.switchToBigContent = switchToBigContent;
-
-function switchToMobilContent() {
+export function switchToMobilContent() {
   const switcherElement = document.querySelector(".content-switcher")
   switcherElement.style.display = 'none'
   const mobileElement = document.querySelector(".mobile-content-switcher")
@@ -71,9 +69,9 @@ function appendHtmlFromFile(appElement, filePath, callback, callback2) {
 }
 
 import { setupGame } from './spaceInvader.js'
-import { detectMobileDevice } from './module.js';
+import { initCosmos } from './journey.js';
 
-function changeContent(string) {
+export function changeContent(string) {
   const appElement = document.querySelector(".content")
   const gameElement = document.querySelector(".game")
   
@@ -87,11 +85,13 @@ function changeContent(string) {
   }
 
   if (string == "coding") {
-    appendHtmlFromFile(appElement, "coding.html", initModal, fitText)
+    appendHtmlFromFile(appElement, "html/coding.html", initModal, fitText)
   } else if (string == "creative") {
-    appendHtmlFromFile(appElement, "creative.html", initModal)
+    appendHtmlFromFile(appElement, "html/creative.html", initModal)
   } else if (string == "journey") {
-    appendHtmlFromFile(appElement, "journey.html", initModal, initCosmos)
+    appendHtmlFromFile(appElement, "html/journey.html", initModal, initCosmos)
+  } else if (string == "resume") {
+    openPdf("./images/resume.pdf")
   } else if (string == "games") { 
     const gridElement = document.querySelector(".grid")
     if (gridElement)
@@ -100,8 +100,6 @@ function changeContent(string) {
     gameElement.style.display = 'flex'
   }
 }
-
-window.changeContent = changeContent;
 
 function initModal() {
   const modal = document.getElementById('project-modal');
@@ -139,11 +137,11 @@ function initModal() {
   });
 }
 
-openPdf = function(path_to_pdf) {
+function openPdf(path_to_pdf) {
   window.open(path_to_pdf, '_blank')
 }
 
-function fitText() {
+export function fitText() {
   const headers = document.querySelectorAll('.project-card h3')
   const minFontSize = 10;
   const maxFontSize = 100;
@@ -158,7 +156,11 @@ function fitText() {
   });
 }
 
-window.addEventListener('load', fitText);
-window.addEventListener('resize', fitText);
+export function detectMobileDevice() {
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+
+  return isMobile && isPortrait;
+}
 
 /* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */

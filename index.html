@@ -14,12 +14,7 @@
     <link rel="stylesheet" href="./css/modal.css">
     <link rel="stylesheet" href="./css/journey.css">
     <link rel="stylesheet" href="./css/contact.css">
-    <script type="module" src="spaceInvader.js" defer></script>
-    <script src="contact.js" defer></script>
-    <script src="journey.js" defer></script>
-    <script type="module" src="content.js" defer></script>
-    <script type="module" src="module.js" defer></script>
-
+    <script type="module" src="./js/module.js" defer></script>
   </head>
   <body>
     <div class="app">
@@ -51,7 +46,7 @@
           <button class="content-button mobile-content-button" id="contact-button" onclick="closeopenForm()">
             <p class="content-button-text" id="contact-btn-text">Contact</p>
           </button>
-          <button class="content-button" id="resume-button" onclick="openPdf('images/resume.pdf')">
+          <button class="content-button" id="resume-button" onclick="changeContent('resume')">
             <p class="content-button-text" id="resume-btn-text">Resume</p>
           </button>
         </div>

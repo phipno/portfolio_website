@@ -49,7 +49,10 @@ form.addEventListener('submit', function (e) {
   //   });
 }); 
 
-function closeopenForm() {
+import { changeToBigContentButton } from "./content.js";
+import { changeToSmallContentButton } from './content.js'
+
+export function closeopenForm() {
   if (document.getElementById("contactForm").style.display == "flex") {
     document.getElementById("contactForm").style.display = "none";
     if (!document.querySelector(".content-container"))
