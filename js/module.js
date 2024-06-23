@@ -12,12 +12,16 @@
 console.log("ASDASDASD")
 
 import { moveShip, fire, play, setupGame } from './spaceInvader.js'
-import { changeContent, fitText, detectMobileDevice, switchToBigContent, switchToMobilContent } from './content.js';
+import {
+  changeContent, fitText, detectMobileDevice, switchToBigViewDesktop,
+  switchToBigViewMobil, switchToMobilMenuButton
+} from './content.js';
 import { closeopenForm } from './contact.js';
 
 window.changeContent = changeContent;
-window.switchToBigContent = switchToBigContent;
-window.switchToMobilContent = switchToMobilContent;
+window.switchToBigViewDesktop = switchToBigViewDesktop;
+window.switchToBigViewMobil = switchToBigViewMobil;
+window.switchToMobilMenuButton = switchToMobilMenuButton;
 window.addEventListener('load', fitText);
 window.addEventListener('resize', fitText);
 

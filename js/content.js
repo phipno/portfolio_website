@@ -9,6 +9,28 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
+window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
+  const portrait = e.matches;
+
+  if (portrait) {
+    clearContentSection();
+    changeToBigContentButton();
+    switchToBigViewMobil();
+    clearGrids();
+  } else {
+    clearContentSection();
+    changeToBigContentButton();
+    const gameElement = document.querySelector(".game")
+    if (gameElement) {
+      gameElement.style.display = 'flex';
+      clearGrids();
+      setupGame(gameElement)
+    }
+    switchToBigViewDesktop();
+  }
+});
+
+
 export function changeToSmallContentButton() {
   const switcherElement = document.querySelector(".content-switcher")
   const contentButton = document.querySelectorAll(".content-button")
@@ -33,17 +55,32 @@ export function changeToBigContentButton() {
   }
 }
 
-export function switchToBigContent() {
+export function switchToBigViewDesktop() {
+  const gameElement = document.querySelector(".game")
+  if (gameElement)
+    gameElement.style.display = 'flex';
+  const switcherElement = document.querySelector(".content-switcher")
+  switcherElement.style.display = 'grid'
+  const mobileElement = document.querySelector(".mobile-content-switcher")
+  mobileElement.style.display = 'none';
+}
+
+export function switchToBigViewMobil() {
   const gameElement = document.querySelector(".game")
   if (gameElement)
     gameElement.style.display = 'none';
+  clearContentSection();
+  changeToBigContentButton();
   const switcherElement = document.querySelector(".content-switcher")
   switcherElement.style.display = 'flex'
   const mobileElement = document.querySelector(".mobile-content-switcher")
   mobileElement.style.display = 'none';
 }
 
-export function switchToMobilContent() {
+export function switchToMobilMenuButton() {
+  const gameElement = document.querySelector(".game")
+  if (gameElement)
+    gameElement.style.display = 'none';
   const switcherElement = document.querySelector(".content-switcher")
   switcherElement.style.display = 'none'
   const mobileElement = document.querySelector(".mobile-content-switcher")
@@ -71,33 +108,45 @@ function appendHtmlFromFile(appElement, filePath, callback, callback2) {
 import { setupGame } from './spaceInvader.js'
 import { initCosmos } from './journey.js';
 
+export function clearContentSection() {
+  const contentElement = document.querySelector(".content")
+  contentElement.innerHTML = "";
+}
+
+export function clearGrids() {
+  const gridElement = document.querySelector(".grid")
+  if (gridElement)
+    gridElement.remove();
+}
+
 export function changeContent(string) {
   const appElement = document.querySelector(".content")
   const gameElement = document.querySelector(".game")
   
-  appElement.innerHTML = "";
+  clearContentSection();
 
   if (detectMobileDevice()) {
     gameElement.style.display = 'none';
-    switchToMobilContent();
+    switchToMobilMenuButton();
   } else {
     changeToSmallContentButton();
   }
 
   if (string == "coding") {
-    appendHtmlFromFile(appElement, "html/coding.html", initModal, fitText)
+    appendHtmlFromFile(appElement, "html/coding.html", initModal, fitText);
   } else if (string == "creative") {
-    appendHtmlFromFile(appElement, "html/creative.html", initModal)
+    appendHtmlFromFile(appElement, "html/creative.html", initModal);
   } else if (string == "journey") {
-    appendHtmlFromFile(appElement, "html/journey.html", initModal, initCosmos)
+    appendHtmlFromFile(appElement, "html/journey.html", initModal, initCosmos);
   } else if (string == "resume") {
-    openPdf("./images/resume.pdf")
+    openPdf("./images/resume.pdf");
   } else if (string == "games") { 
-    const gridElement = document.querySelector(".grid")
-    if (gridElement)
-      gridElement.remove();
-    setupGame(gameElement)
+    clearGrids();
+    setupGame(gameElement);
     gameElement.style.display = 'flex'
+  }
+  if (detectPortraitMode()) {
+    switchToMobilMenuButton();
   }
 }
 
@@ -156,11 +205,14 @@ export function fitText() {
   });
 }
 
+export function detectPortraitMode() {
+  const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+  return isPortrait;
+}
+
 export function detectMobileDevice() {
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  const isPortrait = window.matchMedia("(orientation: portrait)").matches;
-
-  return isMobile && isPortrait;
+  return isMobile;
 }
 
 /* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */
