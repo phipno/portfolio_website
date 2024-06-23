@@ -11,8 +11,10 @@
 
 window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
   const portrait = e.matches;
+  const gameElement = document.querySelector(".game")
 
   if (portrait) {
+    gameElement.style.display = 'none'
     clearContentSection();
     changeToBigContentButton();
     switchToBigViewMobil();
@@ -20,12 +22,9 @@ window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
   } else {
     clearContentSection();
     changeToBigContentButton();
-    const gameElement = document.querySelector(".game")
-    if (gameElement) {
-      gameElement.style.display = 'flex';
-      clearGrids();
-      setupGame(gameElement)
-    }
+    gameElement.style.display = 'flex';
+    // clearGrids();
+    setupGame(gameElement)
     switchToBigViewDesktop();
   }
 });
@@ -113,12 +112,6 @@ export function clearContentSection() {
   contentElement.innerHTML = "";
 }
 
-export function clearGrids() {
-  const gridElement = document.querySelector(".grid")
-  if (gridElement)
-    gridElement.remove();
-}
-
 import { setupGame } from './spaceInvader.js'
 import { initCosmos } from './journey.js';
 import { closeopenForm } from './contact.js';
@@ -131,7 +124,6 @@ export function changeContent(string) {
   document.getElementById("contactForm").style.display = "none";
   
   if (detectPortraitMode()) {
-    gameElement.style.display = 'none';
     switchToMobilMenuButton();
   } else {
     changeToSmallContentButton();
@@ -146,9 +138,8 @@ export function changeContent(string) {
   } else if (string == "resume") {
     openPdf("./images/resume.pdf");
   } else if (string == "games") {
-    clearGrids();
-    setupGame(gameElement);
     gameElement.style.display = 'flex'
+    setupGame(gameElement);
   } else if (string == "contact") {
     closeopenForm();
   }
