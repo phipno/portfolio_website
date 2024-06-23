@@ -62,7 +62,17 @@
     align-self: flex-start;
     flex-direction: column;
   }
-
+  .contact-popup {
+    height: 85vh;
+    bottom: 15vh;
+    left:0;
+  }
+  .contact-text {
+    display: none;
+  }
+  .pop-up {
+    display: none;
+  }
 }
 
 @media (orientation: landscape) {
@@ -142,6 +152,13 @@
 
     padding: 0px 0.5vw 0px 0.5vw;
     border: white 0.5vw solid;
+  }
+
+  .contact-popup {
+    width: calc(100vw - 50vh);
+    height: 80vh;
+    bottom: 10vh;
+    left: 50vh;
   }
   
   @media (max-width: calc(700px + 50vh)) {

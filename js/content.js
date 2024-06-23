@@ -70,6 +70,8 @@ export function switchToBigViewMobil() {
   if (gameElement)
     gameElement.style.display = 'none';
   clearContentSection();
+  document.getElementById("contactForm").style.display = "none";
+
   changeToBigContentButton();
   const switcherElement = document.querySelector(".content-switcher")
   switcherElement.style.display = 'flex'
@@ -105,8 +107,6 @@ function appendHtmlFromFile(appElement, filePath, callback, callback2) {
     });
 }
 
-import { setupGame } from './spaceInvader.js'
-import { initCosmos } from './journey.js';
 
 export function clearContentSection() {
   const contentElement = document.querySelector(".content")
@@ -119,19 +119,24 @@ export function clearGrids() {
     gridElement.remove();
 }
 
+import { setupGame } from './spaceInvader.js'
+import { initCosmos } from './journey.js';
+import { closeopenForm } from './contact.js';
+
 export function changeContent(string) {
   const appElement = document.querySelector(".content")
   const gameElement = document.querySelector(".game")
   
   clearContentSection();
-
-  if (detectMobileDevice()) {
+  document.getElementById("contactForm").style.display = "none";
+  
+  if (detectPortraitMode()) {
     gameElement.style.display = 'none';
     switchToMobilMenuButton();
   } else {
     changeToSmallContentButton();
   }
-
+  
   if (string == "coding") {
     appendHtmlFromFile(appElement, "html/coding.html", initModal, fitText);
   } else if (string == "creative") {
@@ -140,12 +145,14 @@ export function changeContent(string) {
     appendHtmlFromFile(appElement, "html/journey.html", initModal, initCosmos);
   } else if (string == "resume") {
     openPdf("./images/resume.pdf");
-  } else if (string == "games") { 
+  } else if (string == "games") {
     clearGrids();
     setupGame(gameElement);
     gameElement.style.display = 'flex'
+  } else if (string == "contact") {
+    closeopenForm();
   }
-  if (detectPortraitMode()) {
+  if (detectPortraitMode() && string != "resume") {
     switchToMobilMenuButton();
   }
 }

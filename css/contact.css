@@ -9,6 +9,8 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
+
+
 .pop-up {
   width: 30%;
   height: 100%;
@@ -61,10 +63,6 @@
   display: none;  
   flex-direction: row;
   position: fixed;
-  bottom: 10vh;
-  width: calc(100vw - 50vh);
-  height: 80vh;
-  left: 50vh;
   border: 3px solid #f1f1f1;   
   background-color: white; 
   z-index: 1;
