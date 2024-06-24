@@ -9,26 +9,29 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
-const state = {
-	numCells: (600/40) * (600/40),
+
+const originalState = {
+	numCells: (600 / 40) * (600 / 40),
 	cells: [],
 	shipPosition: 217,
 	alienPositions: [
 		3, 4, 5, 6, 7, 8, 9, 10, 11,
 		18, 19, 20, 21, 22, 23, 24, 25, 26,
 		33, 34, 35, 36, 37, 38, 39, 40, 41,
-		48, 49, 50, 51, 52, 53, 54, 55, 56 
-	],
+		48, 49, 50, 51, 52, 53, 54, 55, 56
+		],
 	gameover: false,
 	gameStarted: false,
 	score: 0
 }
-
-let copyState = state;
+		
+let currentState = {}
 
 export const setupGame = (element) => {
-	let copyState = state;
-	copyState.element = element
+	currentState = JSON.parse(JSON.stringify(originalState));
+	currentState.element = element;
+
+	deleteMesseage()
 	//draw the grid
 	drawGrid()
 	//draw spaceship
@@ -44,17 +47,17 @@ const drawGrid = () => {
 	const grid = document.createElement("div")
 	grid.classList.add("grid")
 	//create a lot of cells - 15 x 15
-	for (let i = 0; i < copyState.numCells; i++) {
+	for (let i = 0; i < currentState.numCells; i++) {
 		const cell = document.createElement("div")
 		grid.append(cell)
-		copyState.cells.push(cell)
+		currentState.cells.push(cell)
 	}
 	//append the cells to the element	
-	copyState.element.insertBefore(grid, copyState.element.children[0])
+	currentState.element.insertBefore(grid, currentState.element.children[0])
 }
 
 const drawSpaceShip = () => {
-	copyState.cells[copyState.shipPosition].classList.add("spaceship")
+	currentState.cells[currentState.shipPosition].classList.add("spaceship")
 	//find bottom row, middle cell, add bg immage
 }
 
@@ -71,78 +74,77 @@ const controllShip = (event) => {
 
 export const moveShip = (direction) => {
 	//remove image from current pos
-	if (copyState.gameStarted) {
-		copyState.cells[copyState.shipPosition].classList.remove("spaceship")
+	if (currentState.gameStarted) {
+		currentState.cells[currentState.shipPosition].classList.remove("spaceship")
 		//figure out delta
-		if (direction === "left" && copyState.shipPosition % 15 !== 0) {
-			copyState.shipPosition--
-		} else if (direction === "right" && copyState.shipPosition % 15 !== 14) {
-			copyState.shipPosition++
+		if (direction === "left" && currentState.shipPosition % 15 !== 0) {
+			currentState.shipPosition--
+		} else if (direction === "right" && currentState.shipPosition % 15 !== 14) {
+			currentState.shipPosition++
 		}
 		//add image to new pos
-		copyState.cells[copyState.shipPosition].classList.add("spaceship")
+		currentState.cells[currentState.shipPosition].classList.add("spaceship")
 	}
 }
 
 export const fire = () => {
 	//use an interval
-	if (copyState.gameStarted) {
+	if (currentState.gameStarted) {
 		let interval;
-		let laserposition = copyState.shipPosition
+		let laserposition = currentState.shipPosition
 		interval = setInterval(() => {
-			copyState.cells[laserposition].classList.remove("laser")
+			currentState.cells[laserposition].classList.remove("laser")
 			laserposition-=15
 			if (laserposition < 0) {
 				clearInterval(interval)
 				return
 			}
-			if (copyState.alienPositions.includes(laserposition)) {
+			if (currentState.alienPositions.includes(laserposition)) {
 				clearInterval(interval)
-				copyState.alienPositions.splice(copyState.alienPositions.indexOf(laserposition), 1)
-				copyState.cells[laserposition].classList.remove("alien", "laser")
-				copyState.cells[laserposition].classList.add("explosion")
-				copyState.score++
-				copyState.scoreElement.innerText = copyState.score
+				currentState.alienPositions.splice(currentState.alienPositions.indexOf(laserposition), 1)
+				currentState.cells[laserposition].classList.remove("alien", "laser")
+				currentState.cells[laserposition].classList.add("explosion")
+				currentState.score++
+				currentState.scoreElement.innerText = currentState.score
 				setTimeout(() => {
-					copyState.cells[laserposition].classList.remove("explosion")
+					currentState.cells[laserposition].classList.remove("explosion")
 				}, 200)
 				return
 			}
-			copyState.cells[laserposition].classList.add("laser")
+			currentState.cells[laserposition].classList.add("laser")
 		}, 50)
 	}
 }
 
 const drawAliens = () => {
-	copyState.cells.forEach((cell, index) => {
+	currentState.cells.forEach((cell, index) => {
 		if (cell.classList.contains("alien")) {
 			cell.classList.remove("alien")
 		}
-		if (copyState.alienPositions.includes(index)) {
+		if (currentState.alienPositions.includes(index)) {
 			cell.classList.add("alien")
 		}
 	})
-		
 }
 
 const atEdge = (side) => {
 	if (side === "left") {
-		return copyState.alienPositions.some(position => position % 15 === 0)
+		return currentState.alienPositions.some(position => position % 15 === 0)
 	} else if (side === "right") {
-		return copyState.alienPositions.some(position => position % 15 === 14)
+		return currentState.alienPositions.some(position => position % 15 === 14)
 	}
 }
 
 export const play = () => {
 	//start movement of aliens
-	if (copyState.gameStarted)
+	if (currentState.gameStarted)
 		return;
-	// if (copyState.gameover)
+	// if (currentState.gameover)
 	// 		setupGame()
 	let interval
 	let direction = "right"
 	let movement
-	copyState.gameStarted = true
+	currentState.gameStarted = true
 	interval = setInterval(() => {
 		if (direction === "right") {
 			if (atEdge("right")) {
@@ -159,7 +161,7 @@ export const play = () => {
 				movement = -1
 			} 
 		}
-		copyState.alienPositions = copyState.alienPositions.map(position => position + movement)
+		currentState.alienPositions = currentState.alienPositions.map(position => position + movement)
 		drawAliens()
 		checkGameState(interval)
 	}, 400)
@@ -168,17 +170,17 @@ export const play = () => {
 }
 
 const checkGameState = (interval) => {
-	if (copyState.alienPositions.length === 0) {
-		copyState.gameover = true
-		copyState.gameStarted = false
+	if (currentState.alienPositions.length === 0) {
+		currentState.gameover = true
+		currentState.gameStarted = false
 		clearInterval(interval)
 		drawMessage("HUMAN WIN!")
-	} else if (copyState.alienPositions.some(position => position >= copyState.shipPosition)) {
+	} else if (currentState.alienPositions.some(position => position >= currentState.shipPosition)) {
 		clearInterval(interval)
-		copyState.gameover = true
-		copyState.gameStarted = false
-		copyState.cells[copyState.shipPosition].classList.remove("spaceship")
-		copyState.cells[copyState.shipPosition].classList.add("explosion")
+		currentState.gameover = true
+		currentState.gameStarted = false
+		currentState.cells[currentState.shipPosition].classList.remove("spaceship")
+		currentState.cells[currentState.shipPosition].classList.add("explosion")
 		drawMessage("GAME OVER!")
 	}
 }
@@ -189,16 +191,24 @@ const drawMessage = (message) => {
 	const h1 = document.createElement("h1")
 	h1.innerText = message
 	messageElement.append(h1)
-	copyState.element.append(messageElement)
+	currentState.element.append(messageElement)
 }
+
+const deleteMesseage = () => {
+	const messageElement = document.querySelector(".message")
+
+	if (messageElement)
+		messageElement.remove();
+}
+
 
 const drawScoreboard = () => {
 	const scoreElement = document.createElement('span')
-	scoreElement.innerText = copyState.score
+	scoreElement.innerText = currentState.score
 	const score = document.getElementById('score');
 	
 	// score.append(scoreElement)
-	copyState.scoreElement = scoreElement
+	currentState.scoreElement = scoreElement
 }
 
 

@@ -23,7 +23,7 @@ window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
     clearContentSection();
     changeToBigContentButton();
     gameElement.style.display = 'flex';
-    // clearGrids();
+    clearGrids();
     setupGame(gameElement)
     switchToBigViewDesktop();
   }
@@ -79,9 +79,6 @@ export function switchToBigViewMobil() {
 }
 
 export function switchToMobilMenuButton() {
-  const gameElement = document.querySelector(".game")
-  if (gameElement)
-    gameElement.style.display = 'none';
   const switcherElement = document.querySelector(".content-switcher")
   switcherElement.style.display = 'none'
   const mobileElement = document.querySelector(".mobile-content-switcher")
@@ -112,14 +109,32 @@ export function clearContentSection() {
   contentElement.innerHTML = "";
 }
 
+function clearGrids() {
+  const gridElement = document.querySelector(".grid");
+
+  if (gridElement)
+    gridElement.remove();
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 import { setupGame } from './spaceInvader.js'
 import { initCosmos } from './journey.js';
 import { closeopenForm } from './contact.js';
 
-export function changeContent(string) {
+export async function changeContent(string) {
   const appElement = document.querySelector(".content")
   const gameElement = document.querySelector(".game")
   
+  if (detectMobileDevice() && detectPortraitMode()) {
+    console.log("hi")
+    await sleep(750);
+  }
+
+  console.log("and already done")
+
   clearContentSection();
   document.getElementById("contactForm").style.display = "none";
   
@@ -129,6 +144,7 @@ export function changeContent(string) {
     changeToSmallContentButton();
   }
   
+
   if (string == "coding") {
     appendHtmlFromFile(appElement, "html/coding.html", initModal, fitText);
   } else if (string == "creative") {
@@ -138,6 +154,7 @@ export function changeContent(string) {
   } else if (string == "resume") {
     openPdf("./images/resume.pdf");
   } else if (string == "games") {
+    clearGrids();
     gameElement.style.display = 'flex'
     setupGame(gameElement);
   } else if (string == "contact") {

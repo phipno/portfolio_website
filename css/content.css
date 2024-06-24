@@ -22,10 +22,6 @@
   margin: 0;
 }
 
-.content {
-  overflow: auto;
-}
-
 .content-container {
   color: white;
   font-family: Arial, sans-serif;
