@@ -16,9 +16,6 @@
 #cnv {
   z-index: -1;
   position: absolute;
-  top: 10vh;
-  width: calc(100vw - 50vh);
-  height: 80vh;
 }
 
 .journey {

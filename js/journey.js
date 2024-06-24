@@ -15,7 +15,7 @@ export function initCosmos() {
 
   const W = window.innerWidth;
   const H = window.innerHeight;
-
+  console.log(W, H);
   cnv.width = W;
   cnv.height = H;
   // Set Canvas and Background Color
@@ -65,19 +65,46 @@ function handleWheelEvent() {
   const totalScrollDistance = '-' + document.documentElement.style.getPropertyValue('--total-scroll-distance');
   const animation = crawl.animate(
     [{ top: '100%' }, { top: totalScrollDistance }],
-  { duration: 100, fill: 'forwards' }
+    { duration: 100, fill: 'forwards' }
   );
+
   // Pause the animation initially
   animation.pause();
-  // Update animation progress based on scroll
-  document.addEventListener('wheel', function (event) {
-    // event.preventDefault();
-  // Adjust the playbackRate according to the scroll delta
-    const delta = Math.sign(event.deltaY);
+
+  // Function to update animation progress
+  const updateAnimation = (delta) => {
     let newTime = animation.currentTime + delta * 1; // Adjust the factor as needed
-  // Ensure newTime stays within the duration limits
+    // Ensure newTime stays within the duration limits
     newTime = Math.max(0, Math.min(animation.effect.getTiming().duration, newTime));
     animation.currentTime = newTime;
+  };
+
+  // Handle mouse wheel event
+  document.addEventListener('wheel', function (event) {
+    // event.preventDefault();
+    const delta = Math.sign(event.deltaY);
+    console.log(delta);
+    updateAnimation(delta);
+  });
+
+  // Handle touch events
+  let touchStartY = 0;
+
+  document.addEventListener('touchstart', function (event) {
+    touchStartY = event.touches[0].clientY;
+  });
+
+  document.addEventListener('touchmove', function (event) {
+    const touchMoveY = event.touches[0].clientY;
+    const delta = touchStartY - touchMoveY; // Positive for upward swipe, negative for downward swipe
+    touchStartY = touchMoveY;
+    console.log(delta);
+    updateAnimation(delta / 10); // Adjust the factor as needed
+  });
+
+  document.addEventListener('touchend', function (event) {
+    touchStartY = 0;
   });
 }
+
 /* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */

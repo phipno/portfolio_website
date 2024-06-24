@@ -127,41 +127,41 @@ import { closeopenForm } from './contact.js';
 export async function changeContent(string) {
   const appElement = document.querySelector(".content")
   const gameElement = document.querySelector(".game")
+  const testAnimation = document.getElementById(string);
   
-  if (detectMobileDevice() && detectPortraitMode()) {
-    console.log("hi")
-    await sleep(750);
-  }
-
-  console.log("and already done")
-
   clearContentSection();
   document.getElementById("contactForm").style.display = "none";
   
   if (detectPortraitMode()) {
-    switchToMobilMenuButton();
+    testAnimation.classList.add("enlarge-full-height");
+    await sleep(700);
+    if (string != "resume-button")
+      switchToMobilMenuButton();
   } else {
     changeToSmallContentButton();
   }
   
 
-  if (string == "coding") {
+  if (string == "code-button") {
     appendHtmlFromFile(appElement, "html/coding.html", initModal, fitText);
-  } else if (string == "creative") {
+  } else if (string == "creative-button") {
     appendHtmlFromFile(appElement, "html/creative.html", initModal);
-  } else if (string == "journey") {
+  } else if (string == "journey-button") {
     appendHtmlFromFile(appElement, "html/journey.html", initModal, initCosmos);
-  } else if (string == "resume") {
+  } else if (string == "resume-button") {
     openPdf("./images/resume.pdf");
-  } else if (string == "games") {
+  } else if (string == "game-button") {
     clearGrids();
     gameElement.style.display = 'flex'
     setupGame(gameElement);
-  } else if (string == "contact") {
+  } else if (string == "contact-button") {
     closeopenForm();
   }
-  if (detectPortraitMode() && string != "resume") {
-    switchToMobilMenuButton();
+  if (detectPortraitMode()) {
+    if (string != "resume-button")
+      switchToMobilMenuButton();
+    testAnimation.classList.remove("enlarge-full-height");
+
   }
 }
 
