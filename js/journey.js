@@ -99,7 +99,7 @@ function handleWheelEvent() {
     const delta = touchStartY - touchMoveY; // Positive for upward swipe, negative for downward swipe
     touchStartY = touchMoveY;
     console.log(delta);
-    updateAnimation(delta / 10); // Adjust the factor as needed
+    updateAnimation(delta / 35); // Adjust the factor as needed
   });
 
   document.addEventListener('touchend', function (event) {

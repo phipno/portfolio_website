@@ -124,6 +124,10 @@
     width: 100vw;
   }
 
+  #sw-crawl {
+    width: 100%;
+  }
+
   .contact-popup {
     height: 85vh;
     bottom: 15vh;
@@ -260,6 +264,10 @@
   #cnv {
     top: 10vh;
     height: 80vh;
+    width: calc(100vw - 50vh);
+  }
+
+  #sw-crawl {
     width: calc(100vw - 50vh);
   }
 }

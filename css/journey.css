@@ -55,8 +55,6 @@
   transform: perspective(75vh) rotateX(30deg);
   /* animation-play-state: paused; */
   overflow: hidden;
-  width: calc(100vw - 50vh);
-
   /* text-shadow: rgba(0, 0, 0, 0.763)  0 40px; */
   color: rgb(252, 223, 43);
 }
