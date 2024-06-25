@@ -37,9 +37,7 @@ export const setupGame = (element) => {
 	currentState = JSON.parse(JSON.stringify(originalState));
 	currentState.element = element;
 	currentState.cells = [];
-	const is = document.querySelector("move");
-	
-	console.log(is)
+
 	clearGrids();
 	deleteMesseage();
 	//draw the grid
@@ -92,9 +90,6 @@ export const moveShip = (direction) => {
 		} else if (direction === "right" && currentState.shipPosition % 15 !== 14) {
 				currentState.shipPosition++
 		}
-				//add image to new pos
-		console.log(currentState.shipPosition)
-		console.log(currentState.cells)
 		currentState.cells[currentState.shipPosition].classList.add("spaceship")
 	}
 }
