@@ -36,7 +36,6 @@ function clearGrids() {
 export const setupGame = (element) => {
 	currentState = JSON.parse(JSON.stringify(originalState));
 	currentState.element = element;
-	currentState.cells = [];
 
 	clearGrids();
 	deleteMesseage();
@@ -52,16 +51,19 @@ export const setupGame = (element) => {
 
 const drawGrid = () => {
 	//create containing element
+	const gridContainer = document.createElement("div")
+	gridContainer.classList.add("grid-container")
 	const grid = document.createElement("div")
 	grid.classList.add("grid")
+	gridContainer.insertBefore(grid, gridContainer.children[0])
 	//create a lot of cells - 15 x 15
 	for (let i = 0; i < currentState.numCells; i++) {
 		const cell = document.createElement("div")
 		grid.append(cell)
 		currentState.cells.push(cell)
 	}
-	//append the cells to the element	
-	currentState.element.insertBefore(grid, currentState.element.children[0])
+		//append the cells to the element	
+	currentState.element.insertBefore(gridContainer, currentState.element.children[0])
 }
 
 const drawSpaceShip = () => {

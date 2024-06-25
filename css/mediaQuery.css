@@ -23,6 +23,39 @@
     position: relative;
   }
   
+  .fill-game {
+    height: calc(100vh - 100vw - 20vh);
+  }
+
+  @media (width > 450px) {
+    .grid {
+      max-width: 80vw;
+      max-height: 80vw;
+      min-width: 80vw;
+      min-height: 80vw;
+      margin-left: 10vw;
+      margin-right: 10vw;
+    }
+    .fill-game {
+      height: calc(100vh - 80vw - 25vh);
+    }
+  }
+
+  @media (width > 700px) {
+    .grid {
+      max-width: 60vw;
+      max-height: 60vw;
+      min-width: 60vw;
+      min-height: 60vw;
+      margin-left: 20vw;
+      margin-right: 20vw;
+    }
+
+    .fill-game {
+      height: calc(100vh - 60vw - 25vh);
+    }
+  }
+
   .controlls {
     height: 10vh;
     width: 100vw;
@@ -134,6 +167,10 @@
   .grid {
     width: 50vh;
     height: 50vh;
+  }
+  
+  .fill-game {
+    height: 30vh;
   }
 
   .something {

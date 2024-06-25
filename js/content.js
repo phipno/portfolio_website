@@ -9,22 +9,23 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
-window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
+window.matchMedia("(orientation: portrait)").addEventListener("change", async (e) => {
   const portrait = e.matches;
   const gameElement = document.querySelector(".game")
 
   if (portrait) {
     gameElement.style.display = 'none'
-    clearContentSection();
+    clearElement(".content");
+    clearElement(".game");
     changeToBigContentButton();
     switchToBigViewMobil();
-    clearGrids();
   } else {
-    clearContentSection();
+    clearElement(".content");
+    clearElement(".game");
+    await appendHtmlFromFile(gameElement, "../html/spaceInvader.html");
+    setupGame(gameElement);
     changeToBigContentButton();
     gameElement.style.display = 'flex';
-    clearGrids();
-    setupGame(gameElement)
     switchToBigViewDesktop();
   }
 });
@@ -68,7 +69,7 @@ export function switchToBigViewMobil() {
   const gameElement = document.querySelector(".game")
   if (gameElement)
     gameElement.style.display = 'none';
-  clearContentSection();
+  clearElement(".content");
   document.getElementById("contactForm").style.display = "none";
 
   changeToBigContentButton();
@@ -100,9 +101,11 @@ export async function appendHtmlFromFile(appElement, filePath) {
 }
 
 
-export function clearContentSection() {
-  const contentElement = document.querySelector(".content")
-  contentElement.innerHTML = "";
+export function clearElement(string) {
+  console.log(string);
+  const contentElement = document.querySelector(string)
+  if (contentElement)
+    contentElement.innerHTML = "";
 }
 
 function sleep(ms) {
@@ -115,12 +118,18 @@ import { closeopenForm } from './contact.js';
 
 export async function changeContent(string) {
   const appElement = document.querySelector(".content")
-  const gameElement = document.querySelector(".game")
   const testAnimation = document.getElementById(string);
-  
-  clearContentSection();
+  const contentSwitcherButtons = document.querySelectorAll(".content-button")
+
+  contentSwitcherButtons.forEach(button => {
+    button.disabled = true;
+  });
+
+
+  clearElement(".content");
   document.getElementById("contactForm").style.display = "none";
   
+
   if (detectPortraitMode()) {
     testAnimation.classList.add("enlarge-full-height");
     await sleep(900);
@@ -152,11 +161,14 @@ export async function changeContent(string) {
   } else if (string == "contact-button") {
     closeopenForm();
   }
+  
   if (detectPortraitMode()) {
     if (string != "resume-button")
       switchToMobilMenuButton();
     testAnimation.classList.remove("enlarge-full-height");
-
+    contentSwitcherButtons.forEach(button => {
+      button.disabled = false;
+    });
   }
 }
 

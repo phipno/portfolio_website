@@ -9,7 +9,14 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
+.grid-container {
+  background-image: url('../images/alien.png');
+  background-repeat: space;
+  background-size: 20%;
+}
+
 .grid {
+  background-color: black;
   border: white solid 10px;
   display: grid;
   grid-template-columns: repeat(15, 1fr);
@@ -77,9 +84,9 @@
 
 .fill-game {
   display:flex;
+  width: 100%;
   background-color: black;
   overflow: hidden;
-  max-height: 25vh;
   justify-content: center;
   
 }
