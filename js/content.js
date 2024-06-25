@@ -134,7 +134,7 @@ export async function changeContent(string) {
   
   if (detectPortraitMode()) {
     testAnimation.classList.add("enlarge-full-height");
-    await sleep(700);
+    await sleep(900);
     if (string != "resume-button")
       switchToMobilMenuButton();
   } else {
