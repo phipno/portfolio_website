@@ -19,15 +19,6 @@
   <body>
     <div class="app">
       <div class="game">
-        <div class="controlls">
-          <button class="move" onclick="moveShip('left')"><-</button>
-              <button class="fire" onclick="fire()"><img class="fire-img" src="./images/explosion.png"></button>
-              <button class="move" onclick="moveShip('right')">-></button>
-        </div>
-        <button class="fill-game" onclick="play()">
-          <p class="blink_me">PLAY</p>
-          <img src="images/hand.png" class="coin-hand" id="coin-hand">
-        </button>
       </div>
       <div class="content-section">
         <div class="content-switcher">
@@ -53,6 +44,11 @@
         <div class="content">
           <!-- Here the content gets inserted -->
         </div>
+        <div class="mobile-content-switcher">
+          <button class="popup-button" id="popup-btn" onclick="switchToBigViewMobil()">
+            <p class="content-button-text" id="popup-btn-text">MENU</p>
+          </button>
+        </div>
       </div>
       <div id="project-modal" class="modal">
         <div id="modal-content" class="modal-content">
@@ -60,11 +56,6 @@
           <h3 id="modal-title"></h3>
           <p id="modal-description"></p>
         </div>
-      </div>
-      <div class="mobile-content-switcher">
-        <button class="popup-button" id="popup-btn" onclick="switchToBigViewMobil()">
-          <p class="content-button-text" id="popup-btn-text">MENU</p>
-        </button>
       </div>
       <div class="linktree-container">
         <div class="linktree">

@@ -9,7 +9,6 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
-
 const originalState = {
 	numCells: (600 / 40) * (600 / 40),
 	cells: [],
@@ -27,19 +26,30 @@ const originalState = {
 		
 let currentState = {}
 
+function clearGrids() {
+	const gridElement = document.querySelector(".grid");
+
+	if (gridElement)
+		gridElement.remove();
+}
+
 export const setupGame = (element) => {
 	currentState = JSON.parse(JSON.stringify(originalState));
 	currentState.element = element;
-
-	deleteMesseage()
+	currentState.cells = [];
+	const is = document.querySelector("move");
+	
+	console.log(is)
+	clearGrids();
+	deleteMesseage();
 	//draw the grid
-	drawGrid()
+	drawGrid();
 	//draw spaceship
-	drawSpaceShip()
+	drawSpaceShip();
 	//draw aliens
-	drawAliens()
+	drawAliens();
 	//instructions and score
-	drawScoreboard()
+	drawScoreboard();
 }
 
 const drawGrid = () => {
@@ -80,9 +90,11 @@ export const moveShip = (direction) => {
 		if (direction === "left" && currentState.shipPosition % 15 !== 0) {
 			currentState.shipPosition--
 		} else if (direction === "right" && currentState.shipPosition % 15 !== 14) {
-			currentState.shipPosition++
+				currentState.shipPosition++
 		}
-		//add image to new pos
+				//add image to new pos
+		console.log(currentState.shipPosition)
+		console.log(currentState.cells)
 		currentState.cells[currentState.shipPosition].classList.add("spaceship")
 	}
 }
@@ -139,12 +151,11 @@ export const play = () => {
 	//start movement of aliens
 	if (currentState.gameStarted)
 		return;
-	// if (currentState.gameover)
-	// 		setupGame()
-	let interval
-	let direction = "right"
-	let movement
-	currentState.gameStarted = true
+
+	let interval;
+	let direction = "right";
+	let movement;
+	currentState.gameStarted = true;
 	interval = setInterval(() => {
 		if (direction === "right") {
 			if (atEdge("right")) {
@@ -159,14 +170,13 @@ export const play = () => {
 				direction = "right"
 			} else {
 				movement = -1
-			} 
+			}
 		}
-		currentState.alienPositions = currentState.alienPositions.map(position => position + movement)
-		drawAliens()
-		checkGameState(interval)
+		currentState.alienPositions = currentState.alienPositions.map(position => position + movement);
+		drawAliens();
+		checkGameState(interval);
 	}, 400)
 	//set up ship controls
-	window.addEventListener("keydown", controllShip)
 }
 
 const checkGameState = (interval) => {

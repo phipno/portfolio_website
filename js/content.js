@@ -85,35 +85,24 @@ export function switchToMobilMenuButton() {
   mobileElement.style.display = 'flex';
 }
 
-function appendHtmlFromFile(appElement, filePath, callback, callback2) {
-  fetch(filePath)
-  .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.text();
-    })
-    .then(htmlContent => {
-      appElement.innerHTML += htmlContent;
-      if (callback) callback();
-      if (callback2) callback2();
-    })
-    .catch(error => {
-       console.error('There was a problem with the fetch operation:', error);
-    });
+export async function appendHtmlFromFile(appElement, filePath) {
+  try {
+    const response = await fetch(filePath);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const htmlContent = await response.text();
+    appElement.innerHTML += htmlContent;
+
+  } catch (error) {
+    console.error('There was a problem with the fetch operation:', error);
+  }
 }
 
 
 export function clearContentSection() {
   const contentElement = document.querySelector(".content")
   contentElement.innerHTML = "";
-}
-
-function clearGrids() {
-  const gridElement = document.querySelector(".grid");
-
-  if (gridElement)
-    gridElement.remove();
 }
 
 function sleep(ms) {
@@ -143,17 +132,23 @@ export async function changeContent(string) {
   
 
   if (string == "code-button") {
-    appendHtmlFromFile(appElement, "html/coding.html", initModal, fitText);
+    await appendHtmlFromFile(appElement, "../html/coding.html")
+    initModal()
+    fitText();
   } else if (string == "creative-button") {
-    appendHtmlFromFile(appElement, "html/creative.html", initModal);
+    await appendHtmlFromFile(appElement, "../html/creative.html")
+    initModal();
   } else if (string == "journey-button") {
-    appendHtmlFromFile(appElement, "html/journey.html", initModal, initCosmos);
+    await appendHtmlFromFile(appElement, "../html/journey.html")
+    initModal();
+    initCosmos();
   } else if (string == "resume-button") {
-    openPdf("./images/resume.pdf");
+    openPdf("../images/resume.pdf");
   } else if (string == "game-button") {
-    clearGrids();
-    gameElement.style.display = 'flex'
-    setupGame(gameElement);
+    if (detectPortraitMode()) {
+      await appendHtmlFromFile(appElement, "../html/spaceInvader.html");
+      setupGame(appElement);
+    }
   } else if (string == "contact-button") {
     closeopenForm();
   }
