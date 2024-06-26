@@ -231,6 +231,48 @@
     padding: 0;
     /* text-shadow: 10px 10px black; */
   }
+  #game-button:hover.content-button {
+    background-image: url(../images/building.gif);
+    background-position: center;
+    background-size: contain;
+    background-color: white;
+    background-blend-mode: exclusion;
+  }
+  #game-button:focus.content-button {
+    background-image: url(../images/building.gif);
+    background-position: center;
+    background-size: contain;
+    background-color: white;
+    background-blend-mode: exclusion;
+  }
+  #game-button.content-button {
+    background: url(../images/building-frame.png);
+    background-size: contain;
+    background-position: center;
+    background-color: #ace8fae5;
+    background-blend-mode: multiply;
+  }
+
+  
+  #contact-button:focus.content-button {
+    background-image: url(../images/windmill.gif);
+    background-position: center;
+    background-color: #7cedd3e5;
+    background-blend-mode: multiply;
+  }
+  #contact-button:hover.content-button {
+    background-image: url(../images/windmill.gif);
+    background-position: center;
+    background-color: #7cedd3e5;
+    background-blend-mode: multiply;
+  }
+  #contact-button.content-button {
+    background: url(../images/windmill-frame.jpg);
+    background-size: cover;
+    background-position: center;
+    background-color: #7cedd3e5;
+    background-blend-mode: multiply;
+  }
 
   #code-button.content-button {
     background: url(../images/coding-frame-ezgif.com-instagif.png);
@@ -284,33 +326,33 @@
   }
 
   #creative-button:focus.content-button {
-    background-image: url(../images/creative-ezgif.com-instagif\(1\).gif);
+    background-image: url(../images/creative-ezgif.com-rotate.gif);
     background-color: white;
     background-blend-mode: exclusion;
   }
   #creative-button:hover.content-button {
-    background-image: url(../images/creative-ezgif.com-instagif\(1\).gif);
+    background-image: url(../images/creative-ezgif.com-rotate.gif);
     background-color: white;
     background-blend-mode: exclusion;
   }
   #creative-button.content-button {
-    background: url(../images/creative-frame-ezgif.com-instagif.png);
-    background-size: cover;
+    background: url(../images/creative-frame-ezgif.com-rotate.png);
+    background-size: contain;
     background-color: #f1decfa9;
     background-blend-mode: multiply;
   }
   #creative-button:focus.content-button-small {
-    background-image: url(../images/creative-ezgif.com-instagif\(1\).gif);
+    background-image: url(../images/creative-ezgif.com-rotate.gif);
     background-color: white;
     background-blend-mode: exclusion;
   }
   #creative-button:hover.content-button-small {
-    background-image: url(../images/creative-ezgif.com-instagif\(1\).gif);
+    background-image: url(../images/creative-ezgif.com-rotate.gif);
     background-color: white;
     background-blend-mode: exclusion;
   }
   #creative-button.content-button-small {
-    background: url(../images/creative-frame-ezgif.com-instagif.png);
+    background: url(../images/creative-frame-ezgif.com-rotate.png );
     background-size: cover;
     background-color: #f1decfa9;
     background-blend-mode: multiply;
