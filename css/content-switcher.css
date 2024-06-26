@@ -116,13 +116,13 @@
 
 
   #creative-button:hover.content-button {
-    background-image: url(../images/creative-ezgif.com-instagif\(1\).gif);
+    background-image: url(../images/creative-mono.gif);
     background-color: white;
     background-blend-mode: exclusion;
   }
 
   #creative-button.content-button {
-    background: url(../images/creative-frame-ezgif.com-instagif.png);
+    background: url(../images/creative-mono.png);
     background-size: cover;
     background-color: #f1decfa9;
     background-blend-mode: multiply;
@@ -132,13 +132,13 @@
   }
 
   #creative-button:hover.content-button-small {
-    background-image: url(../images/creative-ezgif.com-instagif\(1\).gif);
+    background-image: url(../images/creative-mono.gif);
     background-color: white;
     background-blend-mode: exclusion;
   }
 
   #creative-button.content-button-small {
-    background: url(../images/creative-frame-ezgif.com-instagif.png);
+    background: url(../images/creative-mono.png);
     background-size: cover;
     background-color: #f1decfa9;
     background-blend-mode: multiply;

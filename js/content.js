@@ -70,7 +70,6 @@ export function switchToBigViewMobil() {
   if (gameElement)
     gameElement.style.display = 'none';
   clearElement(".content");
-  document.getElementById("contactForm").style.display = "none";
 
   changeToBigContentButton();
   const switcherElement = document.querySelector(".content-switcher")
@@ -114,7 +113,7 @@ function sleep(ms) {
 
 import { setupGame } from './spaceInvader.js'
 import { initCosmos } from './journey.js';
-import { closeopenForm } from './contact.js';
+import { formSubmit } from './contact.js';
 
 export async function changeContent(string) {
   const appElement = document.querySelector(".content")
@@ -126,9 +125,7 @@ export async function changeContent(string) {
   });
 
 
-  clearElement(".content");
-  document.getElementById("contactForm").style.display = "none";
-  
+  clearElement(".content");  
 
   if (detectPortraitMode()) {
     testAnimation.classList.add("enlarge-full-height");
@@ -143,10 +140,13 @@ export async function changeContent(string) {
   if (string == "code-button") {
     await appendHtmlFromFile(appElement, "../html/coding.html")
     initModal()
-    fitText();
+    fitText(".project-card h3");
+    initFitText(".project-card h3")
   } else if (string == "creative-button") {
     await appendHtmlFromFile(appElement, "../html/creative.html")
     initModal();
+    fitText(".project-card h3");
+    initFitText(".project-card h3")
   } else if (string == "journey-button") {
     await appendHtmlFromFile(appElement, "../html/journey.html")
     initModal();
@@ -159,17 +159,22 @@ export async function changeContent(string) {
       setupGame(appElement);
     }
   } else if (string == "contact-button") {
-    closeopenForm();
+    await appendHtmlFromFile(appElement, "../html/contact.html");
+    if (!detectPortraitMode()) {
+      document.querySelector(".pop-up").style.display = "none"
+      document.querySelector(".pop-down").style.display = "flex"
+    }
+    formSubmit();
   }
   
   if (detectPortraitMode()) {
     if (string != "resume-button")
       switchToMobilMenuButton();
     testAnimation.classList.remove("enlarge-full-height");
-    contentSwitcherButtons.forEach(button => {
-      button.disabled = false;
-    });
   }
+  contentSwitcherButtons.forEach(button => {
+    button.disabled = false;
+  });
 }
 
 function initModal() {
@@ -212,8 +217,8 @@ function openPdf(path_to_pdf) {
   window.open(path_to_pdf, '_blank')
 }
 
-export function fitText() {
-  const headers = document.querySelectorAll('.project-card h3')
+export function fitText(string) {
+  const headers = document.querySelectorAll(string)
   const minFontSize = 10;
   const maxFontSize = 100;
   
@@ -225,6 +230,11 @@ export function fitText() {
       header.style.fontSize = fontSize + 'px'; // Prevent infinite loop in case of very long text
     }
   });
+}
+
+function initFitText(string) {
+  window.addEventListener('load', fitText(string));
+  window.addEventListener('resize', fitText(string));
 }
 
 export function detectPortraitMode() {

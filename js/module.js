@@ -15,21 +15,18 @@ import {
   switchToBigViewMobil, switchToMobilMenuButton,
   detectPortraitMode, appendHtmlFromFile
 } from './content.js';
-import { closeopenForm } from './contact.js';
+import { closeForm } from './contact.js';
 
 window.changeContent = changeContent;
 window.switchToBigViewDesktop = switchToBigViewDesktop;
 window.switchToBigViewMobil = switchToBigViewMobil;
 window.switchToMobilMenuButton = switchToMobilMenuButton;
 
-window.closeopenForm = closeopenForm;
+window.closeForm = closeForm;
 
 window.play = play;
 window.fire = fire;
 window.moveShip = moveShip;
-
-window.addEventListener('load', fitText);
-window.addEventListener('resize', fitText);
 
 if (!detectPortraitMode()) {
   const gameElement = document.querySelector(".game")

@@ -135,6 +135,7 @@
     bottom: 15vh;
     left:0;
   }
+  
   .contact-text {
     display: none;
   }
@@ -145,8 +146,8 @@
     padding: 0 !important;
   }
 
-  .pop-up {
-    display: none;
+  .pop-up, .pop-down {
+    display: none !important;
   }
 }
 
@@ -249,6 +250,10 @@
     height: 80vh;
     bottom: 10vh;
     left: 50vh;
+  }
+
+  .pop-up, .pop-down {
+    display: flex;
   }
   
   @media (max-width: calc(700px + 50vh)) {
