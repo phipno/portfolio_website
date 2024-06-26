@@ -54,7 +54,6 @@ import { changeToBigContentButton } from "./content.js";
 import { clearElement } from "./content.js";
 
 export function closeForm() {
-  console.log("hi")
   clearElement(".content");
   document.querySelector(".pop-up").style.display = "flex"
   document.querySelector(".pop-down").style.display = "none"
