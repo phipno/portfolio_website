@@ -153,6 +153,7 @@ export async function changeContent(string) {
     initCosmos();
   } else if (string == "resume-button") {
     openPdf("../images/resume.pdf");
+    changeToBigContentButton();
   } else if (string == "game-button") {
     if (detectPortraitMode()) {
       await appendHtmlFromFile(appElement, "../html/spaceInvader.html");
