@@ -51,18 +51,24 @@ export function formSubmit() {
 }
 
 
-import { clearElement, sleep, changeToBigContentButton } from "./content.js";
+import { clearElement, sleep, changeToBigContentButton, getAllContentButtons } from "./content.js";
 
 export async function closeForm() {
   const contentElement = document.querySelector(".content");
+  const contentButtons = getAllContentButtons();
   changeToBigContentButton();
   contentElement.classList.remove("slide-contact-down");
   contentElement.classList.add("slide-contact-down");
   await sleep(400);
   clearElement(".content");
   contentElement.classList.remove("slide-contact-down");
+  contentElement.classList.remove("slide-contact-down");
   document.querySelector(".pop-up").style.display = "flex";
   document.querySelector(".pop-down").style.display = "none";
+  contentButtons.forEach(element => {
+    element.classList.remove("enlarge-content-switcher");
+    element.classList.remove("shrink-normal-width");
+  });
 }
 
 /* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */

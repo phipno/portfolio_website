@@ -41,13 +41,14 @@
   }
 }
 
+.shrink-small-content-switcher {
+  animation: shrinkSmallContentSwitcher ease-in-out 0.4s forwards;
+}
+
 .enlarge-content-switcher {
   animation: enlargeContentSwitcher ease-in-out 0.4s forwards;
 }
 
-.shrink-small-content-switcher {
-  animation: shrinkSmallContentSwitcher ease-in-out 0.4s forwards;
-}
 
 .shrink-normal-width {
   animation: shrinkNormalWidth ease-in-out 0.4s forwards;

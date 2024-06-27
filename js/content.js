@@ -32,7 +32,7 @@ window.matchMedia("(orientation: portrait)").addEventListener("change", async (e
   }
 });
 
-function getAllContentButtons() {
+export function getAllContentButtons() {
   let contentSwitcherButtons = document.querySelectorAll(".content-button")
   if (contentSwitcherButtons.length == 0) {
     contentSwitcherButtons = document.querySelectorAll(".content-button-small");
@@ -71,12 +71,12 @@ export function changeToBigContentButton() {
       element.classList.remove("content-button-small");
       element.classList.add("content-button");
       element.classList.remove("shrink-small-content-switcher");
-      if (!detectPortraitMode()) {
-        element.classList.add("enlarge-content-switcher");
-        // element.classList.add("shrink-normal-width");
-      }
       element.classList.remove("enlarge-full-width");
-      });
+      if (!detectPortraitMode()) {
+        element.classList.add("shrink-normal-width");
+        element.classList.add("enlarge-content-switcher");
+      }
+    });
   }
 }
 
@@ -210,10 +210,6 @@ export async function changeContent(string) {
     }
     formSubmit();
   }
-  contentSwitcherButtons.forEach(element => {
-    element.classList.add("shrink-small-content-switcher");
-  });
-
   
   if (detectPortraitMode()) {
     if (string != "resume-button")
@@ -223,6 +219,10 @@ export async function changeContent(string) {
   else {
     if (string != "resume-button")
       changeToSmallContentButton();
+    contentSwitcherButtons.forEach(element => {
+      element.classList.remove("enlarge-content-switcher");
+      element.classList.add("shrink-small-content-switcher");
+    });
     document.querySelector(".content").classList.add("slide-content-up");
     await sleep(400)
     document.querySelector(".content").classList.remove("slide-content-up");
