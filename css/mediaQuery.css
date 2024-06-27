@@ -24,11 +24,12 @@
   }
   
   .fill-game {
-    height: calc(100vh - 100vw - 20vh);
+    height: calc(100vh - 100vw - 25vh);
   }
 
   .message {
     width: 100vw;
+    left: 50%;
   }
 
   @media (width > 450px) {
@@ -45,7 +46,6 @@
     }
     .message {
       width: 80vw;
-      left: 50%;
     }
   }
 
