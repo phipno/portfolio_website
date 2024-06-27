@@ -27,6 +27,10 @@
     height: calc(100vh - 100vw - 20vh);
   }
 
+  .message {
+    width: 100vw;
+  }
+
   @media (width > 450px) {
     .grid {
       max-width: 80vw;
@@ -38,6 +42,10 @@
     }
     .fill-game {
       height: calc(100vh - 80vw - 25vh);
+    }
+    .message {
+      width: 80vw;
+      left: 50%;
     }
   }
 
@@ -53,6 +61,9 @@
 
     .fill-game {
       height: calc(100vh - 60vw - 25vh);
+    }
+    .message {
+      width: 60vw;
     }
   }
 
@@ -132,7 +143,6 @@
 
   .contact-popup {
     height: 85vh;
-    bottom: 15vh;
     left:0;
   }
   
@@ -178,6 +188,11 @@
   
   .fill-game {
     height: 30vh;
+  }
+
+  .message {
+    width: calc(50vh - 20px);
+    left: calc(25vh);
   }
 
   .something {
@@ -248,8 +263,6 @@
   .contact-popup {
     width: calc(100vw - 50vh);
     height: 80vh;
-    bottom: 10vh;
-    left: 50vh;
   }
 
   .pop-up, .pop-down {

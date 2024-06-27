@@ -124,7 +124,7 @@ export async function changeContent(string) {
     button.disabled = true;
   });
 
-
+  closeForm();
   clearElement(".content");  
 
   if (detectPortraitMode()) {

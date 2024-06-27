@@ -47,13 +47,14 @@
 }
 
 .message {
-  width: 80%;
   height: auto;
   position: absolute;
   top: 10%;
-  left: 51%;
+  font-family: 'DS-Digital', sans-serif;
   transform: translate(-50%, -10%);
   background-color: white;
+  z-index: 11;
+  border: solid black 10px;
 }
 
 .message h1 {
@@ -92,7 +93,7 @@
 }
 
 .fill-game p {
-  margin-top: auto;
+  margin: auto;
   font-family: 'DS-Digital', sans-serif;
   font-weight: 1000;
   font-size: 6rem;

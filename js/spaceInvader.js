@@ -27,7 +27,7 @@ const originalState = {
 let currentState = {}
 
 function clearGrids() {
-	const gridElement = document.querySelector(".grid");
+	const gridElement = document.querySelector(".grid-container");
 
 	if (gridElement)
 		gridElement.remove();
@@ -144,11 +144,13 @@ const atEdge = (side) => {
 	}
 }
 
-export const play = () => {
+export const play = (event) => {
 	//start movement of aliens
 	if (currentState.gameStarted)
 		return;
-
+	if (currentState.gameover) {
+		setupGame(event.target.parentElement.parentElement)
+	}
 	let interval;
 	let direction = "right";
 	let movement;
@@ -172,7 +174,7 @@ export const play = () => {
 		currentState.alienPositions = currentState.alienPositions.map(position => position + movement);
 		drawAliens();
 		checkGameState(interval);
-	}, 400)
+	}, 300)
 	//set up ship controls
 }
 

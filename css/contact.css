@@ -188,7 +188,7 @@
 
 .form-group-container h1 {
   font-size: 2rem;
-  margin: 20px 40px 50px 40px;
+  margin: 20px 40px 0px 40px;
   font-family: O4B_30;
   color: white;
   text-shadow: -1px -1px 0 #ff5252, 1px -1px 0 #ff5252, -1px 1px 0 #ff5252, 1px 1px 0 #ff5252, 5px 5px #ff5252;
@@ -203,7 +203,7 @@
   position: relative;
   flex-direction: column;
   max-width: 600px;
-  margin: 5px 40px 30px 40px
+  margin: 5px 40px 2.5vh 40px
 }
 
 .form-input{
