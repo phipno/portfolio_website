@@ -29,7 +29,33 @@
 }
 
 .enlarge-full-height {
-  animation: enlargeFullHeight ease-in-out 0.7s  forwards;
+  animation: enlargeFullHeight ease-in-out 0.7s forwards;
+}
+
+@keyframes enlargeFullWidth {
+  from {
+    opacity: 1;
+  }
+  to {
+    width: 50%;
+  }
+}
+
+@keyframes shrinkNormalWidth {
+  from {
+    opacity: 1;
+  }
+  to {
+    width : 25%;
+  }
+}
+
+.shrink-normal-width {
+  animation: shrinkNormalWidth ease-in-out 0.7s forwards;
+}
+
+.enlarge-full-width {
+  animation: enlargeFullWidth ease-in-out 0.7s forwards;
 }
 
 .popup-button {

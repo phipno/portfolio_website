@@ -200,11 +200,9 @@
   }
 
   .content-switcher {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
     height: 100%;
     width: calc(100vw - 50vh); 
-    z-index: 10;
   }
 
   .content-section {
@@ -219,6 +217,7 @@
   }
 
   .content-button {
+    width: 25%;
     height: 100%;
     writing-mode: vertical-rl;
     text-orientation: upright;
@@ -252,6 +251,7 @@
   }
 
   .content-button-small {
+    width: 25%;
     height: 10vh;
     margin: 0;
     max-width: 100%;

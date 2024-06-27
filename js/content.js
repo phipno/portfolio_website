@@ -51,6 +51,8 @@ export function changeToBigContentButton() {
     contentButton.forEach(element => {
       element.classList.remove("content-button-small")
       element.classList.add("content-button")
+      element.classList.add("shrink-normal-width")
+      element.classList.remove("enlarge-full-width")
     });
   }
 }
@@ -101,7 +103,6 @@ export async function appendHtmlFromFile(appElement, filePath) {
 
 
 export function clearElement(string) {
-  console.log(string);
   const contentElement = document.querySelector(string)
   if (contentElement)
     contentElement.innerHTML = "";
@@ -113,29 +114,41 @@ function sleep(ms) {
 
 import { setupGame } from './spaceInvader.js'
 import { initCosmos } from './journey.js';
-import { formSubmit } from './contact.js';
+import { closeForm, formSubmit } from './contact.js';
 
 export async function changeContent(string) {
   const appElement = document.querySelector(".content")
-  const testAnimation = document.getElementById(string);
-  const contentSwitcherButtons = document.querySelectorAll(".content-button")
+  const animation = document.getElementById(string);
+  let contentSwitcherButtons = document.querySelectorAll(".content-button")
+  if (contentSwitcherButtons.length == 0) {
+    contentSwitcherButtons = document.querySelectorAll(".content-button-small");
+  }
 
   contentSwitcherButtons.forEach(button => {
     button.disabled = true;
   });
-
-  closeForm();
-  clearElement(".content");  
+  if (document.getElementById("contactForm")) {
+    closeForm();
+  }
+  clearElement(".content");
 
   if (detectPortraitMode()) {
-    testAnimation.classList.add("enlarge-full-height");
+    animation.classList.add("enlarge-full-height");
     await sleep(900);
     if (string != "resume-button")
       switchToMobilMenuButton();
   } else {
-    changeToSmallContentButton();
+    if (string != "contact-button") {
+      contentSwitcherButtons.forEach(button => {
+        button.classList.add("shrink-normal-width")
+        button.classList.remove("enlarge-full-width")
+      })
+      animation.classList.add("enlarge-full-width")
+      await sleep(900);
+    }
+    if (string != "resume-button")
+      changeToSmallContentButton();
   }
-  
 
   if (string == "code-button") {
     await appendHtmlFromFile(appElement, "../html/coding.html")
@@ -171,7 +184,7 @@ export async function changeContent(string) {
   if (detectPortraitMode()) {
     if (string != "resume-button")
       switchToMobilMenuButton();
-    testAnimation.classList.remove("enlarge-full-height");
+    animation.classList.remove("enlarge-full-height");
   }
   contentSwitcherButtons.forEach(button => {
     button.disabled = false;
