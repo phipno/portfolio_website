@@ -36,8 +36,13 @@
   width: 100%;
 }
 
+.linktree .link:hover img {
+  transform: scale(1.1, 1.1);
+}
+
 .linktree .link:last-child img {
   filter: invert(100%);
 }
+
 
 /* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */
