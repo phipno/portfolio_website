@@ -10,9 +10,11 @@
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
 .pop-up-btn, .pop-down-btn {
+  position: relative;
   font-size: 5rem;
   font-weight: bolder;
   margin-left: auto;
+  background-color: transparent;
 }
 
 .pop-up-btn {
@@ -60,6 +62,7 @@
 }
 
 .pop-text {
+  background-color: transparent;
   font-weight: bolder;
   margin-left: auto;
   font-weight: 1000;
@@ -126,6 +129,7 @@
 }
 
 .contact {
+  position: relative;
   display: flex;
   height: 10vh;
   width: calc(100vw - 50vh);
@@ -133,6 +137,7 @@
   margin: 0 3% 3% 0;
   padding-left: 0.34%;
   color:black;
+  background-color: transparent;
 }
 
 .contact-popup {
@@ -141,7 +146,6 @@
   position: fixed;
   border: 3px solid #f1f1f1;   
   background-color: white; 
-  z-index: 1;
   overflow: auto;
 }
 

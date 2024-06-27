@@ -14,7 +14,7 @@
   width: 100vw;
   position: absolute;
   bottom: 0;
-  z-index: 10;
+  z-index: 1;
   display: none;
 }
 
@@ -34,28 +34,99 @@
 
 @keyframes enlargeFullWidth {
   from {
-    opacity: 1;
+    width: 25%;
   }
   to {
     width: 50%;
   }
 }
 
-@keyframes shrinkNormalWidth {
-  from {
-    opacity: 1;
-  }
-  to {
-    width : 25%;
-  }
+.enlarge-content-switcher {
+  animation: enlargeContentSwitcher ease-in-out 0.4s forwards;
+}
+
+.shrink-small-content-switcher {
+  animation: shrinkSmallContentSwitcher ease-in-out 0.4s forwards;
 }
 
 .shrink-normal-width {
-  animation: shrinkNormalWidth ease-in-out 0.7s forwards;
+  animation: shrinkNormalWidth ease-in-out 0.4s forwards;
 }
 
 .enlarge-full-width {
-  animation: enlargeFullWidth ease-in-out 0.7s forwards;
+  animation: enlargeFullWidth ease-in-out 0.4s forwards;
+}
+
+
+@keyframes shrinkNormalWidth {
+  from {
+    width: 50%;
+  }
+  to {
+    width: 25%;
+  }
+}
+
+@keyframes shrinkSmallContentSwitcher {
+  from {
+    height: 90vh;
+  }
+  to {
+    height: 10vh;
+  }
+}
+
+
+
+@keyframes enlargeContentSwitcher {
+  from {
+    height: 10vh;
+  }
+
+  to {
+    height: 90vh;
+  }
+}
+
+.slide-content-up {
+  animation: slideContentUp ease-in-out 0.4s forwards;
+}
+
+@keyframes slideContentUp {
+  from {
+    top: 100vh;
+  }
+
+  to {
+    top: 10vh;
+  }
+}
+
+.slide-content-out {
+  animation: slideContentOut ease-in-out 0.4s forwards;
+}
+
+@keyframes slideContentOut {
+  from {
+    left: 50vh;
+  }
+
+  to {
+    left: 100vw;
+  }
+}
+
+.slide-contact-down {
+  animation: slideContactDown ease-in-out 0.4s forwards;
+}
+
+@keyframes slideContactDown {
+  from {
+    top: 10vh;
+  }
+  to {
+    top: 100vh;
+  }
 }
 
 .popup-button {

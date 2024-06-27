@@ -93,10 +93,9 @@
   .content-switcher {
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: relative;
     width: 100vw;
     height: 100%;
-    z-index: 10;
   }
 
   .content-button {
@@ -225,6 +224,7 @@
     display: flex;
     padding: 0px 0.5vw 0px 0.5vw;
     border:white 0.5vw solid;
+    border-bottom: none;
   }
 
   .linktree {
@@ -238,7 +238,6 @@
   .content-button:hover {
     border: 4px solid #ff5252;
     box-shadow: 0px 200px 0px #ff5252;
-    z-index: 11;
   }
 
   .content-switcher-small {
@@ -248,6 +247,9 @@
 
   .content {
     overflow: auto;
+    position: absolute;
+    top: 10vh;
+    height: auto;
   }
 
   .content-button-small {

@@ -53,7 +53,7 @@
   font-family: 'DS-Digital', sans-serif;
   transform: translate(-50%, -10%);
   background-color: white;
-  z-index: 11;
+  z-index: 1;
   border: solid black 10px;
 }
 

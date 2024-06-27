@@ -12,12 +12,14 @@
 window.matchMedia("(orientation: portrait)").addEventListener("change", async (e) => {
   const portrait = e.matches;
   const gameElement = document.querySelector(".game")
+  const contentSwitcherButtons = getAllContentButtons();
 
   if (portrait) {
     gameElement.style.display = 'none'
     clearElement(".content");
     clearElement(".game");
     changeToBigContentButton();
+    removeAllAnimations();
     switchToBigViewMobil();
   } else {
     clearElement(".content");
@@ -30,30 +32,51 @@ window.matchMedia("(orientation: portrait)").addEventListener("change", async (e
   }
 });
 
+function getAllContentButtons() {
+  let contentSwitcherButtons = document.querySelectorAll(".content-button")
+  if (contentSwitcherButtons.length == 0) {
+    contentSwitcherButtons = document.querySelectorAll(".content-button-small");
+  }
+  return contentSwitcherButtons;
+}
 
 export function changeToSmallContentButton() {
-  const switcherElement = document.querySelector(".content-switcher")
-  const contentButton = document.querySelectorAll(".content-button")
+  const switcherElement = document.querySelector(".content-switcher");
+  const contentButtons = getAllContentButtons();
   if (switcherElement) {
     switcherElement.classList.add("content-switcher-small")
-    contentButton.forEach(element => {
+    contentButtons.forEach(element => {
       element.classList.remove("content-button")
       element.classList.add("content-button-small")
     });
   }
 }
 
+function removeAllAnimations() {
+  const contentSwitcherButtons = getAllContentButtons();
+
+  contentSwitcherButtons.forEach(element => {
+    element.classList.remove("shrink-normal-width");
+    element.classList.remove("enlarge-full-width");
+  })
+}
+
 export function changeToBigContentButton() {
   const switcherElement = document.querySelector(".content-switcher")
-  const contentButton = document.querySelectorAll(".content-button-small")
+  const contentButtons = document.querySelectorAll(".content-button-small")
+  
   if (switcherElement) {
     switcherElement.classList.remove("content-switcher-small")
-    contentButton.forEach(element => {
-      element.classList.remove("content-button-small")
-      element.classList.add("content-button")
-      element.classList.add("shrink-normal-width")
-      element.classList.remove("enlarge-full-width")
-    });
+    contentButtons.forEach(element => {
+      element.classList.remove("content-button-small");
+      element.classList.add("content-button");
+      element.classList.remove("shrink-small-content-switcher");
+      if (!detectPortraitMode()) {
+        element.classList.add("enlarge-content-switcher");
+        // element.classList.add("shrink-normal-width");
+      }
+      element.classList.remove("enlarge-full-width");
+      });
   }
 }
 
@@ -62,7 +85,7 @@ export function switchToBigViewDesktop() {
   if (gameElement)
     gameElement.style.display = 'flex';
   const switcherElement = document.querySelector(".content-switcher")
-  switcherElement.style.display = 'grid'
+  switcherElement.style.display = 'flex'
   const mobileElement = document.querySelector(".mobile-content-switcher")
   mobileElement.style.display = 'none';
 }
@@ -95,7 +118,6 @@ export async function appendHtmlFromFile(appElement, filePath) {
     }
     const htmlContent = await response.text();
     appElement.innerHTML += htmlContent;
-
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
   }
@@ -108,7 +130,13 @@ export function clearElement(string) {
     contentElement.innerHTML = "";
 }
 
-function sleep(ms) {
+function disableorenableButtons(buttons, bool) {
+  buttons.forEach(button => {
+    button.disabled = bool;
+  });
+}
+
+export function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
@@ -119,17 +147,18 @@ import { closeForm, formSubmit } from './contact.js';
 export async function changeContent(string) {
   const appElement = document.querySelector(".content")
   const animation = document.getElementById(string);
-  let contentSwitcherButtons = document.querySelectorAll(".content-button")
-  if (contentSwitcherButtons.length == 0) {
-    contentSwitcherButtons = document.querySelectorAll(".content-button-small");
-  }
+  const contentSwitcherButtons = getAllContentButtons();
 
-  contentSwitcherButtons.forEach(button => {
-    button.disabled = true;
-  });
+  disableorenableButtons(contentSwitcherButtons, true);
+
   if (document.getElementById("contactForm")) {
     closeForm();
   }
+  if (appElement.childElementCount != 0) {
+    appElement.classList.add("slide-content-out")
+    await sleep(400)
+  }
+  appElement.classList.remove("slide-content-out");
   clearElement(".content");
 
   if (detectPortraitMode()) {
@@ -140,18 +169,19 @@ export async function changeContent(string) {
   } else {
     if (string != "contact-button") {
       contentSwitcherButtons.forEach(button => {
-        button.classList.add("shrink-normal-width")
-        button.classList.remove("enlarge-full-width")
+        button.classList.remove("enlarge-full-width");
+        if (animation == button) {
+          button.classList.add("shrink-normal-width")
+        }
       })
       animation.classList.add("enlarge-full-width")
-      await sleep(900);
+      await sleep(400);
     }
-    if (string != "resume-button")
-      changeToSmallContentButton();
   }
 
   if (string == "code-button") {
     await appendHtmlFromFile(appElement, "../html/coding.html")
+    document.querySelector(".content").classList.add("slide-content-up");
     initModal()
     fitText(".project-card h3");
     initFitText(".project-card h3")
@@ -180,15 +210,24 @@ export async function changeContent(string) {
     }
     formSubmit();
   }
+  contentSwitcherButtons.forEach(element => {
+    element.classList.add("shrink-small-content-switcher");
+  });
+
   
   if (detectPortraitMode()) {
     if (string != "resume-button")
       switchToMobilMenuButton();
     animation.classList.remove("enlarge-full-height");
   }
-  contentSwitcherButtons.forEach(button => {
-    button.disabled = false;
-  });
+  else {
+    if (string != "resume-button")
+      changeToSmallContentButton();
+    document.querySelector(".content").classList.add("slide-content-up");
+    await sleep(400)
+    document.querySelector(".content").classList.remove("slide-content-up");
+  }
+  disableorenableButtons(contentSwitcherButtons, false);
 }
 
 function initModal() {

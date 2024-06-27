@@ -50,14 +50,19 @@ export function formSubmit() {
   });
 }
 
-import { changeToBigContentButton } from "./content.js";
-import { clearElement } from "./content.js";
 
-export function closeForm() {
+import { clearElement, sleep, changeToBigContentButton } from "./content.js";
+
+export async function closeForm() {
+  const contentElement = document.querySelector(".content");
+  changeToBigContentButton();
+  contentElement.classList.remove("slide-contact-down");
+  contentElement.classList.add("slide-contact-down");
+  await sleep(400);
   clearElement(".content");
+  contentElement.classList.remove("slide-contact-down");
   document.querySelector(".pop-up").style.display = "flex";
   document.querySelector(".pop-down").style.display = "none";
-  changeToBigContentButton();
 }
 
 /* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */
