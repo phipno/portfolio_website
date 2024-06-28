@@ -113,6 +113,7 @@
     height: 85vh;
     width: 100%;
     position: absolute;
+    display: none;
   }
 
   .content-container {
@@ -248,8 +249,10 @@
   .content {
     overflow: auto;
     position: absolute;
+    display: none;
+    height: 80vh;
     top: 10vh;
-    height: auto;
+    width: calc(100vw - 50vh);
   }
 
   .content-button-small {

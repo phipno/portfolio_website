@@ -96,7 +96,8 @@
   margin: auto;
   width: 100%;
   text-align: center;
-  position: relative;
+  position: absolute;
+  z-index: 10;
   animation: blink 2s linear 4;
 }
 

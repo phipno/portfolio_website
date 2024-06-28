@@ -10,15 +10,15 @@
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
 export function formSubmit() {
-  form.addEventListener('submit', function (e) {
-    const form = document.getElementById('form');
-    const result = document.getElementById('result');
+  form.addEventListener("submit", function (e) {
+    const form = document.getElementById("form");
+    const result = document.getElementById("result");
     e.preventDefault();
     const formData = new FormData(form);
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
     result.style.display = "block";
-    result.innerHTML = "Please wait..."
+    result.innerHTML = "Please wait...";
 
     // fetch('https://api.web3forms.com/submit', {
     //   method: 'POST',
@@ -50,25 +50,16 @@ export function formSubmit() {
   });
 }
 
-
-import { clearElement, sleep, changeToBigContentButton, getAllContentButtons } from "./content.js";
+import {
+  clearElement,
+  changeToBigContentButton,
+} from "./content.js";
 
 export async function closeForm() {
-  const contentElement = document.querySelector(".content");
-  const contentButtons = getAllContentButtons();
   changeToBigContentButton();
-  contentElement.classList.remove("slide-contact-down");
-  contentElement.classList.add("slide-contact-down");
-  await sleep(400);
   clearElement(".content");
-  contentElement.classList.remove("slide-contact-down");
-  contentElement.classList.remove("slide-contact-down");
   document.querySelector(".pop-up").style.display = "flex";
   document.querySelector(".pop-down").style.display = "none";
-  contentButtons.forEach(element => {
-    element.classList.remove("enlarge-content-switcher");
-    element.classList.remove("shrink-normal-width");
-  });
 }
 
 /* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */
