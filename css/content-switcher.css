@@ -41,19 +41,6 @@
   }
 }
 
-.shrink-small-content-switcher {
-  animation: shrinkSmallContentSwitcher ease-in-out 0.4s forwards;
-}
-
-.enlarge-content-switcher {
-  animation: enlargeContentSwitcher ease-in-out 0.4s forwards;
-}
-
-
-.shrink-normal-width {
-  animation: shrinkNormalWidth ease-in-out 0.4s forwards;
-}
-
 .enlarge-full-width {
   animation: enlargeFullWidth ease-in-out 0.4s forwards;
 }
@@ -68,6 +55,10 @@
   }
 }
 
+.shrink-normal-width {
+  animation: shrinkNormalWidth ease-in-out 0.4s forwards;
+}
+
 @keyframes shrinkSmallContentSwitcher {
   from {
     height: 90vh;
@@ -77,6 +68,9 @@
   }
 }
 
+.shrink-small-content-switcher {
+  animation: shrinkSmallContentSwitcher ease-in-out 0.4s forwards;
+}
 
 
 @keyframes enlargeContentSwitcher {
@@ -89,8 +83,8 @@
   }
 }
 
-.slide-content-up {
-  animation: slideContentUp ease-in-out 0.4s forwards;
+.enlarge-content-switcher {
+  animation: enlargeContentSwitcher ease-in-out 0.4s forwards;
 }
 
 @keyframes slideContentUp {
@@ -103,8 +97,8 @@
   }
 }
 
-.slide-content-out {
-  animation: slideContentOut ease-in-out 0.4s forwards;
+.slide-content-up {
+  animation: slideContentUp ease-in-out 0.4s forwards;
 }
 
 @keyframes slideContentOut {
@@ -117,8 +111,8 @@
   }
 }
 
-.slide-contact-down {
-  animation: slideContactDown ease-in-out 0.4s forwards;
+.slide-content-out {
+  animation: slideContentOut ease-in-out 0.4s forwards;
 }
 
 @keyframes slideContactDown {
@@ -128,6 +122,10 @@
   to {
     top: 100vh;
   }
+}
+
+.slide-contact-down {
+  animation: slideContactDown ease-in-out 0.4s forwards;
 }
 
 .popup-button {
