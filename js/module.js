@@ -15,9 +15,11 @@ import { detectPortraitMode } from "./utils.js";
 import {
   changeContent,
   appendHtmlFromFile,
+  switchToBigViewMobil
 } from "./content.js";
 
 window.changeContent = changeContent;
+window.switchToBigViewMobil = switchToBigViewMobil;
 
 window.closeForm = closeForm;
 

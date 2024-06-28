@@ -43,7 +43,7 @@ function switchToBigViewDesktop() {
   mobileElement.style.display = "none";
 }
 
-function switchToBigViewMobil() {
+export function switchToBigViewMobil() {
   const gameElement = document.querySelector(".game");
   if (gameElement) {
     gameElement.style.display = "none";
@@ -68,12 +68,16 @@ export async function changeContent(string) {
   const allSwitcherBtn = getAllContentButtons();
 
   disableorenableButtons(allSwitcherBtn, true);
+
   cleanUpContent(contentElement);
 
+  //animates so the button increases in width or height deppending on screen
   await animateFirstClick(clickedBtn, string);
 
-
+  //chooses and inserts the content into the DOM
   switcherOfContent(contentElement, string);
+
+  //turns the content-switcher to its small version or lets it disapear depending on screen
   changeToSmallSwitcher(string);
   disableorenableButtons(allSwitcherBtn, false);
 }
@@ -117,7 +121,7 @@ async function switcherOfContent(contentElement, string) {
 
 async function animateFirstClick(clickedBtn, string) {
   if (detectPortraitMode()) {
-    await runMobileAnimation(clickedBtn);
+    await runMobileAnimation(clickedBtn, string);
   } else {
     if (string != "contact-button") {
       //one button gets bigger the other one smaller
@@ -203,12 +207,16 @@ function cleanUpContent(contentElement) {
   clearElement(".content");
 }
 
-async function runMobileAnimation(clickedBtn) {
-  clickedButton.classList.add("enlarge-full-height");
+//
+import { sleep } from "./utils.js"
+
+async function runMobileAnimation(clickedBtn, string) {
+  clickedBtn.classList.add("enlarge-full-height");
   await sleep(900);
   if (string != "resume-button") {
     switchToMobilMenuButton();
   }
+  clickedBtn.classList.remove("enlarge-full-height");
 }
 
 import { fitText } from "./utils.js";
