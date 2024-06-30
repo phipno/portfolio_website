@@ -113,6 +113,7 @@ async function switcherOfContent(contentElement, string) {
       openPdf("../images/resume.pdf");
       if (!detectPortraitMode()) {
         turnALlButtonsNormalWidth(getAllContentButtons());
+        changeToBigContentButton();
       }
       break;
     case "game-button":
