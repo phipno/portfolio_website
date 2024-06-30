@@ -61,6 +61,7 @@ export function switchToBigViewMobil() {
 //changeContent: is the main function of my website
 //which initiates DOM changes, animations and class manipulation
 import { detectPortraitMode, getAllContentButtons } from "./utils.js";
+import { slideContentUp } from "./animation.js";
 
 export async function changeContent(string) {
   const contentElement = document.querySelector(".content");
@@ -69,16 +70,23 @@ export async function changeContent(string) {
 
   disableorenableButtons(allSwitcherBtn, true);
 
-  cleanUpContent(contentElement);
+  await cleanUpContent(contentElement);
 
   //animates so the button increases in width or height deppending on screen
-  await animateFirstClick(allSwitcherBtn, clickedBtn, string);
+  if (string != "contact-button") {
+    await animateFirstClick(contentElement, allSwitcherBtn, clickedBtn, string);
+  }
 
   //chooses and inserts the content into the DOM
-  switcherOfContent(contentElement, string);
+  await switcherOfContent(contentElement, string);
 
   //turns the content-switcher to its small version or lets it disapear depending on screen
-  changeToSmallSwitcher(string);
+  if (!document.querySelector(".content-switcher-small")) {
+    changeToSmallSwitcher(string, allSwitcherBtn, contentElement);
+  } else {
+    await slideContentUp(contentElement);
+  }
+
   disableorenableButtons(allSwitcherBtn, false);
 }
 
@@ -86,6 +94,7 @@ export async function changeContent(string) {
 import { formSubmit } from "./contact.js";
 import { setupGame } from "./spaceInvader.js";
 import { openPdf } from "./utils.js";
+import { turnALlButtonsNormalWidth } from "./animation.js";
 
 async function switcherOfContent(contentElement, string) {
   switch (string) {
@@ -106,6 +115,7 @@ async function switcherOfContent(contentElement, string) {
       setupGame(contentElement);
       break;
     case "contact-button":
+      await turnALlButtonsNormalWidth(getAllContentButtons());
       await appendHtmlFromFile(contentElement, "../html/contact.html");
       if (!detectPortraitMode()) {
         document.querySelector(".pop-up").style.display = "none";
@@ -120,55 +130,69 @@ async function switcherOfContent(contentElement, string) {
 }
 
 //
-import { runMobileAnimation } from "./animation.js";
-import { selectButtonAnimation } from "./animation.js";
+import { runMobileAnimation, selectButtonAnimation } from "./animation.js";
 
-async function animateFirstClick(allSwitcherBtn, clickedBtn, string) {
+async function animateFirstClick(
+  contentElement,
+  allSwitcherBtn,
+  clickedBtn,
+  string
+) {
   if (detectPortraitMode()) {
     await runMobileAnimation(clickedBtn, string);
   } else {
     if (string != "contact-button") {
       //one button gets bigger the other one smaller
-      await selectButtonAnimation(allSwitcherBtn, clickedBtn)
+      await selectButtonAnimation(allSwitcherBtn, clickedBtn);
     }
   }
 }
 
-function changeToSmallSwitcher(string) {
+function changeToSmallSwitcher(string, allSwitcherBtn, contentElement) {
   if (detectPortraitMode()) {
     if (string != "resume-button") {
       switchToMobilMenuButton();
     }
   } else {
     if (string != "resume-button") {
-      changeToSmallContentButton();
+      changeToSmallContentButton(contentElement, allSwitcherBtn);
     }
   }
 }
 
-export function changeToSmallContentButton() {
-  const switcherElement = document.querySelector(".content-switcher");
-  const contentButtons = getAllContentButtons();
-  if (switcherElement) {
-    switcherElement.classList.add("content-switcher-small");
-    contentButtons.forEach((element) => {
-      element.classList.remove("content-button");
-      element.classList.add("content-button-small");
-    });
-  }
-}
+import { slideContactAndSwitcherDown } from "./animation.js";
 
-export function changeToBigContentButton() {
+export async function changeToBigContentButton() {
   const switcherElement = document.querySelector(".content-switcher");
   const contentButtons = getAllContentButtons(".content-button-small");
   const contentElement = document.querySelector(".content");
 
+  await turnALlButtonsNormalWidth(contentButtons);
   contentButtons.forEach((element) => {
     element.classList.remove("content-button-small");
     element.classList.add("content-button");
   });
   switcherElement.classList.remove("content-switcher-small");
+  await slideContactAndSwitcherDown(contentElement, switcherElement);
   contentElement.style.display = "none";
+}
+
+import { slideContentUpAndContentSwitcher } from "./animation.js";
+
+export async function changeToSmallContentButton(
+  contentElement,
+  allSwitcherBtn
+) {
+  const switcherElement = document.querySelector(".content-switcher");
+
+  if (switcherElement) {
+    allSwitcherBtn.forEach((button) => {
+      button.classList.remove("content-button");
+      button.classList.add("content-button-small");
+    });
+    switcherElement.classList.add("content-switcher-small");
+    await slideContentUpAndContentSwitcher(contentElement, switcherElement);
+  }
 }
 
 export function switchToMobilMenuButton() {
@@ -203,12 +227,11 @@ function disableorenableButtons(buttons, bool) {
 }
 
 import { closeForm } from "./contact.js";
+import { slideContentOut } from "./animation.js";
 
-function cleanUpContent(contentElement) {
-  if (document.getElementById("contactForm")) {
-    closeForm();
-  }
+async function cleanUpContent(contentElement) {
   contentElement.style.display = "block";
+  await slideContentOut(contentElement);
   clearElement(".content");
 }
 

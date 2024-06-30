@@ -32,9 +32,23 @@
   animation: enlargeFullHeight ease-in-out 0.7s forwards;
 }
 
+@keyframes shrinkNormalWidth {
+  from {
+    width: 50%;
+  }
+
+  to {
+    width: 25%;
+  }
+}
+
+.shrink-normal-width {
+  animation: shrinkNormalWidth ease-in-out 0.4s forwards;
+}
+
 @keyframes enlargeFullWidth {
   from {
-    width: 25%;
+    width: calc((100vw - 50vh) / 4);
   }
   to {
     width: 50%;
@@ -43,20 +57,6 @@
 
 .enlarge-full-width {
   animation: enlargeFullWidth ease-in-out 0.4s forwards;
-}
-
-
-@keyframes shrinkNormalWidth {
-  from {
-    width: 50%;
-  }
-  to {
-    width: 25%;
-  }
-}
-
-.shrink-normal-width {
-  animation: shrinkNormalWidth ease-in-out 0.4s forwards;
 }
 
 @keyframes shrinkSmallContentSwitcher {

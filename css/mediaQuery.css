@@ -199,12 +199,18 @@
     flex-grow: 1;
   }
 
+  
   .content-switcher {
     display: flex;
-    height: 100%;
+    height: 90vh;
     width: calc(100vw - 50vh); 
   }
-
+  
+  .content-switcher-small {
+    height: 10vh;
+    width: calc(100vw - 50vh);
+  }
+  
   .content-section {
     display: flex;
     flex-direction: column;
@@ -218,6 +224,7 @@
 
   .content-button {
     width: 25%;
+    transition: width 0.4s ease-in-out;
     height: 100%;
     writing-mode: vertical-rl;
     text-orientation: upright;
@@ -241,11 +248,6 @@
     box-shadow: 0px 200px 0px #ff5252;
   }
 
-  .content-switcher-small {
-    height: 10vh;
-    width: calc(100vw - 50vh);
-  }
-
   .content {
     overflow: auto;
     position: absolute;
@@ -257,7 +259,7 @@
 
   .content-button-small {
     width: 25%;
-    height: 10vh;
+    transition: width 0.4s ease-in-out;
     margin: 0;
     max-width: 100%;
 
