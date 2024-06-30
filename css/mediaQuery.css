@@ -202,6 +202,7 @@
   
   .content-switcher {
     display: flex;
+    z-index: 10;
     height: 90vh;
     width: calc(100vw - 50vh); 
   }
@@ -289,7 +290,6 @@
   }
 
   #cnv {
-    top: 10vh;
     height: 80vh;
     width: calc(100vw - 50vh);
   }

@@ -11,12 +11,13 @@
 
 import { moveShip, fire, play, setupGame } from "./spaceInvader.js";
 import { closeForm } from "./contact.js";
-import { detectPortraitMode } from "./utils.js";
+import { detectPortraitMode, getAllContentButtons } from "./utils.js";
 import {
   changeContent,
   appendHtmlFromFile,
   switchToBigViewMobil
 } from "./content.js";
+import { turnALlButtonsNormalWidth } from "./animation.js";
 
 window.changeContent = changeContent;
 window.switchToBigViewMobil = switchToBigViewMobil;
@@ -31,6 +32,7 @@ if (!detectPortraitMode()) {
   const gameElement = document.querySelector(".game");
   await appendHtmlFromFile(gameElement, "../html/spaceInvader.html");
   setupGame(gameElement);
+  turnALlButtonsNormalWidth(getAllContentButtons());
 }
 
 console.log("Moudle Script Loaded");

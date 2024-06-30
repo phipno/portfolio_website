@@ -9,7 +9,7 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
-export function initCosmos() {
+export async function initCosmos() {
   const cnv = document.getElementById("cnv");
   const ctx = cnv.getContext("2d");
 
@@ -25,10 +25,10 @@ export function initCosmos() {
   // Start animation
   calcScrollDistance()
   handleWheelEvent();
-  drawStars(ctx, W, H);
+  await drawStars(ctx, W, H);
 }
 
-function drawStars(ctx, W, H) {
+async function drawStars(ctx, W, H) {
   // Random position and size of stars
   for (let i = 0; i < 4000; i++) {
     let x = W * Math.random();

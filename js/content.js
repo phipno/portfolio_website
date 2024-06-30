@@ -73,18 +73,20 @@ export async function changeContent(string) {
   await cleanUpContent(contentElement);
 
   //animates so the button increases in width or height deppending on screen
-  if (string != "contact-button") {
+  if (string != "contact-button" && !detectPortraitMode()) {
     await animateFirstClick(contentElement, allSwitcherBtn, clickedBtn, string);
   }
 
   //chooses and inserts the content into the DOM
   await switcherOfContent(contentElement, string);
-
+  
   //turns the content-switcher to its small version or lets it disapear depending on screen
-  if (!document.querySelector(".content-switcher-small")) {
-    changeToSmallSwitcher(string, allSwitcherBtn, contentElement);
-  } else {
-    await slideContentUp(contentElement);
+  if (string != "resume-button") {
+    if (!document.querySelector(".content-switcher-small")) {
+      changeToSmallSwitcher(string, allSwitcherBtn, contentElement);
+    } else {
+      await slideContentUp(contentElement);
+    }
   }
 
   disableorenableButtons(allSwitcherBtn, false);
@@ -109,13 +111,18 @@ async function switcherOfContent(contentElement, string) {
       break;
     case "resume-button":
       openPdf("../images/resume.pdf");
+      if (!detectPortraitMode()) {
+        turnALlButtonsNormalWidth(getAllContentButtons());
+      }
       break;
     case "game-button":
       await appendHtmlFromFile(contentElement, "../html/spaceInvader.html");
       setupGame(contentElement);
       break;
     case "contact-button":
-      await turnALlButtonsNormalWidth(getAllContentButtons());
+      if (!detectPortraitMode()) {
+        await turnALlButtonsNormalWidth(getAllContentButtons());
+      }
       await appendHtmlFromFile(contentElement, "../html/contact.html");
       if (!detectPortraitMode()) {
         document.querySelector(".pop-up").style.display = "none";
@@ -167,13 +174,15 @@ export async function changeToBigContentButton() {
   const contentButtons = getAllContentButtons(".content-button-small");
   const contentElement = document.querySelector(".content");
 
-  await turnALlButtonsNormalWidth(contentButtons);
+  if (!detectPortraitMode()) {
+    await turnALlButtonsNormalWidth(contentButtons);
+    await slideContactAndSwitcherDown(contentElement, switcherElement);
+  }
   contentButtons.forEach((element) => {
     element.classList.remove("content-button-small");
     element.classList.add("content-button");
   });
   switcherElement.classList.remove("content-switcher-small");
-  await slideContactAndSwitcherDown(contentElement, switcherElement);
   contentElement.style.display = "none";
 }
 
@@ -231,8 +240,11 @@ import { slideContentOut } from "./animation.js";
 
 async function cleanUpContent(contentElement) {
   contentElement.style.display = "block";
-  await slideContentOut(contentElement);
-  clearElement(".content");
+  if (contentElement.children.length > 0) {
+    console.log("hi");
+    await slideContentOut(contentElement);
+    clearElement(".content");
+  }
 }
 
 import { fitText } from "./utils.js";
@@ -254,9 +266,8 @@ async function initCodeOrArt(contentElement, stringToHtml) {
 import { initCosmos } from "./journey.js";
 
 async function initJourney(contentElement, stringToHtml) {
-  await appendHtmlFromFile(contentElement, "../html/journey.html");
-  initModal();
-  initCosmos();
+  await appendHtmlFromFile(contentElement, stringToHtml);
+  await initCosmos();
 }
 
 /* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */

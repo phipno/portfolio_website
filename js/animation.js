@@ -39,10 +39,7 @@ export async function turnALlButtonsNormalWidth(allSwitcherBtn) {
     button.classList.add("shrink-normal-width");
     button.classList.remove("enlarge-full-width");
   });
-  await sleep(400);
-  allSwitcherBtn.forEach((button) => {
-    button.classList.remove("shrink-normal-width");
-  });
+  await sleep(200);
 }
 
 export async function slideContentUp(contentElement) {

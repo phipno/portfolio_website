@@ -51,7 +51,6 @@ export function formSubmit() {
 }
 
 import { clearElement, changeToBigContentButton } from "./content.js";
-import { turnALlButtonsNormalWidth } from "./animation.js";
 
 export async function closeForm() {
   await changeToBigContentButton();
