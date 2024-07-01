@@ -28,7 +28,6 @@ export function initModal() {
       if (this.querySelector(".costum-content")) {
         const costumContent =
           this.querySelector(".costum-content").cloneNode(true);
-        console.log(costumContent);
         costumContent.style.display = "flex";
         modalContent.appendChild(costumContent);
       }
