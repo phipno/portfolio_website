@@ -77,7 +77,7 @@
   .project-card:nth-child(2),
   .project-card:nth-child(3) {
     flex: 1 1 calc(30% - 40px);
-    background-color: #229999;
+    background-color: #00babc;
     max-height: 30vh;
     /* Three project-cards in a row */
   }
@@ -85,7 +85,7 @@
   .project-card:nth-child(4) {
     flex: 1 1 100%;
     max-height: 40vh;
-    background-color: #229999;
+    background-color: #00babc;
     /* Full-width project-card */
   }
 
@@ -153,43 +153,6 @@
 
 .project-card a:hover {
   background: #555;
-}
-
-.costum-content {
-    display: flex;
-    flex-direction: column;
-}
-
-@media (orientation: landscape) {
-
-  .next-to-each-other {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .wide60 {
-    width: 60%;
-  }
-
-  .wide3 {
-    width: 3%;
-  }
-
-  .wide35 {
-    width: 35%;
-  }
-
-  .wide30 {
-    width: 30%;
-  }
-
-  .wide40 {
-    width: 40%;
-  }
-
-  .wide70 {
-    width: 70%;
-  }
 }
 
 /* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */

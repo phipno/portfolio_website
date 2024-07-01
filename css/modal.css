@@ -31,14 +31,24 @@
   border: 3px solid black;
   box-shadow: 20px 20px 0px black;
   width: 80%;
+  font-size: 1.2em;
+  max-width: 1000px;
   position: relative;
+}
+
+.modal-content h3 {
+  font-size: 1.5em;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 2px;
+  color: #ff5252;
 }
 
 .close-button {
   position: absolute;
   top: 10px;
   right: 20px;
-  color: #aaa;
+  color: #ff5252;
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
@@ -57,6 +67,43 @@
 
 .costum-content img{
   width: 100%;
+}
+
+.costum-content {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (orientation: landscape) {
+
+  .next-to-each-other {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .wide60 {
+    width: 60%;
+  }
+
+  .wide3 {
+    width: 3%;
+  }
+
+  .wide35 {
+    width: 35%;
+  }
+
+  .wide30 {
+    width: 30%;
+  }
+
+  .wide40 {
+    width: 40%;
+  }
+
+  .wide70 {
+    width: 70%;
+  }
 }
 
 /* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */
