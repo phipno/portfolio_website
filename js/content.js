@@ -73,7 +73,7 @@ export async function changeContent(string) {
   await cleanUpContent(contentElement);
 
   //animates so the button increases in width or height deppending on screen
-  if (string != "contact-button" && !detectPortraitMode()) {
+  if (string != "contact-button") {
     await animateFirstClick(contentElement, allSwitcherBtn, clickedBtn, string);
   }
 
@@ -168,7 +168,7 @@ function changeToSmallSwitcher(string, allSwitcherBtn, contentElement) {
   }
 }
 
-import { slideContactAndSwitcherDown } from "./animation.js";
+import { slideContactAndSwitcherDown, removeAllNormalWidth } from "./animation.js";
 
 export async function changeToBigContentButton() {
   const switcherElement = document.querySelector(".content-switcher");
@@ -178,6 +178,9 @@ export async function changeToBigContentButton() {
   if (!detectPortraitMode()) {
     await turnALlButtonsNormalWidth(contentButtons);
     await slideContactAndSwitcherDown(contentElement, switcherElement);
+  }
+  else {
+    removeAllNormalWidth(contentButtons);
   }
   contentButtons.forEach((element) => {
     element.classList.remove("content-button-small");
@@ -255,13 +258,14 @@ function initFitText(string) {
   window.addEventListener("resize", fitText(string));
 }
 
+
 import { initModal } from "./modal.js";
 
 async function initCodeOrArt(contentElement, stringToHtml) {
   await appendHtmlFromFile(contentElement, stringToHtml);
   initModal();
-  fitText(".project-card h3");
-  initFitText(".project-card h3");
+  // fitText(".project-card h3");
+  // // initFitText(".project-card h3");
 }
 
 import { initCosmos } from "./journey.js";

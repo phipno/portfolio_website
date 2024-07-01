@@ -9,6 +9,8 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
+import { sleep } from "./utils.js"
+
 export function initModal() {
   const modal = document.getElementById("project-modal");
   const something = modal;
@@ -18,7 +20,8 @@ export function initModal() {
   const closeButton = document.querySelector(".close-button");
   const projectCards = document.querySelectorAll(".project-card");
   projectCards.forEach((card) => {
-    card.addEventListener("click", function () {
+    card.addEventListener("click", async function () {
+      await sleep(200);
       modal.style.display = "flex";
       modalTitle.textContent = this.dataset.title;
       modalDescription.textContent = this.dataset.description;

@@ -23,7 +23,8 @@
 }
 
 .content-container {
-  color: white;
+  color: black;
+  background-color: white;
   font-family: Arial, sans-serif;
   font-size: 1rem;
   margin: 0;
@@ -36,36 +37,79 @@
   justify-content: space-around;
 }
 
+.wide-pc {
+  width: 500px;
+}
+
 .project-card {
+  flex: 1 1 33%;
+  order: 1;
   background: white;
+  font-weight: bold;
   overflow: hidden;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  max-width: 300px;
-  max-height: 300px;
-  margin: auto;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  border: 3px solid black;
+  width: 300px;
+  height: 250px;
+  margin: 20px 20px 0 0 ;
+  box-shadow: 10px 10px 0px black;
   overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  border: 3px solid #ff5252;
+  box-shadow: 10px 10px 0px #ff5252;
+}
+
+.project-card:hover h3{
+  color: #ff5252;
+  background-color: white;
+}
+
+.project-card:active h3 {
+  color: #ff5252;
+  background-color: #fcf414;
+  transition: 0.5s;
+}
+
+.project-card:active {
+  box-shadow: none;
+  transform: translateY(4px);
+}
+
+.project-card:first-child {
+  flex: 10;
+}
+
+
+.project-card:nth-child(n+3) {
+  background: #299;
+  align-self: flex-end;
+
+}
+
+
+.project-card:nth-child(n+5) {
+  background: rgb(245, 141, 43);
+}
+
+
+@media screen and (max-width: 800px) {
+  .project-card {
+    flex: 100%;
+  }
 }
 
 .project-card img {
   width: 80%;
-  border-bottom: 1px solid #ddd;
-  border-radius: 5px 5px 0 0;
 }
 
 .project-card h3 {
   margin: 0;
   padding: 15px;
-  background: #333;
+  background: #ff5252;
   color: white;
-  border-radius: 0 0 5px 5px;
 }
 
 .project-card p {

@@ -15,7 +15,7 @@ import { switchToMobilMenuButton } from "./content.js";
 
 export async function runMobileAnimation(clickedBtn, string) {
   clickedBtn.classList.add("enlarge-full-height");
-  await sleep(900);
+  await sleep(600);
   if (string != "resume-button") {
     switchToMobilMenuButton();
   }
@@ -38,6 +38,13 @@ export async function turnALlButtonsNormalWidth(allSwitcherBtn) {
   allSwitcherBtn.forEach((button) => {
     button.classList.add("shrink-normal-width");
     button.classList.remove("enlarge-full-width");
+  });
+  await sleep(200);
+}
+
+export async function removeAllNormalWidth(allSwitcherBtn) {
+  allSwitcherBtn.forEach((button) => {
+    button.classList.remove("shrink-normal-width");
   });
   await sleep(200);
 }
