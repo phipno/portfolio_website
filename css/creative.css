@@ -1,0 +1,143 @@
+/* -------------------------8<---------------------------------------------- */
+/*                                                                       .|  */
+/* creative.css                              /     (__)          |/          */
+/*                                                 (oo)------/'   ,__,    ,  */
+/* By: phipno <phipno@gmail.com>                |  (__)     ||    (oo)_____/ */
+/*                                                    ||---/||    (__)    || */
+/* Created: 2024/07/01 17:18 by phipno       |/                 ,    ||--w|| */
+/*                                         ,,       !              |'        */
+/*                                              ,           ,|             | */
+/* -----[ mooooooo ]-------------------------------------------------------- */
+
+.project-card {
+  flex: 1 1 30%;
+  background: white;
+  font-weight: bold;
+  overflow: hidden;
+  border: 3px solid black;
+  margin: 20px 20px 20px 20px;
+  box-shadow: 10px 10px 0px black;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  background-color: #fff;
+  border: 3px solid #ff5252;
+  box-shadow: 10px 10px 0px #ff5252;
+}
+
+.project-card:hover h3 {
+  color: #ff5252;
+  border-top: 3px solid #ff5252;
+  background-color: white;
+}
+
+.project-card:active h3 {
+  color: #ff5252;
+  background-color: #fcf414;
+  transition: 0.5s;
+}
+
+.project-card:active {
+  box-shadow: none;
+  transform: translateY(4px);
+}
+
+@media (orientation: portrait) {
+  .project-card {
+    flex: 1 1 100%;
+    max-height: 30vh;
+  }
+  .project-card:nth-child(n + 3) {
+    background-color: #229999;
+  }
+  .project-card:nth-child(n + 5) {
+    background-color: white;
+  }
+  .project-card:nth-child(n + 7) {
+    background-color: rgb(247, 159, 76);
+  }
+}
+
+@media (min-width: 769px) {
+  .project-card:nth-child(1),
+  .project-card:nth-child(2),
+  .project-card:nth-child(3) {
+    flex: 1 1 calc(31% - 10px);
+    background-color: #229999;
+    max-height: 30vh;
+    /* Three project-cards in a row */
+  }
+
+  .project-card:nth-child(4) {
+    flex: 1 1 100%;
+    max-height: 40vh;
+    background-color: #229999;
+    /* Full-width project-card */
+  }
+
+  .project-card:nth-child(5),
+  .project-card:nth-child(6) {
+    flex: 1 1 calc(45% - 10px);
+    max-height: 35vh;
+    /* Two project-cards in a row */
+  }
+
+  .project-card:nth-child(7),
+  .project-card:nth-child(8),
+  .project-card:nth-child(9) {
+    background-color: rgb(247, 159, 76);
+    flex: 1 1 calc(30% - 10px);
+    max-height: 30vh;
+    /* Three items in a row */
+  }
+
+  .project-card:nth-child(3) img,
+  .project-card:nth-child(6) img,
+  .project-card:nth-child(9) img,
+  .project-card:nth-child(8) img {
+    width: 100%;
+  }
+}
+
+.project-card img {
+  height: 85%;
+  aspect-ratio: 1 / 1;
+}
+
+.project-card h3 {
+  width: 100%;
+  height: 15%;
+  z-index: 1;
+  position: sticky;
+  bottom: 0%;
+  margin: 0;
+  padding: 0;
+  border-top: solid black 3px;
+  background: #ff5252;
+  color: white;
+}
+
+.project-card p {
+  padding: 15px;
+  color: #666;
+}
+
+.project-card a {
+  display: block;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  background: #333;
+  margin: 0 15px 15px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.project-card a:hover {
+  background: #555;
+}
+
+/* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */
