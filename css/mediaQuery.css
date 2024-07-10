@@ -159,6 +159,10 @@
   .pop-up, .pop-down {
     display: none !important;
   }
+  .foreground-image {
+    width: 50%;
+    top: 20%;
+  }
 }
 
 @media (orientation: landscape) {
@@ -296,6 +300,11 @@
 
   #sw-crawl {
     width: calc(100vw - 50vh);
+  }
+  .foreground-image {
+    width: 50%;
+    top: 5%;
+    transform: translate(-50%, -15%);
   }
 }
 

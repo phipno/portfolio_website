@@ -20,10 +20,8 @@
 
 .foreground-image {
   position: absolute;
-  top: 0%;
   left: 50%;
   transform: translate(-50%, -0%);
-  width: calc((100vw - 50vh) / 2);
   /* Set the desired width of the foreground image */
   height: auto;
   /* Maintains the aspect ratio */
