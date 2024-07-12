@@ -15,7 +15,6 @@ export async function initCosmos() {
 
   const W = window.innerWidth;
   const H = window.innerHeight;
-  console.log(W, H);
   cnv.width = W;
   cnv.height = H;
   // Set Canvas and Background Color
@@ -83,7 +82,6 @@ function handleWheelEvent() {
   document.addEventListener('wheel', function (event) {
     // event.preventDefault();
     const delta = Math.sign(event.deltaY);
-    console.log(delta);
     updateAnimation(delta);
   });
 
@@ -98,7 +96,6 @@ function handleWheelEvent() {
     const touchMoveY = event.touches[0].clientY;
     const delta = touchStartY - touchMoveY; // Positive for upward swipe, negative for downward swipe
     touchStartY = touchMoveY;
-    console.log(delta);
     updateAnimation(delta / 35); // Adjust the factor as needed
   });
 

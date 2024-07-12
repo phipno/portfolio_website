@@ -73,9 +73,7 @@ export async function changeContent(string) {
   await cleanUpContent(contentElement);
 
   //animates so the button increases in width or height deppending on screen
-  if (string != "contact-button") {
-    await animateFirstClick(contentElement, allSwitcherBtn, clickedBtn, string);
-  }
+  await animateFirstClick(contentElement, allSwitcherBtn, clickedBtn, string);
 
   //chooses and inserts the content into the DOM
   await switcherOfContent(contentElement, string);
@@ -245,7 +243,6 @@ import { slideContentOut } from "./animation.js";
 async function cleanUpContent(contentElement) {
   contentElement.style.display = "block";
   if (contentElement.children.length > 0) {
-    console.log("hi");
     await slideContentOut(contentElement);
     clearElement(".content");
   }

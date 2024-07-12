@@ -10,12 +10,33 @@
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
 export function formSubmit() {
+  const form = document.getElementById("form");
+  const result = document.getElementById("result");
+
   form.addEventListener("submit", function (e) {
-    const form = document.getElementById("form");
-    const result = document.getElementById("result");
     e.preventDefault();
+    
     const formData = new FormData(form);
     const object = Object.fromEntries(formData);
+    
+    // Validate form inputs
+    let errors = [];
+    if (!object.name) {
+      errors.push("Name is required.");
+    }
+    if (!object.email) {
+      errors.push("Email is required.");
+    }
+    if (!object.message) {
+      errors.push("Message is required.");
+    }
+    
+    if (errors.length > 0) {
+      result.style.display = "block";
+      result.innerHTML = errors.join("<br>");
+      return;
+    }
+    
     const json = JSON.stringify(object);
     result.style.display = "block";
     result.innerHTML = "Please wait...";
@@ -28,28 +49,27 @@ export function formSubmit() {
       },
       body: json
     })
-      .then(async (response) => {
-        let json = await response.json();
-        if (response.status == 200) {
-          result.innerHTML = json.message;
-        } else {
-          console.log(response);
-          result.innerHTML = json.message;
-        }
-      })
-      .catch(error => {
-        console.log(error);
-        result.innerHTML = "Something went wrong!";
-      })
-      .then(function () {
-        form.reset();
-        setTimeout(() => {
-          result.style.display = "hidden";
-        }, 5000);
-      });
+    .then(async (response) => {
+      let json = await response.json();
+      if (response.status == 200) {
+        result.innerHTML = json.message;
+      } else {
+        console.log(response);
+        result.innerHTML = json.message;
+      }
+    })
+    .catch(error => {
+      console.log(error);
+      result.innerHTML = "Something went wrong!";
+    })
+    .then(function () {
+      form.reset();
+      setTimeout(() => {
+        result.style.display = "none";
+      }, 5000);
+    });
   });
 }
-
 import { clearElement, changeToBigContentButton } from "./content.js";
 
 export async function closeForm() {
