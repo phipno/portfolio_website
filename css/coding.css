@@ -155,4 +155,39 @@
   background: #555;
 }
 
+.costum-content a {
+  color:#ff5252;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.costum-content li {
+  text-align: left;
+  position: relative;
+
+  &:hover {
+    &:after {
+      box-shadow:0 0 0 4px white, 0 0 0 7px #ff5252;
+    }
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 7.5px;
+    height: 7.5px;
+    background: #ff5252;
+    border-radius: 100%;
+    left: -25px;
+    top: 50%;
+    transform: translate(0, -50%);
+    box-shadow: 0 0 0 0 white, 0 0 0 0 #ff5252;
+    transition: 0.4s ease-in-out;
+  }
+}
+
 /* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */
