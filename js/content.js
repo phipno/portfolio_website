@@ -9,37 +9,6 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
-const routes = {
-  '/': 'home',
-  '/coding': 'code-button',
-  '/creative': 'creative-button',
-  '/journey': 'journey-button',
-  '/resume': 'resume-button',
-  '/game': 'game-button',
-  '/contact': 'contact-button',
-};
-
-function router() {
-  const path = window.location.pathname;
-  const route = routes[path] || 'home';
-  changeContent(route);
-}
-
-function navigateTo(path) {
-  window.history.pushState({}, '', path);
-  router();
-}
-
-document.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    navigateTo(e.target.getAttribute('href'));
-  });
-});
-
-window.addEventListener('popstate', router);
-document.addEventListener('DOMContentLoaded', router);
-
 window
   .matchMedia("(orientation: portrait)")
   .addEventListener("change", async (e) => {
