@@ -17,7 +17,6 @@ export async function runMobileAnimation(clickedBtn, string) {
   clickedBtn.classList.add("enlarge-full-height");
   await sleep(600);
   if (string != "resume-button") {
-    switchToMobilMenuButton();
   }
   clickedBtn.classList.remove("enlarge-full-height");
 }

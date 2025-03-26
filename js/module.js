@@ -15,7 +15,8 @@ import { detectPortraitMode, getAllContentButtons } from "./utils.js";
 import {
   changeContent,
   appendHtmlFromFile,
-  switchToBigViewMobil
+  switchToBigViewMobil,
+  router
 } from "./content.js";
 import { turnALlButtonsNormalWidth } from "./animation.js";
 
@@ -34,6 +35,8 @@ if (!detectPortraitMode()) {
   setupGame(gameElement);
   turnALlButtonsNormalWidth(getAllContentButtons());
 }
+
+router();
 
 console.log("Moudle Script Loaded");
 

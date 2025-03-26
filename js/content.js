@@ -9,23 +9,30 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
-pushStateNotIdentical({name: 'default home'}, "home");
+pushStateNotIdentical({name: 'default home'}, "");
 
 const routes = {
   404: () => changeContent("404"),
   "/": () => changeContent("home"),
-  "/home": () => changeContent("home"),
+  "/coding/": () => changeContent("code-button"),
+  "/creative/": () => changeContent("creative-button"),
+  "/about/": () => changeContent("journey-button"),
+  "/game/": () => changeContent("home"),
+  "/contact/": () => changeContent("contact-button"),
+  "/resume/": () => changeContent("resume-button"),
+  "/": () => changeContent("home"),
   "/coding": () => changeContent("code-button"),
   "/creative": () => changeContent("creative-button"),
   "/about": () => changeContent("journey-button"),
-  "/game": () => changeContent("contact-button"),
-  "/contact": () => changeContent("resume-button"),
+  "/game": () => changeContent("home"),
+  "/contact": () => changeContent("contact-button"),
+  "/resume": () => changeContent("resume-button"),
 };
 
-async function router() {
+export async function router() {
   const path = window.location.pathname;
+  console.log(path)
   const route = routes[path] || routes[404];
-  console.log(window.history)
   await route();
 }
 
@@ -46,32 +53,31 @@ window
       clearElement(".content");
       clearElement(".game");
       changeToBigContentButton();
+      turnALlButtonsNormalWidth(getAllContentButtons());
       switchToBigViewMobil();
     } else {
       clearElement(".content");
       clearElement(".game");
+      changeToBigContentButton();
+      switchToBigViewDesktop();
       await appendHtmlFromFile(gameElement, "../html/spaceInvader.html");
       setupGame(gameElement);
-      changeToBigContentButton();
       gameElement.style.display = "flex";
-      switchToBigViewDesktop();
     }
   });
 
 function switchToBigViewDesktop() {
-  pushStateNotIdentical({name: 'default home'}, "/home");
+  pushStateNotIdentical({name: 'default home'}, "/");
   const gameElement = document.querySelector(".game");
   if (gameElement) {
     gameElement.style.display = "flex";
   }
   const switcherElement = document.querySelector(".content-switcher");
   switcherElement.style.display = "flex";
-  const mobileElement = document.querySelector(".mobile-content-switcher");
-  mobileElement.style.display = "none";
 }
 
 export function switchToBigViewMobil() {
-  pushStateNotIdentical({name: 'default home'}, "/home");
+  pushStateNotIdentical({name: 'default home'}, "/");
   const gameElement = document.querySelector(".game");
   if (gameElement) {
     gameElement.style.display = "none";
@@ -81,8 +87,6 @@ export function switchToBigViewMobil() {
   changeToBigContentButton();
   const switcherElement = document.querySelector(".content-switcher");
   switcherElement.style.display = "flex";
-  const mobileElement = document.querySelector(".mobile-content-switcher");
-  mobileElement.style.display = "none";
 }
 
 //
@@ -109,7 +113,7 @@ export async function changeContent(string) {
   await switcherOfContent(contentElement, string);
   
   //turns the content-switcher to its small version or lets it disapear depending on screen
-  if (string != "resume-button") {
+  if (string != "resume-button" && string != "home") {
     if (!document.querySelector(".content-switcher-small")) {
       changeToSmallSwitcher(string, allSwitcherBtn, contentElement);
     } else {
@@ -135,10 +139,13 @@ import { turnALlButtonsNormalWidth } from "./animation.js";
 async function switcherOfContent(contentElement, string) {
   switch (string) {
     case "home":
-      pushStateNotIdentical({name: 'default home'}, "/home");
+      pushStateNotIdentical({name: 'default home'}, "/");
       if (!detectPortraitMode()) {
         turnALlButtonsNormalWidth(getAllContentButtons());
         changeToBigContentButton();
+      } else {
+        const switcherElement = document.querySelector(".content-switcher");
+        switcherElement.style.display = "flex";
       }
       break;
     case "404":
@@ -158,7 +165,6 @@ async function switcherOfContent(contentElement, string) {
       await initJourney(contentElement, "../html/journey.html");
       break;
     case "resume-button":
-      pushStateNotIdentical({name: 'default home'}, "/home");
       openPdf("../images/resume.pdf");
       if (!detectPortraitMode()) {
         turnALlButtonsNormalWidth(getAllContentButtons());
@@ -262,8 +268,6 @@ export async function changeToSmallContentButton(
 export function switchToMobilMenuButton() {
   const switcherElement = document.querySelector(".content-switcher");
   switcherElement.style.display = "none";
-  const mobileElement = document.querySelector(".mobile-content-switcher");
-  mobileElement.style.display = "flex";
 }
 
 export async function appendHtmlFromFile(appElement, filePath) {

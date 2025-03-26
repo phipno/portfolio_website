@@ -2,19 +2,20 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
     <title>lil Portfolio Website</title>
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/linktree.css">
-    <link rel="stylesheet" href="./css/spaceInvader.css">
-    <link rel="stylesheet" href="./css/mediaQuery.css">
-    <link rel="stylesheet" href="./css/content.css">
-    <link rel="stylesheet" href="./css/content-switcher.css">
-    <link rel="stylesheet" href="./css/modal.css">
-    <link rel="stylesheet" href="./css/journey.css">
-    <link rel="stylesheet" href="./css/contact.css">
-    <script type="module" src="./js/module.js" defer></script>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/linktree.css">
+    <link rel="stylesheet" href="/css/spaceInvader.css">
+    <link rel="stylesheet" href="/css/mediaQuery.css">
+    <link rel="stylesheet" href="/css/content.css">
+    <link rel="stylesheet" href="/css/content-switcher.css">
+    <link rel="stylesheet" href="/css/modal.css">
+    <link rel="stylesheet" href="/css/journey.css">
+    <link rel="stylesheet" href="/css/contact.css">
+    <script type="module" src="/js/module.js" defer></script>
   </head>
   <body>
     <div class="app">
@@ -32,7 +33,7 @@
             <p class="content-button-text" id="creative-btn-text">Artsy</p>
           </button>
           <button class="content-button" id="journey-button" onclick="changeContent('journey-button')">
-            <p class="content-button-text" id="journey-btn-text">Journey</p>
+            <p class="content-button-text" id="journey-btn-text">About</p>
           </button>
           <button class="content-button mobile-content-button" id="contact-button" onclick="changeContent('contact-button')">
             <p class="content-button-text" id="contact-btn-text">Contact</p>
@@ -44,11 +45,6 @@
         <div class="content">
           <!-- Here the content gets inserted -->
         </div>
-        <div class="mobile-content-switcher">
-          <button class="popup-button" id="popup-btn" onclick="switchToBigViewMobil()">
-            <p class="content-button-text" id="popup-btn-text">MENU</p>
-          </button>
-        </div>
       </div>
       <div id="project-modal" class="modal">
         <div id="modal-content" class="modal-content">
@@ -59,23 +55,23 @@
       </div>
       <div class="linktree-container">
         <div class="linktree">
-          <div class="link"><a href="https://github.com/phipno" target="_blank">
+          <div class="link"><a href="https://github.com/phipno">
               <img alt="Personal Github" src="images/github-alt.svg">
             </a>
           </div>
           <div class="link"><a href="https://www.linkedin.com/in/phipno">
-              <img alt="Personal LinkedIn" src="./images/linkedin-in.svg">
+              <img alt="Personal LinkedIn" src="/images/linkedin-in.svg">
             </a>
           </div>
-          <div class="link"><a href="https://soundcloud.com/phipno" target="_blank">
-              <img alt="Personal Soundcloud" src="./images/soundcloud.svg">
+          <div class="link"><a href="https://soundcloud.com/phipno">
+              <img alt="Personal Soundcloud" src="/images/soundcloud.svg">
             </a>
           </div>
-          <div class="link"><a href="https://open.spotify.com/user/gxj2n8y9anpl2tatufa3qvmw3" target="_blank">
-              <img alt="Personal Spotify" src="./images/spotify.svg">
+          <div class="link"><a href="https://open.spotify.com/user/gxj2n8y9anpl2tatufa3qvmw3">
+              <img alt="Personal Spotify" src="/images/spotify.svg">
             </a>
           </div>
-          <div class="link"><a href="https://www.42heilbronn.de/en/" target="_blank">
+          <div class="link"><a href="https://www.42heilbronn.de/en/">
               <img alt="42 Heilbronn" src="https://42.fr/wp-content/uploads/2021/05/42-Final-sigle-seul.svg" />
             </a>
           </div>
