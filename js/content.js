@@ -9,6 +9,32 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
+pushStateNotIdentical({name: 'default home'}, "home");
+
+const routes = {
+  404: () => changeContent("404"),
+  "/": () => changeContent("home"),
+  "/home": () => changeContent("home"),
+  "/coding": () => changeContent("code-button"),
+  "/creative": () => changeContent("creative-button"),
+  "/about": () => changeContent("journey-button"),
+  "/game": () => changeContent("contact-button"),
+  "/contact": () => changeContent("resume-button"),
+};
+
+async function router() {
+  const path = window.location.pathname;
+  const route = routes[path] || routes[404];
+  console.log(window.history)
+  await route();
+}
+
+window.addEventListener('popstate', () => {
+    router();
+});
+
+window.onpopstate = router;
+
 window
   .matchMedia("(orientation: portrait)")
   .addEventListener("change", async (e) => {
@@ -33,6 +59,7 @@ window
   });
 
 function switchToBigViewDesktop() {
+  pushStateNotIdentical({name: 'default home'}, "/home");
   const gameElement = document.querySelector(".game");
   if (gameElement) {
     gameElement.style.display = "flex";
@@ -44,12 +71,13 @@ function switchToBigViewDesktop() {
 }
 
 export function switchToBigViewMobil() {
+  pushStateNotIdentical({name: 'default home'}, "/home");
   const gameElement = document.querySelector(".game");
   if (gameElement) {
     gameElement.style.display = "none";
   }
   clearElement(".content");
-
+  
   changeToBigContentButton();
   const switcherElement = document.querySelector(".content-switcher");
   switcherElement.style.display = "flex";
@@ -73,7 +101,9 @@ export async function changeContent(string) {
   await cleanUpContent(contentElement);
 
   //animates so the button increases in width or height deppending on screen
-  await animateFirstClick(contentElement, allSwitcherBtn, clickedBtn, string);
+  if (clickedBtn) {
+    await animateFirstClick(contentElement, allSwitcherBtn, clickedBtn, string);
+  }
 
   //chooses and inserts the content into the DOM
   await switcherOfContent(contentElement, string);
@@ -90,6 +120,12 @@ export async function changeContent(string) {
   disableorenableButtons(allSwitcherBtn, false);
 }
 
+function pushStateNotIdentical(state, route) {
+  if (window.location.pathname != route) {
+    window.history.pushState(state, "", route)
+  }
+}
+
 //
 import { formSubmit } from "./contact.js";
 import { setupGame } from "./spaceInvader.js";
@@ -98,16 +134,31 @@ import { turnALlButtonsNormalWidth } from "./animation.js";
 
 async function switcherOfContent(contentElement, string) {
   switch (string) {
+    case "home":
+      pushStateNotIdentical({name: 'default home'}, "/home");
+      if (!detectPortraitMode()) {
+        turnALlButtonsNormalWidth(getAllContentButtons());
+        changeToBigContentButton();
+      }
+      break;
+    case "404":
+      pushStateNotIdentical({name: '404'}, "/404");
+      await initCodeOrArt(contentElement, "../html/creative.html");
+      break;
     case "code-button":
+      pushStateNotIdentical({name: 'coding'}, "/coding");
       await initCodeOrArt(contentElement, "../html/coding.html");
       break;
     case "creative-button":
+      pushStateNotIdentical({name: 'creative'}, "/creative");
       await initCodeOrArt(contentElement, "../html/creative.html");
       break;
     case "journey-button":
+      pushStateNotIdentical({name: 'about'}, "/about");
       await initJourney(contentElement, "../html/journey.html");
       break;
     case "resume-button":
+      pushStateNotIdentical({name: 'default home'}, "/home");
       openPdf("../images/resume.pdf");
       if (!detectPortraitMode()) {
         turnALlButtonsNormalWidth(getAllContentButtons());
@@ -115,10 +166,12 @@ async function switcherOfContent(contentElement, string) {
       }
       break;
     case "game-button":
+      pushStateNotIdentical({name: 'game'}, "/game");
       await appendHtmlFromFile(contentElement, "../html/spaceInvader.html");
       setupGame(contentElement);
       break;
     case "contact-button":
+      pushStateNotIdentical({name: 'contact'}, "/contact");
       if (!detectPortraitMode()) {
         await turnALlButtonsNormalWidth(getAllContentButtons());
       }
