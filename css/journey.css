@@ -26,20 +26,20 @@
 
 .journey h1 {
   color: #4bd5ee;
-  font-size: 2.5rem;
+  font-size: 4vh;
   background-color: #000000;
 }
 
 .journey h2 {
   color: #4bd5ee;
-  font-size: 2rem;
+  font-size: 3vh;
   text-decoration: underline;
   text-align: left;
   background-color: #000000;
 }
 
 .journey p, .journey li {
-  font-size: 1.5rem;
+  font-size: 2vh;
   /* width: 640px; */
   margin: auto;
   text-align: justify;

@@ -39,9 +39,9 @@ function checkDirection() {
   const deltaY = touchendY - touchstartY;
 
   if (Math.abs(deltaX) > Math.abs(deltaY)) {
-    if (deltaX > window.innerWidth / 2) {
+    if (deltaX > window.innerWidth / 3) {
       changeContent("home"); 
-    } else if (deltaX < -window.innerWidth / 2) {
+    } else if (deltaX < -window.innerWidth / 3) {
     }
   } else {
     // Vertikaler Swipe
