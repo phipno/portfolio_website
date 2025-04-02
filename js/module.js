@@ -34,7 +34,7 @@ let touchendX = 0
     
 function checkDirection() {
   if (touchendX < touchstartX) ;
-  if (touchendX > touchstartX + 30) changeContent("home");
+  if (touchendX > touchstartX + 70) changeContent("home");
 }
 
 document.addEventListener('touchstart', e => {
