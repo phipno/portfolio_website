@@ -39,17 +39,14 @@ function checkDirection() {
   const deltaY = touchendY - touchstartY;
 
   if (Math.abs(deltaX) > Math.abs(deltaY)) {
-    if (deltaX > 70) {
+    if (deltaX > window.innerWidth / 2) {
       changeContent("home"); 
-    } else if (deltaX < -70) {
-      console.log("Swipe nach links erkannt");
+    } else if (deltaX < -window.innerWidth / 2) {
     }
   } else {
     // Vertikaler Swipe
     if (deltaY > 70) {
-      console.log("Swipe nach unten erkannt");
     } else if (deltaY < -70) {
-      console.log("Swipe nach oben erkannt");
     }
   }
 }
