@@ -312,7 +312,7 @@
   }
 
   .content-button .content-button-text {
-    font-size: calc(1vw + 4vh);
+    font-size: calc(4vw + 4vh);
     font-weight: bolder;
     transform: scaleX(125%);
     margin: 0;

@@ -63,13 +63,24 @@
   line-height: 50px;
 }
 
+.game-interface {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc();
+  width: 100%;
+  overflow: auto;
+}
 
 .controlls {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-evenly;
+  align-content: space-around;
   background-color: white;
-  height: 10vh;
+  min-height: 10vh;
+  padding-top: 1%;
+  width: 100%;
 }
 
 
@@ -79,26 +90,42 @@
   transform: translate(-25%, 93%);
 }
 
-.fill-game:hover > .coin-hand{
+.game-controll:hover > .coin-hand{
   transform: translate(-25%, 55%);
 }
 
-.fill-game {
-  display:flex;
-  width: 100%;
-  background-color: black;
-  overflow: hidden;
+.game-controll {
+  display: flex;
   justify-content: center;
-  
+  align-items: baseline;
+  background-color: white;
+  flex-grow: 1;
+  height: auto;
+  width: 100%;
 }
 
-.fill-game p {
-  margin: auto;
+.play {
+  color: #ff5252 !important;
+  margin: 0 1% 2%;
+  width: 30%;
+  height: 7vh;
+  overflow:hidden;
+  background-color: whitesmoke;
+}
+
+.game-interface button {
   font-family: 'DS-Digital', sans-serif;
-  font-weight: 1000;
-  font-size: 6rem;
-  color: #0FFF50;
+  font-weight: 1;
+  font-size: 3vh;
   z-index: 1;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  border: 2px solid #000;
+  box-shadow: 5px 5px 0px #000;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .blink_me {
@@ -111,20 +138,6 @@
   }
 }
 
-.controlls button {
-  display: inline-block;
-  /* padding: 10px 20px; */
-  /* font-size: 24px; */
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  color: #fff;
-  border: 2px solid #000;
-  box-shadow: 5px 5px 0px #000;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
 .move {
   background-color: #ff5252;
   width: 20%;
@@ -132,7 +145,7 @@
   margin: 0 1% 2%;
 }
 
-.fire {
+.fire{
   margin: 0 1% 2%;
   width: 20%;
   height: 7vh;
@@ -144,15 +157,14 @@
   height: 120%;
 }
 
-
-.controlls button:hover {
+.game-interface button:hover {
   background-color: #fff;
   color: #ff5252;
   border: 2px solid #ff5252;
   box-shadow: 5px 5px 0px #ff5252;
 }
 
-.controlls button:active {
+.game-interface button:active {
   background-color: #fcf414;
   box-shadow: none;
   transform: translateY(4px);

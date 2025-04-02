@@ -94,6 +94,7 @@ export function switchToBigViewMobil() {
 //which initiates DOM changes, animations and class manipulation
 import { detectPortraitMode, getAllContentButtons } from "./utils.js";
 import { slideContentUp } from "./animation.js";
+import { stopInterval } from "./spaceInvader.js";
 
 export async function changeContent(string) {
   const contentElement = document.querySelector(".content");
@@ -101,9 +102,10 @@ export async function changeContent(string) {
   const allSwitcherBtn = getAllContentButtons();
 
   disableorenableButtons(allSwitcherBtn, true);
+ 
+  stopInterval();
 
   await cleanUpContent(contentElement);
-
   //animates so the button increases in width or height deppending on screen
   if (clickedBtn) {
     await animateFirstClick(contentElement, allSwitcherBtn, clickedBtn, string);

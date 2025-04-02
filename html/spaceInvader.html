@@ -1,9 +1,16 @@
-<div class="controlls">
-  <button class="move" onclick="moveShip('left')"><-</button>
-  <button class="fire" onclick="fire()"><img class="fire-img" src="/images/explosion.png"></button>
-  <button class="move" onclick="moveShip('right')">-></button>
+
+<div class="game-interface">
+  <div class="controlls">
+    <button class="move" onclick="moveShip('left')"><-</button>
+    <button class="fire" onclick="fire()"><img class="fire-img" src="/images/explosion.png"></button>
+    <button class="move" onclick="moveShip('right')">-></button>
+  </div>
+  
+  <div class="game-controll">
+    <button class="move" onclick="cycleLeft('left')"><-</button>
+    <button class="play" onclick="play(event)">Play</button>
+    <button class="move" onclick="cycleRight('left')">-></button>
+  </div>
+    <!-- <p class="blink_me">PLAY</p> -->
+    <!-- <img src="/images/hand.png" class="coin-hand" id="coin-hand"> -->
 </div>
-<button class="fill-game" onclick="play(event)">
-  <p class="blink_me">PLAY</p>
-  <img src="/images/hand.png" class="coin-hand" id="coin-hand">
-</button>

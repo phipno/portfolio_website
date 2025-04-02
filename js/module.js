@@ -29,6 +29,23 @@ window.play = play;
 window.fire = fire;
 window.moveShip = moveShip;
 
+let touchstartX = 0
+let touchendX = 0
+    
+function checkDirection() {
+  if (touchendX < touchstartX) ;
+  if (touchendX > touchstartX + 30) changeContent("home");
+}
+
+document.addEventListener('touchstart', e => {
+  touchstartX = e.changedTouches[0].screenX;
+})
+
+document.addEventListener('touchend', e => {
+  touchendX = e.changedTouches[0].screenX;
+  checkDirection();
+})
+
 if (!detectPortraitMode()) {
   const gameElement = document.querySelector(".game");
   await appendHtmlFromFile(gameElement, "../html/spaceInvader.html");
@@ -37,6 +54,8 @@ if (!detectPortraitMode()) {
 }
 
 router();
+
+
 
 console.log("Moudle Script Loaded");
 

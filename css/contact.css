@@ -172,7 +172,7 @@
 
 #result {
   height: 20%;
-  font-size: 2rem;
+  font-size: 3vh;
   font-family: O4B_30;
   color: white;
   text-shadow: -1px -1px 0 #ff5252, 1px -1px 0 #ff5252, -1px 1px 0 #ff5252, 1px 1px 0 #ff5252, 5px 5px #ff5252;
@@ -191,7 +191,7 @@
 }
 
 .form-group-container h1 {
-  font-size: 2rem;
+  font-size: 3vh;
   margin: 20px 40px 0px 40px;
   font-family: O4B_30;
   color: white;
