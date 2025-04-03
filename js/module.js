@@ -9,9 +9,9 @@
 /*                                              ,           ,|             | */
 /* -----[ mooooooo ]-------------------------------------------------------- */
 
-import { moveShip, fire, play, setupGame } from "./spaceInvader.js";
+import { moveShip, fire, setupGame } from "./spaceInvader.js";
 import { closeForm } from "./contact.js";
-import { detectPortraitMode, getAllContentButtons } from "./utils.js";
+import { cycleGame, startGame, detectPortraitMode, getAllContentButtons } from "./utils.js";
 import {
   changeContent,
   appendHtmlFromFile,
@@ -19,15 +19,19 @@ import {
   router
 } from "./content.js";
 import { turnALlButtonsNormalWidth } from "./animation.js";
+import { moveSnake } from "/js/snake.js";
 
 window.changeContent = changeContent;
 window.switchToBigViewMobil = switchToBigViewMobil;
 
 window.closeForm = closeForm;
 
-window.play = play;
+window.startGame = startGame;
 window.fire = fire;
 window.moveShip = moveShip;
+window.moveSnake = moveSnake;
+
+window.cycleGame = cycleGame;
 
 let touchstartX = 0;
 let touchstartY = 0;
@@ -64,7 +68,7 @@ document.addEventListener("touchend", (e) => {
 
 if (!detectPortraitMode()) {
   const gameElement = document.querySelector(".game");
-  await appendHtmlFromFile(gameElement, "../html/spaceInvader.html");
+  await appendHtmlFromFile(gameElement, "../html/games.html");
   setupGame(gameElement);
   turnALlButtonsNormalWidth(getAllContentButtons());
 }

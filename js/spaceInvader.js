@@ -43,9 +43,20 @@ export const setupGame = (element) => {
   drawSpaceShip();
   //draw aliens
   drawAliens();
+  //drawControlls
+  drawControlls();
   //instructions and score
   drawScoreboard();
 };
+
+const drawControlls = () => {
+  const controlls = document.querySelector(".controlls");
+  controlls.innerHTML =  `
+  <button class="move" onclick="moveShip('left')"><-</button>
+  <button class="fire" onclick="fire()"><img class="fire-img" src="/images/explosion.png"></button>
+  <button class="move" onclick="moveShip('right')">-></button>
+  `;
+}
 
 const drawGrid = () => {
   //create containing element

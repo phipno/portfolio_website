@@ -60,7 +60,7 @@ window
       clearElement(".game");
       changeToBigContentButton();
       switchToBigViewDesktop();
-      await appendHtmlFromFile(gameElement, "../html/spaceInvader.html");
+      await appendHtmlFromFile(gameElement, "../html/games.html");
       setupGame(gameElement);
       gameElement.style.display = "flex";
     }
@@ -175,7 +175,7 @@ async function switcherOfContent(contentElement, string) {
       break;
     case "game-button":
       pushStateNotIdentical({name: 'game'}, "/game");
-      await appendHtmlFromFile(contentElement, "../html/spaceInvader.html");
+      await appendHtmlFromFile(contentElement, "../html/games.html");
       setupGame(contentElement);
       break;
     case "contact-button":

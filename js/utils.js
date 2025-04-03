@@ -58,4 +58,58 @@ export function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+import { playSnake, setupGameSnake } from "/js/snake.js";
+import { setupGame, stopInterval, play} from "/js/spaceInvader.js";
+
+const games = {
+  spaceInvader: {
+    name: "spaceInvader",
+    setup: (gameParent) => setupGame(gameParent),
+    start: (event) => play(event),
+    stop: () => stopInterval(),
+  },
+  snake: {
+    name: "snake",
+    setup: (gameParent) => setupGameSnake(gameParent),
+    start: () => playSnake(),
+    stop: () => stopIntervalSnake(),
+  },
+}
+let index = 0;
+
+import { appendHtmlFromFile } from "/js/content.js";
+
+export function cycleGame(direction) {
+  const gameParent = document.querySelector(".game-interface").parentElement;
+  games[Object.keys(games)[index]].stop();
+  for (let i = 0; i < 2; i++) {
+    if (gameParent.firstChild) {
+      gameParent.removeChild(gameParent.firstChild);
+    }
+  }
+
+  if (direction === "right") {
+    index++;
+    if (index >= Object.keys(games).length) {
+      index = 0;
+    }
+  } else if (direction === "left") {
+    index--;
+    if (index < 0) {
+      index = Object.keys(games).length - 1;
+    }
+  }
+  console.log(index)
+  console.log("Switching to game: ",games[Object.keys(games)[index]].name);
+  games[Object.keys(games)[index]].setup(gameParent);
+}
+
+export function startGame(event) {
+  if (games[Object.keys(games)[index]] && typeof games[Object.keys(games)[index]].start === "function") {
+    games[Object.keys(games)[index]].start(event);
+  } else {
+    console.error("Invalid game index or start method not found.");
+  }
+}
+
 /* "~._.~"~._.~"~._.~"~._.~"~._.~"~. E O F .~"~._.~"~._.~"~._.~"~._.~"~._.~" */
