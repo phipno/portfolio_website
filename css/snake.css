@@ -16,3 +16,21 @@
 .food {
   background-color: green;
 }
+
+.rotate_down {
+  display: block;
+  transform: rotate(90deg);
+}
+
+.rotate_up {
+  display: block;
+  transform: rotate(270deg);
+}
+
+.up-down {
+  display: flex;
+  align-content: space-around;
+  background-color: white;
+  min-height: 10vh;
+  max-width: 100%;
+}

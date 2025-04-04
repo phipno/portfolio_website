@@ -2,21 +2,22 @@ const originalState = {
     numCells: (600 / 40) * (600 / 40),
     cells: [],
     snake: [175], // Direction: -1 (left), 1 (right), -15 (up), 15 (down)
-    direction: 1,
+    direction: -15,
     food: [20, 100, 200],
     gameover: false,
     gameStarted: false,
     score: 0,
     interval: null,
-  };
+};
   
 export let currentState = {};
 
 export const setupGameSnake = (element) => {
   currentState = JSON.parse(JSON.stringify(originalState));
   currentState.element = element;
-  console.log(element)
 
+  stopIntervalSnake();
+  deleteMesseage();
   clearGrid();
   drawGrid();
   drawSnake();
@@ -27,12 +28,11 @@ export const setupGameSnake = (element) => {
 
 const drawControlls = () => {
   const controlls = document.querySelector(".controlls");
+  controlls.style.justifyContent = "center";
   controlls.innerHTML =  `
   <button class="move" onclick="moveSnake(-1)"><-</button>
-  <div class="up-down">
-    <button class="move" onclick="moveSnake(-15)">^</button>
-    <button class="move" onclick="moveSnake(15)">^</button>
-  </div>
+  <button class="move" onclick="moveSnake(-15)"><span class="rotate_up">-></span></button>
+  <button class="move" onclick="moveSnake(15)"><span class="rotate_down">-></span></button>
   <button class="move" onclick="moveSnake(1)">-></button>
   `;
 }
@@ -55,7 +55,6 @@ const drawGrid = () => {
     grid.append(cell);
     currentState.cells.push(cell);
   }
-  console.log(currentState.element)
   currentState.element.insertBefore(
     gridContainer,
     currentState.element.children[0]
@@ -63,6 +62,7 @@ const drawGrid = () => {
 };
 
 const drawSnake = () => {
+  console.log(currentState.snake);
   currentState.cells.forEach((cell) => cell.classList.remove("snake"));
   currentState.snake.forEach((index) => {
     currentState.cells[index].classList.add("snake");
@@ -78,8 +78,9 @@ const drawFood = () => {
 
 
 export const moveSnake = (newDirection) => {
+  currentState.direction = parseInt(newDirection);
+  console.log(parseInt(newDirection));
   const head = currentState.snake[0] + currentState.direction;
-
   // Check for collisions with walls or itself
   if (
     head < 0 || // Out of bounds (top)
@@ -88,8 +89,7 @@ export const moveSnake = (newDirection) => {
     (currentState.direction === 1 && head % 15 === 0) || // Wraparound (right wall)
     currentState.snake.includes(head) // Collision with itself
   ) {
-    console.log("Game Over");
-    endGame();
+    endGameSnake();
     return;
   }
 
@@ -121,21 +121,24 @@ const placeFood = () => {
   drawFood();
 };
 
-const endGame = () => {
+const endGameSnake = () => {
   currentState.gameover = true;
+  currentState.gameStarted = false;
   stopIntervalSnake();
   drawMessage("GAME OVER!");
 };
 
-export const playSnake = () => {
+export const playSnake = (event) => {
   if (currentState.gameStarted) return;
   currentState.gameStarted = true;
   if (currentState.gameover) {
-    setupGame(currentState.element);
+    setupGameSnake(event.target.parentElement.parentElement);
   }
+  console.log(currentState.element);
   currentState.interval = setInterval(() => {
-    moveSnake();
+    moveSnake(currentState.direction);
   }, 300);
+  console.log(currentState.interval);
 };
 
 export const stopIntervalSnake = () => {
@@ -152,6 +155,12 @@ const drawMessage = (message) => {
   h1.innerText = message;
   messageElement.appendChild(h1);
   currentState.element.appendChild(messageElement);
+};
+
+const deleteMesseage = () => {
+  const messageElement = document.querySelector(".message");
+
+  if (messageElement) messageElement.remove();
 };
 
 const drawScoreboard = () => {

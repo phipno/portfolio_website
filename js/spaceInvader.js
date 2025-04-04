@@ -51,6 +51,7 @@ export const setupGame = (element) => {
 
 const drawControlls = () => {
   const controlls = document.querySelector(".controlls");
+  controlls.style.justifyContent = "space-around";
   controlls.innerHTML =  `
   <button class="move" onclick="moveShip('left')"><-</button>
   <button class="fire" onclick="fire()"><img class="fire-img" src="/images/explosion.png"></button>

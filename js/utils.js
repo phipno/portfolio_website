@@ -58,7 +58,7 @@ export function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-import { playSnake, setupGameSnake } from "/js/snake.js";
+import { playSnake, setupGameSnake, stopIntervalSnake } from "/js/snake.js";
 import { setupGame, stopInterval, play} from "/js/spaceInvader.js";
 
 const games = {
@@ -71,7 +71,7 @@ const games = {
   snake: {
     name: "snake",
     setup: (gameParent) => setupGameSnake(gameParent),
-    start: () => playSnake(),
+    start: (event) => playSnake(event),
     stop: () => stopIntervalSnake(),
   },
 }
@@ -82,10 +82,8 @@ import { appendHtmlFromFile } from "/js/content.js";
 export function cycleGame(direction) {
   const gameParent = document.querySelector(".game-interface").parentElement;
   games[Object.keys(games)[index]].stop();
-  for (let i = 0; i < 2; i++) {
-    if (gameParent.firstChild) {
-      gameParent.removeChild(gameParent.firstChild);
-    }
+  if (gameParent.firstChild) {
+    gameParent.removeChild(gameParent.firstChild);
   }
 
   if (direction === "right") {
