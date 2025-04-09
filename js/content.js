@@ -27,6 +27,8 @@ const routes = {
   "/game": () => changeContent("home"),
   "/contact": () => changeContent("contact-button"),
   "/resume": () => changeContent("resume-button"),
+  "/mesh": () => changeContent("mesh"),
+  "/mesh/": () => changeContent("mesh")
 };
 
 export async function router() {
@@ -147,6 +149,10 @@ async function switcherOfContent(contentElement, string) {
         const switcherElement = document.querySelector(".content-switcher");
         switcherElement.style.display = "flex";
       }
+      break;
+    case "mesh":
+      pushStateNotIdentical({name: 'mesh'}, "/mesh");
+      await appendHtmlFromFile(contentElement, "../html/mesh.html");
       break;
     case "404":
       pushStateNotIdentical({name: '404'}, "/404");
