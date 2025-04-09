@@ -62,7 +62,7 @@ window
       clearElement(".game");
       changeToBigContentButton();
       switchToBigViewDesktop();
-      await appendHtmlFromFile(gameElement, "../html/spaceInvader.html");
+      await appendHtmlFromFile(gameElement, "../html/games.html");
       setupGame(gameElement);
       gameElement.style.display = "flex";
     }
@@ -96,6 +96,7 @@ export function switchToBigViewMobil() {
 //which initiates DOM changes, animations and class manipulation
 import { detectPortraitMode, getAllContentButtons } from "./utils.js";
 import { slideContentUp } from "./animation.js";
+import { stopInterval } from "./spaceInvader.js";
 
 export async function changeContent(string) {
   const contentElement = document.querySelector(".content");
@@ -103,9 +104,10 @@ export async function changeContent(string) {
   const allSwitcherBtn = getAllContentButtons();
 
   disableorenableButtons(allSwitcherBtn, true);
+ 
+  stopInterval();
 
   await cleanUpContent(contentElement);
-
   //animates so the button increases in width or height deppending on screen
   if (clickedBtn) {
     await animateFirstClick(contentElement, allSwitcherBtn, clickedBtn, string);
@@ -179,7 +181,7 @@ async function switcherOfContent(contentElement, string) {
       break;
     case "game-button":
       pushStateNotIdentical({name: 'game'}, "/game");
-      await appendHtmlFromFile(contentElement, "../html/spaceInvader.html");
+      await appendHtmlFromFile(contentElement, "../html/games.html");
       setupGame(contentElement);
       break;
     case "contact-button":

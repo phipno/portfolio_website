@@ -1,0 +1,36 @@
+/* -------------------------8<---------------------------------------------- */
+/*                                                                       .|  */
+/* snake.css                                 /     (__)          |/          */
+/*                                                 (oo)------/'   ,__,    ,  */
+/* By: phipno <phipno@gmail.com>                |  (__)     ||    (oo)_____/ */
+/*                                                    ||---/||    (__)    || */
+/* Created: 2025/04/03 12:55 by phipno       |/                 ,    ||--w|| */
+/*                                         ,,       !              |'        */
+/*                                              ,           ,|             | */
+/* -----[ mooooooo ]-------------------------------------------------------- */
+
+.snake {
+  background-color: yellow;
+}
+
+.food {
+  background-color: green;
+}
+
+.rotate_down {
+  display: block;
+  transform: rotate(90deg);
+}
+
+.rotate_up {
+  display: block;
+  transform: rotate(270deg);
+}
+
+.up-down {
+  display: flex;
+  align-content: space-around;
+  background-color: white;
+  min-height: 10vh;
+  max-width: 100%;
+}

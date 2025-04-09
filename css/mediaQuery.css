@@ -22,9 +22,9 @@
     min-height: 100vw;
     position: relative;
   }
-  
-  .fill-game {
-    height: calc(100vh - 100vw - 25vh);
+
+  .game-controll {
+    height: calc(100vh - 100vw - 10vh);
   }
 
   .message {
@@ -41,9 +41,10 @@
       margin-left: 10vw;
       margin-right: 10vw;
     }
-    .fill-game {
-      height: calc(100vh - 80vw - 25vh);
+    .game-controll {
+      height: calc(100vh - 80vw - 10vh);
     }
+
     .message {
       width: 80vw;
     }
@@ -59,8 +60,8 @@
       margin-right: 20vw;
     }
 
-    .fill-game {
-      height: calc(100vh - 60vw - 25vh);
+    .game-controll {
+      height: calc(100vh - 60vw - 10vh);
     }
     .message {
       width: 60vw;
@@ -186,7 +187,7 @@
     height: 50vh;
   }
   
-  .fill-game {
+  .game-controll {
     height: 30vh;
   }
 

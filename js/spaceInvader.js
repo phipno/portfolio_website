@@ -20,9 +20,10 @@ const originalState = {
   gameover: false,
   gameStarted: false,
   score: 0,
+  interval: null,
 };
 
-let currentState = {};
+export let currentState = {};
 
 function clearGrids() {
   const gridElement = document.querySelector(".grid-container");
@@ -42,9 +43,21 @@ export const setupGame = (element) => {
   drawSpaceShip();
   //draw aliens
   drawAliens();
+  //drawControlls
+  drawControlls();
   //instructions and score
   drawScoreboard();
 };
+
+const drawControlls = () => {
+  const controlls = document.querySelector(".controlls");
+  controlls.style.justifyContent = "space-around";
+  controlls.innerHTML =  `
+  <button class="move" onclick="moveShip('left')"><-</button>
+  <button class="fire" onclick="fire()"><img class="fire-img" src="/images/explosion.png"></button>
+  <button class="move" onclick="moveShip('right')">-></button>
+  `;
+}
 
 const drawGrid = () => {
   //create containing element
@@ -96,8 +109,14 @@ export const moveShip = (direction) => {
   }
 };
 
+export const stopInterval = () => {
+  if (currentState.interval) {
+    clearInterval(currentState.interval);
+    currentState.interval = originalState.interval;
+  }
+};
+
 export const fire = () => {
-  //use an interval
   if (currentState.gameStarted) {
     let interval;
     let laserposition = currentState.shipPosition;
@@ -153,11 +172,10 @@ export const play = (event) => {
   if (currentState.gameover) {
     setupGame(event.target.parentElement.parentElement);
   }
-  let interval;
   let direction = "right";
   let movement;
   currentState.gameStarted = true;
-  interval = setInterval(() => {
+  currentState.interval = setInterval(() => {
     if (direction === "right") {
       if (atEdge("right")) {
         movement = 15 - 1;
@@ -177,23 +195,22 @@ export const play = (event) => {
       (position) => position + movement
     );
     drawAliens();
-    checkGameState(interval);
+    checkGameState();
   }, 300);
   //set up ship controls
 };
 
-const checkGameState = (interval) => {
+const checkGameState = () => {
   if (currentState.alienPositions.length === 0) {
     currentState.gameover = true;
     currentState.gameStarted = false;
-    clearInterval(interval);
+    stopInterval();
     drawMessage("HUMAN WIN!");
   } else if (
     currentState.alienPositions.some(
-      (position) => position >= currentState.shipPosition
-    )
+      (position) => position >= currentState.shipPosition)
   ) {
-    clearInterval(interval);
+    stopInterval();
     currentState.gameover = true;
     currentState.gameStarted = false;
     currentState.cells[currentState.shipPosition].classList.remove("spaceship");
