@@ -74,7 +74,7 @@ import { clearElement, changeToBigContentButton } from "./content.js";
 
 export async function closeForm() {
   await changeToBigContentButton();
-  window.history.pushState({}, "", "home");
+  window.history.pushState({}, "", "/");
   clearElement(".content");
   document.querySelector(".pop-up").style.display = "flex";
   document.querySelector(".pop-down").style.display = "none";
